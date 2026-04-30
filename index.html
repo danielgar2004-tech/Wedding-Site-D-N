@@ -159,9 +159,114 @@
     transform: scale(1.05);
     animation: heroZoom 20s ease-in-out infinite alternate;
   }
+  @media (min-width: 768px) {
+    .hero-bg {
+      background-image: url('assets/photos/hero-desktop.jpg');
+      background-position: center center;
+    }
+  }
   @keyframes heroZoom {
     from { transform: scale(1.05); }
     to   { transform: scale(1.12); }
+  }
+
+  /* ── WELCOME SCREEN ── */
+  #welcome-screen {
+    position: fixed;
+    inset: 0;
+    z-index: 99999;
+    background: var(--navy-dark);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 40px 24px;
+    transition: opacity 0.8s ease, visibility 0.8s ease;
+  }
+  #welcome-screen.hide {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+  }
+  .welcome-bg {
+    position: absolute;
+    inset: 0;
+    background-image: url('assets/photos/hero-desktop.jpg');
+    background-size: cover;
+    background-position: center;
+    opacity: 0.2;
+  }
+  @media (max-width: 767px) {
+    .welcome-bg { background-image: url('assets/photos/hero.jpg'); }
+  }
+  .welcome-content { position: relative; z-index: 2; }
+  .welcome-label {
+    font-family: var(--sans);
+    font-size: 0.6rem;
+    font-weight: 500;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 24px;
+  }
+  .welcome-names {
+    font-family: var(--serif);
+    font-size: clamp(3rem, 12vw, 6rem);
+    font-weight: 700;
+    color: var(--white);
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+  .welcome-amp {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: clamp(1.2rem, 3vw, 1.8rem);
+    color: var(--gold-light);
+    font-weight: 300;
+    display: block;
+    margin: 4px 0;
+  }
+  .welcome-date {
+    font-family: var(--sans);
+    font-size: 0.7rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.5);
+    margin: 20px 0 48px;
+  }
+  .welcome-divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 48px;
+  }
+  .welcome-divider-line { width: 40px; height: 1px; background: rgba(184,151,90,0.4); }
+  .welcome-divider-diamond { width: 5px; height: 5px; background: var(--gold); transform: rotate(45deg); }
+  .welcome-btn {
+    font-family: var(--sans);
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--navy-dark);
+    background: var(--gold-light);
+    border: none;
+    padding: 18px 48px;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.15s;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .welcome-btn:hover { background: var(--gold); transform: translateY(-2px); }
+  .welcome-verse {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 0.9rem;
+    color: rgba(255,255,255,0.3);
+    margin-top: 32px;
   }
   .hero-overlay {
     position: absolute;
@@ -1043,7 +1148,79 @@
     font-style: italic;
   }
 
-  /* ── SCROLL REVEAL ── */
+  /* ── FLORAL PATTERN ── */
+  .floral-section {
+    position: relative;
+    overflow: hidden;
+  }
+  .floral-section::before,
+  .floral-section::after {
+    content: '';
+    position: absolute;
+    top: 0; bottom: 0;
+    width: 160px;
+    background-image: url('assets/images/patron-floral.jpg');
+    background-size: 160px auto;
+    background-repeat: repeat-y;
+    opacity: 0;
+    transition: opacity 0.8s ease;
+    pointer-events: none;
+    z-index: 0;
+  }
+  .floral-section::before { left: 0; }
+  .floral-section::after  { right: 0; transform: scaleX(-1); }
+  .floral-section.floral-visible::before,
+  .floral-section.floral-visible::after { opacity: 0.13; }
+  .floral-section > * { position: relative; z-index: 1; }
+
+  /* ── ZOOM SECTION ── */
+  #zoom { background: var(--navy-dark); padding: 80px 24px; text-align: center; }
+  #zoom .section-label { color: rgba(184,151,90,0.7); }
+  #zoom .section-title { color: var(--white); }
+  .zoom-card {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(184,151,90,0.25);
+    max-width: 520px;
+    margin: 0 auto;
+    padding: 48px 40px;
+    position: relative;
+  }
+  .zoom-card::before {
+    content: '';
+    position: absolute;
+    top: 8px; left: 8px; right: 8px; bottom: 8px;
+    border: 1px solid rgba(184,151,90,0.1);
+    pointer-events: none;
+  }
+  .zoom-detail {
+    font-family: var(--sans);
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    color: rgba(255,255,255,0.5);
+    margin-bottom: 6px;
+  }
+  .zoom-detail strong { color: var(--gold-light); font-weight: 600; }
+  .zoom-divider { width: 40px; height: 1px; background: rgba(184,151,90,0.3); margin: 20px auto; }
+
+  /* ── SVG ICONS ── */
+  .svg-icon { display: block; margin: 0 auto 20px; }
+
+  /* ── NO NIÑOS ── */
+  .no-ninos {
+    background: var(--navy-dark);
+    border-top: 1px solid rgba(184,151,90,0.15);
+    padding: 32px 24px;
+    text-align: center;
+  }
+  .no-ninos p {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 0.88rem;
+    color: rgba(255,255,255,0.3);
+    letter-spacing: 0.05em;
+    max-width: 420px;
+    margin: 0 auto;
+  }
   .reveal {
     opacity: 0;
     transform: translateY(32px);
@@ -1069,6 +1246,29 @@
 </style>
 </head>
 <body>
+
+<!-- WELCOME SCREEN -->
+<div id="welcome-screen">
+  <div class="welcome-bg"></div>
+  <div class="welcome-content">
+    <p class="welcome-label">Os invitamos a celebrar</p>
+    <div class="welcome-names">
+      <span>Daniel</span>
+      <span class="welcome-amp">&amp;</span>
+      <span>Narumi</span>
+    </div>
+    <p class="welcome-date">11 · Abril · 2027 · Cajamarca, Perú</p>
+    <div class="welcome-divider">
+      <div class="welcome-divider-line"></div>
+      <div class="welcome-divider-diamond"></div>
+      <div class="welcome-divider-line"></div>
+    </div>
+    <button class="welcome-btn" onclick="enterSite()">
+      ♥ &nbsp; Abrir invitación
+    </button>
+    <p class="welcome-verse">1 Corintios 13:4-8</p>
+  </div>
+</div>
 
 <!-- AUDIO -->
 <audio id="bg-audio" loop preload="auto">
@@ -1110,7 +1310,7 @@
 </div>
 
 <!-- HERO -->
-<section id="hero">
+<section id="hero" class="floral-section">
   <div class="hero-bg"></div>
   <div class="hero-overlay"></div>
   <div class="hero-content">
@@ -1127,7 +1327,7 @@
       <div class="hero-divider-line"></div>
     </div>
     <p class="hero-date">11 · Abril · 2027</p>
-    <p class="hero-subtitle">Unidos para siempre ante Jehová</p>
+    <p class="hero-subtitle">1 Corintios 13:4-8</p>
   </div>
   <a class="hero-scroll" href="#countdown">
     <span class="hero-scroll-text">Descubrir</span>
@@ -1139,7 +1339,6 @@
 <section id="countdown">
   <span class="section-label">El tiempo corre</span>
   <h2 class="section-title">Faltan</h2>
-  <p class="section-subtitle">Para el día más especial de nuestras vidas</p>
   <div class="countdown-grid">
     <div class="countdown-item">
       <span class="countdown-number" id="cd-days">000</span>
@@ -1159,10 +1358,11 @@
     </div>
   </div>
   <span class="countdown-heart">♥</span>
+  <p class="section-subtitle" style="margin-top: 32px;">Para nuestra unión ante Jehová como matrimonio</p>
 </section>
 
 <!-- HISTORIA -->
-<section id="historia" style="padding: 100px 24px;">
+<section id="historia" class="floral-section" style="padding: 100px 24px;">
   <div style="max-width: 720px; margin: 0 auto;">
     <span class="section-label reveal">Nuestro camino juntos</span>
     <h2 class="section-title reveal">Nuestra Historia</h2>
@@ -1206,10 +1406,7 @@
   <div class="gallery-carousel reveal" style="max-width: 420px; margin: 0 auto; position: relative;">
     <div class="gallery-track" id="galleryTrack">
       <div class="gallery-slide"><img src="assets/photos/foto1.jpg" alt="Daniel y Narumi"></div>
-      <div class="gallery-slide"><img src="assets/photos/foto2.jpg" alt="Daniel y Narumi en Cusco"></div>
-      <div class="gallery-slide"><img src="assets/photos/foto3.jpg" alt="Daniel y Narumi"></div>
       <div class="gallery-slide"><img src="assets/photos/foto4.jpg" alt="Daniel y Narumi"></div>
-      <div class="gallery-slide"><img src="assets/photos/foto5.jpg" alt="Daniel y Narumi - videollamada"></div>
       <div class="gallery-slide"><img src="assets/photos/foto6.jpg" alt="Daniel y Narumi en Cajamarca"></div>
       <div class="gallery-slide"><img src="assets/photos/foto7.jpg" alt="Daniel y Narumi en el Salón del Reino"></div>
       <div class="gallery-slide"><img src="assets/photos/foto8.jpg" alt="Daniel y Narumi en las montañas"></div>
@@ -1225,9 +1422,6 @@
     <div class="gallery-dot" onclick="galleryGoTo(3)"></div>
     <div class="gallery-dot" onclick="galleryGoTo(4)"></div>
     <div class="gallery-dot" onclick="galleryGoTo(5)"></div>
-    <div class="gallery-dot" onclick="galleryGoTo(6)"></div>
-    <div class="gallery-dot" onclick="galleryGoTo(7)"></div>
-    <div class="gallery-dot" onclick="galleryGoTo(8)"></div>
   </div>
   <p class="gallery-instruction reveal" style="margin-top: 20px; color: rgba(184,151,90,0.45); font-family: var(--sans); font-size: 0.68rem; letter-spacing: 0.15em; text-transform: uppercase; text-align:center;">
     Desliza para ver más momentos
@@ -1235,7 +1429,7 @@
 </section>
 
 <!-- EVENTO -->
-<section id="evento">
+<section id="evento" class="floral-section">
   <span class="section-label reveal">11 de Abril · 2027</span>
   <h2 class="section-title reveal">El Gran Día</h2>
   <p class="section-subtitle reveal">Dos momentos que recordaremos toda la vida</p>
@@ -1248,7 +1442,17 @@
   <div class="evento-grid reveal">
     <!-- CEREMONIA -->
     <div class="evento-card">
-      <span class="evento-icon">🕊️</span>
+      <!-- Anillo SVG -->
+      <svg class="svg-icon" width="56" height="56" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="50" cy="62" r="28" stroke="#b8975a" stroke-width="5" fill="none"/>
+        <circle cx="50" cy="62" r="20" stroke="#b8975a" stroke-width="2" fill="none" stroke-dasharray="3 3"/>
+        <ellipse cx="50" cy="34" rx="12" ry="8" stroke="#b8975a" stroke-width="3" fill="none"/>
+        <line x1="38" y1="34" x2="34" y2="44" stroke="#b8975a" stroke-width="2"/>
+        <line x1="62" y1="34" x2="66" y2="44" stroke="#b8975a" stroke-width="2"/>
+        <circle cx="50" cy="34" r="5" stroke="#d4b483" stroke-width="2" fill="rgba(184,151,90,0.15)"/>
+        <path d="M 30 44 Q 24 38 28 34 Q 32 30 38 34" stroke="#b8975a" stroke-width="1.5" fill="none"/>
+        <path d="M 70 44 Q 76 38 72 34 Q 68 30 62 34" stroke="#b8975a" stroke-width="1.5" fill="none"/>
+      </svg>
       <span class="evento-card-type">Discurso de Consejo Matrimonial</span>
       <h3 class="evento-card-title">Ceremonia</h3>
       <div class="evento-card-rule"></div>
@@ -1268,7 +1472,15 @@
 
     <!-- RECEPCIÓN -->
     <div class="evento-card">
-      <span class="evento-icon">🥂</span>
+      <!-- Copas SVG -->
+      <svg class="svg-icon" width="56" height="56" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M30 20 L22 50 Q22 62 35 65 L35 80 L25 80" stroke="#b8975a" stroke-width="3" fill="none" stroke-linecap="round"/>
+        <path d="M70 20 L78 50 Q78 62 65 65 L65 80 L75 80" stroke="#b8975a" stroke-width="3" fill="none" stroke-linecap="round"/>
+        <line x1="25" y1="80" x2="45" y2="80" stroke="#b8975a" stroke-width="3" stroke-linecap="round"/>
+        <line x1="55" y1="80" x2="75" y2="80" stroke="#b8975a" stroke-width="3" stroke-linecap="round"/>
+        <path d="M30 20 Q50 30 70 20" stroke="#b8975a" stroke-width="2" fill="none"/>
+        <line x1="50" y1="15" x2="50" y2="25" stroke="#d4b483" stroke-width="2"/>
+      </svg>
       <span class="evento-card-type">Celebración</span>
       <h3 class="evento-card-title">Recepción</h3>
       <div class="evento-card-rule"></div>
@@ -1307,7 +1519,17 @@
   <div class="dresscode-grid reveal">
     <div class="dresscode-card">
       <p class="dresscode-card-gender">Damas</p>
-      <span class="dresscode-card-icon">👗</span>
+      <!-- Vestido SVG elegante -->
+      <svg class="svg-icon" width="52" height="60" viewBox="0 0 80 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M32 8 Q40 4 48 8 L52 22 Q56 28 52 32 L68 85 Q68 90 40 90 Q12 90 12 85 L28 32 Q24 28 28 22 Z" stroke="#b8975a" stroke-width="2.5" fill="none" stroke-linejoin="round"/>
+        <path d="M28 32 Q40 38 52 32" stroke="#b8975a" stroke-width="2" fill="none"/>
+        <line x1="36" y1="8" x2="34" y2="22" stroke="#b8975a" stroke-width="1.5"/>
+        <line x1="44" y1="8" x2="46" y2="22" stroke="#b8975a" stroke-width="1.5"/>
+        <path d="M20 58 Q40 52 60 58" stroke="#d4b483" stroke-width="1" fill="none" opacity="0.6"/>
+        <path d="M16 72 Q40 64 64 72" stroke="#d4b483" stroke-width="1" fill="none" opacity="0.4"/>
+        <line x1="36" y1="22" x2="44" y2="22" stroke="#b8975a" stroke-width="2"/>
+        <line x1="38" y1="20" x2="42" y2="24" stroke="#b8975a" stroke-width="1.5"/>
+      </svg>
       <span class="dresscode-badge">Formal</span>
       <p class="dresscode-rule-title">Por favor evitar</p>
       <p class="dresscode-restriction">
@@ -1317,7 +1539,18 @@
     </div>
     <div class="dresscode-card">
       <p class="dresscode-card-gender">Caballeros</p>
-      <span class="dresscode-card-icon">🤵</span>
+      <!-- Tuxedo SVG elegante -->
+      <svg class="svg-icon" width="52" height="60" viewBox="0 0 80 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M15 30 L8 90 L72 90 L65 30 Q55 20 50 15 L40 35 L30 15 Q25 20 15 30Z" stroke="#b8975a" stroke-width="2.5" fill="none" stroke-linejoin="round"/>
+        <path d="M30 15 L40 35 L50 15" stroke="#b8975a" stroke-width="2" fill="none"/>
+        <path d="M15 30 Q20 35 26 32" stroke="#b8975a" stroke-width="2" fill="none"/>
+        <path d="M65 30 Q60 35 54 32" stroke="#b8975a" stroke-width="2" fill="none"/>
+        <line x1="40" y1="35" x2="40" y2="90" stroke="#b8975a" stroke-width="1.5" stroke-dasharray="3 3"/>
+        <rect x="36" y="38" width="8" height="5" rx="1" stroke="#d4b483" stroke-width="1.5" fill="none"/>
+        <rect x="37" y="43" width="6" height="16" rx="1" stroke="#d4b483" stroke-width="1.5" fill="none"/>
+        <path d="M22 30 L18 55" stroke="#b8975a" stroke-width="1" opacity="0.5"/>
+        <path d="M58 30 L62 55" stroke="#b8975a" stroke-width="1" opacity="0.5"/>
+      </svg>
       <span class="dresscode-badge">Formal</span>
       <p class="dresscode-rule-title">Por favor evitar</p>
       <p class="dresscode-restriction">
@@ -1333,7 +1566,7 @@
 </section>
 
 <!-- MÚSICA SUGERIDA -->
-<section id="musica">
+<section id="musica" class="floral-section">
   <span class="section-label reveal">Playlist de la celebración</span>
   <h2 class="section-title reveal">Recomienda una Canción</h2>
   <p class="section-subtitle reveal">Dinos la canción que definitivamente debe sonar en nuestra boda</p>
@@ -1344,12 +1577,45 @@
   </div>
 
   <div class="musica-card reveal">
-    <span class="musica-icon">♪</span>
+    <svg class="svg-icon" width="52" height="52" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="24" cy="60" r="10" stroke="#b8975a" stroke-width="2.5" fill="none"/>
+      <circle cx="56" cy="52" r="10" stroke="#b8975a" stroke-width="2.5" fill="none"/>
+      <line x1="34" y1="60" x2="34" y2="20" stroke="#b8975a" stroke-width="2.5"/>
+      <line x1="66" y1="52" x2="66" y2="12" stroke="#b8975a" stroke-width="2.5"/>
+      <path d="M34 20 L66 12" stroke="#b8975a" stroke-width="2.5"/>
+      <circle cx="48" cy="18" r="2" fill="#d4b483"/>
+      <circle cx="62" cy="14" r="2" fill="#d4b483"/>
+    </svg>
     <h3 class="musica-card-title">Música</h3>
     <p class="musica-card-sub">¿Cuál es la canción que no puede faltar en la fiesta?</p>
     <button class="btn-primary" onclick="openModal('modal-musica')">
-      ♫ &nbsp; Sugerir canción
+      Sugerir canción
     </button>
+  </div>
+</section>
+
+<!-- ZOOM -->
+<section id="zoom">
+  <span class="section-label reveal">Transmisión en vivo</span>
+  <h2 class="section-title reveal">Únete desde donde estés</h2>
+  <div class="gold-ornament reveal" style="margin-bottom: 40px;">
+    <div class="gold-ornament-line" style="background: rgba(184,151,90,0.4);"></div>
+    <div class="gold-ornament-diamond" style="background: rgba(184,151,90,0.4);"></div>
+    <div class="gold-ornament-line" style="background: rgba(184,151,90,0.4);"></div>
+  </div>
+  <div class="zoom-card reveal">
+    <svg class="svg-icon" width="48" height="48" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x="6" y="20" width="48" height="36" rx="4" stroke="#b8975a" stroke-width="2.5" fill="none"/>
+      <path d="M54 32 L74 22 L74 56 L54 46 Z" stroke="#b8975a" stroke-width="2.5" fill="none" stroke-linejoin="round"/>
+    </svg>
+    <p class="zoom-detail">Domingo, 11 de abril de 2027</p>
+    <p class="zoom-detail" style="margin-bottom: 20px;"><strong>1:30 PM</strong> — hora de Perú (PET)</p>
+    <div class="zoom-divider"></div>
+    <p class="zoom-detail">ID de reunión: <strong>880 5973 7646</strong></p>
+    <p class="zoom-detail" style="margin-bottom: 24px;">Código de acceso: <strong>241314</strong></p>
+    <a href="https://jworg.zoom.us/j/88059737646" target="_blank" class="btn-primary" style="display: inline-flex; text-decoration: none;">
+      Unirse a la reunión Zoom
+    </a>
   </div>
 </section>
 
@@ -1367,8 +1633,11 @@
   <div class="rsvp-grid reveal">
     <div class="rsvp-card">
       <p class="rsvp-card-label">WhatsApp</p>
-      <span class="rsvp-card-icon">💬</span>
-      <p class="rsvp-card-name">Narumi Zegarra</p>
+      <svg class="svg-icon" width="40" height="40" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M10 48 L14 36 Q6 26 10 16 Q18 4 30 4 Q46 4 52 16 Q58 28 50 40 Q42 52 30 52 Q22 52 16 48 Z" stroke="#b8975a" stroke-width="2" fill="none"/>
+        <path d="M22 24 Q22 20 26 20 L28 20 Q30 20 30 22 L30 26 Q30 28 28 29 Q32 33 34 34 Q35 32 37 32 L39 32 Q41 32 41 34 L41 36 Q41 38 38 38 Q28 38 22 24 Z" stroke="#b8975a" stroke-width="1.5" fill="none"/>
+      </svg>
+      <p class="rsvp-card-name">Narumi Cristobal Zegarra</p>
       <p class="rsvp-card-info">+51 934 888 078</p>
       <a href="https://wa.me/51934888078?text=Hola%20Narumi%2C%20confirmo%20mi%20asistencia%20a%20tu%20boda%20con%20Daniel%20el%2011%20de%20abril%20de%202027%20%F0%9F%A4%8D" target="_blank" class="btn-rsvp">
         Confirmar por WhatsApp
@@ -1376,7 +1645,12 @@
     </div>
     <div class="rsvp-card">
       <p class="rsvp-card-label">Correo electrónico</p>
-      <span class="rsvp-card-icon">✉️</span>
+      <svg class="svg-icon" width="40" height="40" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="6" y="14" width="48" height="32" rx="3" stroke="#b8975a" stroke-width="2" fill="none"/>
+        <path d="M6 17 L30 33 L54 17" stroke="#b8975a" stroke-width="2" fill="none"/>
+        <line x1="6" y1="46" x2="22" y2="32" stroke="#b8975a" stroke-width="1.5"/>
+        <line x1="54" y1="46" x2="38" y2="32" stroke="#b8975a" stroke-width="1.5"/>
+      </svg>
       <p class="rsvp-card-name">Correo de la Boda</p>
       <p class="rsvp-card-info">bodadanielynarumi@gmail.com</p>
       <a href="mailto:bodadanielynarumi@gmail.com?subject=Confirmación%20de%20asistencia%20-%20Boda%20Daniel%20%26%20Narumi&body=Hola%2C%20confirmo%20mi%20asistencia%20a%20la%20boda%20el%2011%20de%20abril%20de%202027." class="btn-rsvp">
@@ -1406,7 +1680,7 @@
 </section>
 
 <!-- REGALOS -->
-<section id="regalos">
+<section id="regalos" class="floral-section">
   <span class="section-label reveal">Con todo nuestro cariño</span>
   <h2 class="section-title reveal">Regalos</h2>
   <p class="section-subtitle reveal">Si deseas obsequiarnos algo más que tu hermosa presencia…</p>
@@ -1417,7 +1691,13 @@
   </div>
 
   <div class="regalos-card reveal">
-    <span style="font-size: 2.4rem; display: block; text-align: center; color: var(--gold); margin-bottom: 24px;">🎁</span>
+    <svg class="svg-icon" width="52" height="52" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x="10" y="32" width="60" height="40" rx="2" stroke="#b8975a" stroke-width="2.5" fill="none"/>
+      <rect x="10" y="22" width="60" height="14" rx="2" stroke="#b8975a" stroke-width="2.5" fill="none"/>
+      <line x1="40" y1="22" x2="40" y2="72" stroke="#b8975a" stroke-width="2"/>
+      <path d="M40 22 Q32 22 28 16 Q24 10 32 8 Q40 8 40 22" stroke="#b8975a" stroke-width="2" fill="none"/>
+      <path d="M40 22 Q48 22 52 16 Q56 10 48 8 Q40 8 40 22" stroke="#b8975a" stroke-width="2" fill="none"/>
+    </svg>
     <h3 style="font-family: var(--serif); font-size: clamp(1.8rem, 4vw, 2.4rem); font-weight: 700; color: var(--navy); text-align: center; margin-bottom: 8px;">Mesa de Regalos</h3>
     <p style="font-family: var(--serif); font-style: italic; font-size: 1rem; color: var(--gold-dark); text-align: center; margin-bottom: 36px;">Tu presencia es nuestro mayor regalo. Si deseas contribuir:</p>
     <div style="text-align: center;">
@@ -1443,6 +1723,11 @@
   </div>
 </section>
 
+<!-- NO NIÑOS -->
+<div class="no-ninos">
+  <p>Este evento está reservado para adultos. Agradecemos su comprensión.</p>
+</div>
+
 <!-- FOOTER -->
 <footer>
   <p class="footer-names">Daniel &amp; Narumi</p>
@@ -1460,6 +1745,15 @@
     <p class="modal-subtitle">¿Cuál es la canción que no puede faltar?</p>
 
     <div id="musica-form">
+      <div style="text-align:center; margin-bottom: 20px;">
+        <svg width="48" height="48" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="24" cy="60" r="10" stroke="#b8975a" stroke-width="2.5" fill="none"/>
+          <circle cx="56" cy="52" r="10" stroke="#b8975a" stroke-width="2.5" fill="none"/>
+          <line x1="34" y1="60" x2="34" y2="20" stroke="#b8975a" stroke-width="2.5"/>
+          <line x1="66" y1="52" x2="66" y2="12" stroke="#b8975a" stroke-width="2.5"/>
+          <path d="M34 20 L66 12" stroke="#b8975a" stroke-width="2.5"/>
+        </svg>
+      </div>
       <div class="modal-field">
         <input class="modal-input" id="m-nombre" type="text" placeholder="Tu nombre" autocomplete="off">
       </div>
@@ -1484,10 +1778,23 @@
 </div>
 
 <script>
-// ── MÚSICA ──
+// ── WELCOME SCREEN + MÚSICA ──
 const audio = document.getElementById('bg-audio');
 const musicBtn = document.getElementById('music-btn');
-let musicStarted = false;
+
+function enterSite() {
+  // Ocultar pantalla de bienvenida
+  document.getElementById('welcome-screen').classList.add('hide');
+  document.body.style.overflow = '';
+  // Arrancar música garantizado por interacción del usuario
+  audio.volume = 0.55;
+  audio.play().then(() => {
+    musicBtn.classList.add('playing');
+  }).catch(() => {});
+}
+
+// Bloquear scroll mientras está la pantalla de bienvenida
+document.body.style.overflow = 'hidden';
 
 function toggleMusic() {
   if (audio.paused) {
@@ -1497,21 +1804,6 @@ function toggleMusic() {
     musicBtn.classList.remove('playing');
   }
 }
-
-// Autoplay al primer clic/touch en la página
-function startMusicOnInteraction() {
-  if (!musicStarted) {
-    musicStarted = true;
-    audio.volume = 0.55;
-    audio.play().then(() => {
-      musicBtn.classList.add('playing');
-    }).catch(() => {});
-    document.removeEventListener('click', startMusicOnInteraction);
-    document.removeEventListener('touchstart', startMusicOnInteraction);
-  }
-}
-document.addEventListener('click', startMusicOnInteraction);
-document.addEventListener('touchstart', startMusicOnInteraction);
 
 // ── COUNTDOWN ──
 function updateCountdown() {
@@ -1606,6 +1898,15 @@ function toggleMobileNav() {
 function closeMobileNav() {
   document.getElementById('nav-mobile').classList.remove('open');
 }
+
+// ── FLORAL PATTERN ANIMATION ──
+const floralSections = document.querySelectorAll('.floral-section');
+const floralObserver = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) e.target.classList.add('floral-visible');
+  });
+}, { threshold: 0.1 });
+floralSections.forEach(el => floralObserver.observe(el));
 
 // ── SCROLL REVEAL ──
 const revealEls = document.querySelectorAll('.reveal');
