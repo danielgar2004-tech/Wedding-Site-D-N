@@ -166,8 +166,6 @@
       opacity: 0.45;
     }
   }
-    }
-  }
   @keyframes heroZoom {
     from { transform: scale(1.05); }
     to   { transform: scale(1.12); }
@@ -1162,7 +1160,7 @@
     position: absolute;
     top: 0; bottom: 0;
     width: 110px;
-    background-image: url('assets/images/patron-floral.jpg');
+    background-image: url('assets/photos/patron-floral.jpg');
     background-size: 110px auto;
     background-repeat: repeat-y;
     background-position: top center;
@@ -1316,9 +1314,7 @@
 </div>
 
 <!-- HERO -->
-<section id="hero" class="floral-section">
-  <div class="floral-left"></div>
-  <div class="floral-right"></div>
+<section id="hero">
   <div class="hero-bg"></div>
   <div class="hero-overlay"></div>
   <div class="hero-content">
@@ -1454,16 +1450,20 @@
   <div class="evento-grid reveal">
     <!-- CEREMONIA -->
     <div class="evento-card">
-      <!-- Anillo SVG elegante minimal -->
-      <svg class="svg-icon" width="52" height="52" viewBox="0 0 70 70" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="35" cy="42" r="22" stroke="#b8975a" stroke-width="1.8"/>
-        <circle cx="35" cy="42" r="15" stroke="#b8975a" stroke-width="1" stroke-dasharray="2 3"/>
-        <path d="M24 20 Q35 10 46 20" stroke="#b8975a" stroke-width="1.8" fill="none" stroke-linecap="round"/>
-        <line x1="24" y1="20" x2="21" y2="30" stroke="#b8975a" stroke-width="1.5" stroke-linecap="round"/>
-        <line x1="46" y1="20" x2="49" y2="30" stroke="#b8975a" stroke-width="1.5" stroke-linecap="round"/>
-        <polygon points="35,6 38,14 46,14 40,19 42,27 35,22 28,27 30,19 24,14 32,14" stroke="#b8975a" stroke-width="1.2" fill="rgba(184,151,90,0.12)"/>
-        <path d="M20 20 Q14 15 17 10 Q22 6 26 13" stroke="#b8975a" stroke-width="1" fill="none" stroke-linecap="round"/>
-        <path d="M50 20 Q56 15 53 10 Q48 6 44 13" stroke="#b8975a" stroke-width="1" fill="none" stroke-linecap="round"/>
+      <!-- Anillo de compromiso SVG -->
+      <svg class="svg-icon" width="52" height="56" viewBox="0 0 60 65" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- Banda del anillo -->
+        <ellipse cx="30" cy="42" rx="18" ry="20" stroke="#b8975a" stroke-width="2.2" fill="none"/>
+        <!-- Engaste / montadura -->
+        <path d="M22 26 L26 18 H34 L38 26" stroke="#b8975a" stroke-width="2" fill="none" stroke-linejoin="round"/>
+        <!-- Piedra moissanita (oval) -->
+        <ellipse cx="30" cy="16" rx="7" ry="5.5" stroke="#b8975a" stroke-width="2" fill="rgba(184,151,90,0.1)"/>
+        <!-- Garras de sujeción -->
+        <line x1="24" y1="17" x2="26" y2="18" stroke="#b8975a" stroke-width="1.5" stroke-linecap="round"/>
+        <line x1="36" y1="17" x2="34" y2="18" stroke="#b8975a" stroke-width="1.5" stroke-linecap="round"/>
+        <!-- Brillo de la piedra -->
+        <line x1="28" y1="14" x2="32" y2="18" stroke="#d4b483" stroke-width="0.8" stroke-linecap="round" opacity="0.6"/>
+        <line x1="32" y1="14" x2="28" y2="18" stroke="#d4b483" stroke-width="0.8" stroke-linecap="round" opacity="0.6"/>
       </svg>
       <span class="evento-card-type">Discurso de Consejo Matrimonial</span>
       <h3 class="evento-card-title">Ceremonia</h3>
@@ -1561,29 +1561,31 @@
     </div>
     <div class="dresscode-card">
       <p class="dresscode-card-gender">Caballeros</p>
-      <!-- Traje SVG fiel a la referencia -->
+      <!-- Traje / saco formal SVG -->
       <svg class="svg-icon" width="56" height="64" viewBox="0 0 80 90" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <!-- Silueta exterior del saco -->
-        <path d="M18 12 L8 30 L6 82 H74 L72 30 L62 12" stroke="#b8975a" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-        <!-- Hombros y cuello -->
-        <path d="M18 12 Q22 8 28 6 L34 22 L40 14 L46 22 L52 6 Q58 8 62 12" stroke="#b8975a" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        <!-- Contorno exterior del saco -->
+        <path d="M14 16 L6 82 H74 L66 16" stroke="#b8975a" stroke-width="2.2" fill="none" stroke-linejoin="round"/>
+        <!-- Hombros -->
+        <line x1="14" y1="16" x2="30" y2="10" stroke="#b8975a" stroke-width="2.2" stroke-linecap="round"/>
+        <line x1="66" y1="16" x2="50" y2="10" stroke="#b8975a" stroke-width="2.2" stroke-linecap="round"/>
+        <!-- Cuello / escote en V -->
+        <path d="M30 10 L36 16 L40 42 L44 16 L50 10" stroke="#b8975a" stroke-width="2" fill="none" stroke-linejoin="round"/>
         <!-- Solapa izquierda -->
-        <path d="M34 22 Q28 30 26 38 Q30 36 36 34" stroke="#b8975a" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M30 10 L26 18 L36 16" stroke="#b8975a" stroke-width="1.8" fill="none" stroke-linejoin="round"/>
         <!-- Solapa derecha -->
-        <path d="M46 22 Q52 30 54 38 Q50 36 44 34" stroke="#b8975a" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-        <!-- Línea central del saco -->
-        <line x1="40" y1="34" x2="40" y2="82" stroke="#b8975a" stroke-width="1.5" stroke-linecap="round"/>
+        <path d="M50 10 L54 18 L44 16" stroke="#b8975a" stroke-width="1.8" fill="none" stroke-linejoin="round"/>
+        <!-- Muesca de solapa izq -->
+        <line x1="26" y1="18" x2="22" y2="14" stroke="#b8975a" stroke-width="1.5" stroke-linecap="round"/>
+        <!-- Muesca de solapa der -->
+        <line x1="54" y1="18" x2="58" y2="14" stroke="#b8975a" stroke-width="1.5" stroke-linecap="round"/>
         <!-- Botones -->
-        <circle cx="40" cy="46" r="2" fill="#b8975a"/>
-        <circle cx="40" cy="58" r="2" fill="#b8975a"/>
-        <!-- Bolsillo superior izquierdo -->
-        <rect x="22" y="36" width="10" height="4" rx="1" stroke="#b8975a" stroke-width="1.5" fill="none"/>
-        <!-- Bolsillos inferiores -->
-        <rect x="14" y="60" width="16" height="6" rx="1" stroke="#b8975a" stroke-width="1.5" fill="none"/>
-        <rect x="50" y="60" width="16" height="6" rx="1" stroke="#b8975a" stroke-width="1.5" fill="none"/>
-        <!-- Mangas -->
-        <path d="M8 30 Q4 50 5 70" stroke="#b8975a" stroke-width="1.5" fill="none" stroke-linecap="round"/>
-        <path d="M72 30 Q76 50 75 70" stroke="#b8975a" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+        <circle cx="40" cy="50" r="2" fill="#b8975a"/>
+        <circle cx="40" cy="62" r="2" fill="#b8975a"/>
+        <!-- Bolsillo pecho -->
+        <line x1="20" y1="36" x2="30" y2="36" stroke="#b8975a" stroke-width="1.5" stroke-linecap="round"/>
+        <!-- Bolsillos inferiores con solapa -->
+        <path d="M12 60 H28 V66 H12 Z" stroke="#b8975a" stroke-width="1.5" fill="none" stroke-linejoin="round"/>
+        <path d="M52 60 H68 V66 H52 Z" stroke="#b8975a" stroke-width="1.5" fill="none" stroke-linejoin="round"/>
       </svg>
       <span class="dresscode-badge">Formal</span>
       <p class="dresscode-rule-title">Por favor evitar</p>
@@ -1824,6 +1826,8 @@ function enterSite() {
   // Ocultar pantalla de bienvenida
   document.getElementById('welcome-screen').classList.add('hide');
   document.body.style.overflow = '';
+  // Ir al inicio de la página
+  window.scrollTo(0, 0);
   // Arrancar música garantizado por interacción del usuario
   audio.volume = 0.55;
   audio.play().then(() => {
