@@ -154,15 +154,18 @@
     inset: 0;
     background-image: url('assets/photos/hero.jpg');
     background-size: cover;
-    background-position: center top;
-    opacity: 0.38;
+    background-position: center center;
+    opacity: 0.42;
     transform: scale(1.05);
     animation: heroZoom 20s ease-in-out infinite alternate;
   }
   @media (min-width: 768px) {
     .hero-bg {
-      background-image: url('assets/photos/hero-desktop.jpg');
+      background-image: url('assets/photos/hero-desktop.jpg') !important;
       background-position: center center;
+      opacity: 0.45;
+    }
+  }
     }
   }
   @keyframes heroZoom {
@@ -283,6 +286,10 @@
     z-index: 2;
     text-align: center;
     padding: 0 24px;
+    width: 100%;
+    max-width: 860px;
+    margin-left: auto;
+    margin-right: auto;
     animation: fadeUp 1.4s ease both;
   }
   @keyframes fadeUp {
@@ -1148,30 +1155,29 @@
     font-style: italic;
   }
 
-  /* ── FLORAL PATTERN (inline SVG — no external file needed) ── */
-  .floral-section {
-    position: relative;
-    overflow: hidden;
-  }
-  .floral-section::before,
-  .floral-section::after {
-    content: '';
+  /* ── FLORAL PATTERN (imagen real, solo márgenes laterales) ── */
+  .floral-section { position: relative; }
+  .floral-left,
+  .floral-right {
     position: absolute;
     top: 0; bottom: 0;
-    width: 120px;
+    width: 110px;
+    background-image: url('assets/images/patron-floral.jpg');
+    background-size: 110px auto;
+    background-repeat: repeat-y;
+    background-position: top center;
     opacity: 0;
     pointer-events: none;
     z-index: 0;
-    transition: opacity 1.2s ease;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='320' viewBox='0 0 120 320'%3E%3Cg stroke='%23b8975a' stroke-width='0.8' fill='none' opacity='0.6'%3E%3Cellipse cx='60' cy='40' rx='18' ry='26'/%3E%3Cellipse cx='60' cy='40' rx='10' ry='16'/%3E%3Cpath d='M42 30 Q30 15 35 5 Q45 0 52 12'/%3E%3Cpath d='M78 30 Q90 15 85 5 Q75 0 68 12'/%3E%3Cpath d='M50 62 Q40 75 28 70 Q20 60 30 52'/%3E%3Cpath d='M70 62 Q80 75 92 70 Q100 60 90 52'/%3E%3Ccircle cx='60' cy='40' r='4' fill='%23b8975a' opacity='0.4'/%3E%3Ccircle cx='38' cy='22' r='2' fill='%23b8975a' opacity='0.3'/%3E%3Ccircle cx='82' cy='22' r='2' fill='%23b8975a' opacity='0.3'/%3E%3Cpath d='M55 66 Q50 85 45 95 Q40 105 48 108 Q56 110 58 98 Q60 88 60 80'/%3E%3Cpath d='M65 66 Q70 85 75 95 Q80 105 72 108 Q64 110 62 98 Q60 88 60 80'/%3E%3Cellipse cx='35' cy='130' rx='14' ry='20'/%3E%3Cellipse cx='35' cy='130' rx='8' ry='12'/%3E%3Cpath d='M25 118 Q15 105 20 96 Q28 90 34 102'/%3E%3Cpath d='M45 118 Q55 105 50 96 Q42 90 36 102'/%3E%3Ccircle cx='35' cy='130' r='3' fill='%23b8975a' opacity='0.4'/%3E%3Cpath d='M35 150 Q30 165 25 178 Q20 190 28 192 Q36 194 37 182'/%3E%3Cellipse cx='85' cy='200' rx='16' ry='22'/%3E%3Cellipse cx='85' cy='200' rx='9' ry='13'/%3E%3Cpath d='M69 188 Q58 174 64 164 Q73 158 80 171'/%3E%3Cpath d='M101 188 Q112 174 106 164 Q97 158 90 171'/%3E%3Ccircle cx='85' cy='200' r='3.5' fill='%23b8975a' opacity='0.4'/%3E%3Cpath d='M80 222 Q75 238 70 250 Q65 262 74 264 Q82 265 83 253'/%3E%3Cpath d='M90 222 Q95 238 100 250 Q105 262 96 264 Q88 265 87 253'/%3E%3Cellipse cx='45' cy='280' rx='13' ry='18'/%3E%3Ccircle cx='45' cy='280' r='3' fill='%23b8975a' opacity='0.4'/%3E%3Cpath d='M35 270 Q25 258 30 250 Q38 244 43 256'/%3E%3Cpath d='M55 270 Q65 258 60 250 Q52 244 47 256'/%3E%3Cpath d='M40 298 Q35 310 38 318'/%3E%3C/g%3E%3C/svg%3E");
-    background-size: 120px 320px;
-    background-repeat: repeat-y;
+    transition: opacity 1.4s ease, transform 1.4s ease;
+    transform: scaleY(0.85);
+    transform-origin: top center;
   }
-  .floral-section::before { left: 0; }
-  .floral-section::after  { right: 0; transform: scaleX(-1); }
-  .floral-section.floral-visible::before,
-  .floral-section.floral-visible::after { opacity: 1; }
-  .floral-section > * { position: relative; z-index: 1; }
+  .floral-left  { left: 0; }
+  .floral-right { right: 0; transform: scaleX(-1) scaleY(0.85); transform-origin: top center; }
+  .floral-section.floral-visible .floral-left  { opacity: 0.12; transform: scaleY(1); }
+  .floral-section.floral-visible .floral-right { opacity: 0.12; transform: scaleX(-1) scaleY(1); }
+  .floral-section > *:not(.floral-left):not(.floral-right) { position: relative; z-index: 1; }
 
   /* ── ZOOM SECTION ── */
   #zoom { background: var(--navy-dark); padding: 80px 24px; text-align: center; }
@@ -1311,6 +1317,8 @@
 
 <!-- HERO -->
 <section id="hero" class="floral-section">
+  <div class="floral-left"></div>
+  <div class="floral-right"></div>
   <div class="hero-bg"></div>
   <div class="hero-overlay"></div>
   <div class="hero-content">
@@ -1363,6 +1371,8 @@
 
 <!-- HISTORIA -->
 <section id="historia" class="floral-section" style="padding: 100px 24px;">
+  <div class="floral-left"></div>
+  <div class="floral-right"></div>
   <div style="max-width: 720px; margin: 0 auto;">
     <span class="section-label reveal">Nuestro camino juntos</span>
     <h2 class="section-title reveal">Nuestra Historia</h2>
@@ -1430,6 +1440,8 @@
 
 <!-- EVENTO -->
 <section id="evento" class="floral-section">
+  <div class="floral-left"></div>
+  <div class="floral-right"></div>
   <span class="section-label reveal">11 de Abril · 2027</span>
   <h2 class="section-title reveal">El Gran Día</h2>
   <p class="section-subtitle reveal">Dos momentos que recordaremos toda la vida</p>
@@ -1519,13 +1531,26 @@
   <div class="dresscode-grid reveal">
     <div class="dresscode-card">
       <p class="dresscode-card-gender">Damas</p>
-      <!-- Vestido SVG elegante minimal -->
-      <svg class="svg-icon" width="48" height="60" viewBox="0 0 60 80" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M22 6 Q30 2 38 6 L44 18 Q48 24 44 30 L56 74 H4 L16 30 Q12 24 16 18 Z" stroke="#b8975a" stroke-width="1.8" fill="none" stroke-linejoin="round" stroke-linecap="round"/>
-        <path d="M16 30 Q30 36 44 30" stroke="#b8975a" stroke-width="1.5" fill="none"/>
-        <line x1="27" y1="6" x2="25" y2="18" stroke="#b8975a" stroke-width="1.2" stroke-linecap="round"/>
-        <line x1="33" y1="6" x2="35" y2="18" stroke="#b8975a" stroke-width="1.2" stroke-linecap="round"/>
-        <line x1="25" y1="18" x2="35" y2="18" stroke="#b8975a" stroke-width="1.5" stroke-linecap="round"/>
+      <!-- Vestido SVG fiel a la referencia -->
+      <svg class="svg-icon" width="56" height="64" viewBox="0 0 80 90" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- Escote y cuerpo superior -->
+        <path d="M28 8 Q32 4 36 6 Q38 10 40 10 Q42 10 44 6 Q48 4 52 8" stroke="#b8975a" stroke-width="2" fill="none" stroke-linecap="round"/>
+        <!-- Mangas cortas izq y der -->
+        <path d="M28 8 Q20 10 19 18 Q21 20 27 18" stroke="#b8975a" stroke-width="2" fill="none" stroke-linecap="round"/>
+        <path d="M52 8 Q60 10 61 18 Q59 20 53 18" stroke="#b8975a" stroke-width="2" fill="none" stroke-linecap="round"/>
+        <!-- Cuerpo hasta cintura -->
+        <path d="M27 18 Q28 28 30 32" stroke="#b8975a" stroke-width="2" fill="none" stroke-linecap="round"/>
+        <path d="M53 18 Q52 28 50 32" stroke="#b8975a" stroke-width="2" fill="none" stroke-linecap="round"/>
+        <!-- Cinturón/faja -->
+        <rect x="27" y="32" width="26" height="7" rx="1" stroke="#b8975a" stroke-width="2" fill="rgba(184,151,90,0.12)"/>
+        <!-- Falda circular amplia -->
+        <path d="M27 39 Q10 50 6 72 Q6 78 40 78 Q74 78 74 72 Q70 50 53 39" stroke="#b8975a" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        <!-- Pliegues de la falda -->
+        <line x1="40" y1="39" x2="40" y2="78" stroke="#b8975a" stroke-width="1.2" stroke-linecap="round"/>
+        <line x1="30" y1="40" x2="22" y2="78" stroke="#b8975a" stroke-width="1" stroke-linecap="round" opacity="0.7"/>
+        <line x1="50" y1="40" x2="58" y2="78" stroke="#b8975a" stroke-width="1" stroke-linecap="round" opacity="0.7"/>
+        <line x1="35" y1="39" x2="30" y2="78" stroke="#b8975a" stroke-width="0.8" stroke-linecap="round" opacity="0.5"/>
+        <line x1="45" y1="39" x2="50" y2="78" stroke="#b8975a" stroke-width="0.8" stroke-linecap="round" opacity="0.5"/>
       </svg>
       <span class="dresscode-badge">Formal</span>
       <p class="dresscode-rule-title">Por favor evitar</p>
@@ -1536,14 +1561,29 @@
     </div>
     <div class="dresscode-card">
       <p class="dresscode-card-gender">Caballeros</p>
-      <!-- Tuxedo SVG elegante minimal -->
-      <svg class="svg-icon" width="48" height="60" viewBox="0 0 60 80" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M10 20 L4 76 H56 L50 20 Q42 12 36 8 L30 28 L24 8 Q18 12 10 20Z" stroke="#b8975a" stroke-width="1.8" fill="none" stroke-linejoin="round" stroke-linecap="round"/>
-        <path d="M24 8 L30 28 L36 8" stroke="#b8975a" stroke-width="1.5" fill="none" stroke-linejoin="round"/>
-        <path d="M10 20 Q14 26 20 24" stroke="#b8975a" stroke-width="1.5" fill="none" stroke-linecap="round"/>
-        <path d="M50 20 Q46 26 40 24" stroke="#b8975a" stroke-width="1.5" fill="none" stroke-linecap="round"/>
-        <rect x="27" y="30" width="6" height="4" rx="1" stroke="#b8975a" stroke-width="1.2" fill="none"/>
-        <rect x="28" y="34" width="4" height="12" rx="1" stroke="#b8975a" stroke-width="1.2" fill="none"/>
+      <!-- Traje SVG fiel a la referencia -->
+      <svg class="svg-icon" width="56" height="64" viewBox="0 0 80 90" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- Silueta exterior del saco -->
+        <path d="M18 12 L8 30 L6 82 H74 L72 30 L62 12" stroke="#b8975a" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        <!-- Hombros y cuello -->
+        <path d="M18 12 Q22 8 28 6 L34 22 L40 14 L46 22 L52 6 Q58 8 62 12" stroke="#b8975a" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        <!-- Solapa izquierda -->
+        <path d="M34 22 Q28 30 26 38 Q30 36 36 34" stroke="#b8975a" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        <!-- Solapa derecha -->
+        <path d="M46 22 Q52 30 54 38 Q50 36 44 34" stroke="#b8975a" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        <!-- Línea central del saco -->
+        <line x1="40" y1="34" x2="40" y2="82" stroke="#b8975a" stroke-width="1.5" stroke-linecap="round"/>
+        <!-- Botones -->
+        <circle cx="40" cy="46" r="2" fill="#b8975a"/>
+        <circle cx="40" cy="58" r="2" fill="#b8975a"/>
+        <!-- Bolsillo superior izquierdo -->
+        <rect x="22" y="36" width="10" height="4" rx="1" stroke="#b8975a" stroke-width="1.5" fill="none"/>
+        <!-- Bolsillos inferiores -->
+        <rect x="14" y="60" width="16" height="6" rx="1" stroke="#b8975a" stroke-width="1.5" fill="none"/>
+        <rect x="50" y="60" width="16" height="6" rx="1" stroke="#b8975a" stroke-width="1.5" fill="none"/>
+        <!-- Mangas -->
+        <path d="M8 30 Q4 50 5 70" stroke="#b8975a" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+        <path d="M72 30 Q76 50 75 70" stroke="#b8975a" stroke-width="1.5" fill="none" stroke-linecap="round"/>
       </svg>
       <span class="dresscode-badge">Formal</span>
       <p class="dresscode-rule-title">Por favor evitar</p>
@@ -1561,6 +1601,8 @@
 
 <!-- MÚSICA SUGERIDA -->
 <section id="musica" class="floral-section">
+  <div class="floral-left"></div>
+  <div class="floral-right"></div>
   <span class="section-label reveal">Playlist de la celebración</span>
   <h2 class="section-title reveal">Recomienda una Canción</h2>
   <p class="section-subtitle reveal">Dinos la canción que definitivamente debe sonar en nuestra boda</p>
@@ -1675,6 +1717,8 @@
 
 <!-- REGALOS -->
 <section id="regalos" class="floral-section">
+  <div class="floral-left"></div>
+  <div class="floral-right"></div>
   <span class="section-label reveal">Con todo nuestro cariño</span>
   <h2 class="section-title reveal">Regalos</h2>
   <p class="section-subtitle reveal">Si deseas obsequiarnos algo más que tu hermosa presencia…</p>
