@@ -1148,7 +1148,7 @@
     font-style: italic;
   }
 
-  /* ── FLORAL PATTERN ── */
+  /* ── FLORAL PATTERN (inline SVG — no external file needed) ── */
   .floral-section {
     position: relative;
     overflow: hidden;
@@ -1158,19 +1158,19 @@
     content: '';
     position: absolute;
     top: 0; bottom: 0;
-    width: 160px;
-    background-image: url('assets/images/patron-floral.jpg');
-    background-size: 160px auto;
-    background-repeat: repeat-y;
+    width: 120px;
     opacity: 0;
-    transition: opacity 0.8s ease;
     pointer-events: none;
     z-index: 0;
+    transition: opacity 1.2s ease;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='320' viewBox='0 0 120 320'%3E%3Cg stroke='%23b8975a' stroke-width='0.8' fill='none' opacity='0.6'%3E%3Cellipse cx='60' cy='40' rx='18' ry='26'/%3E%3Cellipse cx='60' cy='40' rx='10' ry='16'/%3E%3Cpath d='M42 30 Q30 15 35 5 Q45 0 52 12'/%3E%3Cpath d='M78 30 Q90 15 85 5 Q75 0 68 12'/%3E%3Cpath d='M50 62 Q40 75 28 70 Q20 60 30 52'/%3E%3Cpath d='M70 62 Q80 75 92 70 Q100 60 90 52'/%3E%3Ccircle cx='60' cy='40' r='4' fill='%23b8975a' opacity='0.4'/%3E%3Ccircle cx='38' cy='22' r='2' fill='%23b8975a' opacity='0.3'/%3E%3Ccircle cx='82' cy='22' r='2' fill='%23b8975a' opacity='0.3'/%3E%3Cpath d='M55 66 Q50 85 45 95 Q40 105 48 108 Q56 110 58 98 Q60 88 60 80'/%3E%3Cpath d='M65 66 Q70 85 75 95 Q80 105 72 108 Q64 110 62 98 Q60 88 60 80'/%3E%3Cellipse cx='35' cy='130' rx='14' ry='20'/%3E%3Cellipse cx='35' cy='130' rx='8' ry='12'/%3E%3Cpath d='M25 118 Q15 105 20 96 Q28 90 34 102'/%3E%3Cpath d='M45 118 Q55 105 50 96 Q42 90 36 102'/%3E%3Ccircle cx='35' cy='130' r='3' fill='%23b8975a' opacity='0.4'/%3E%3Cpath d='M35 150 Q30 165 25 178 Q20 190 28 192 Q36 194 37 182'/%3E%3Cellipse cx='85' cy='200' rx='16' ry='22'/%3E%3Cellipse cx='85' cy='200' rx='9' ry='13'/%3E%3Cpath d='M69 188 Q58 174 64 164 Q73 158 80 171'/%3E%3Cpath d='M101 188 Q112 174 106 164 Q97 158 90 171'/%3E%3Ccircle cx='85' cy='200' r='3.5' fill='%23b8975a' opacity='0.4'/%3E%3Cpath d='M80 222 Q75 238 70 250 Q65 262 74 264 Q82 265 83 253'/%3E%3Cpath d='M90 222 Q95 238 100 250 Q105 262 96 264 Q88 265 87 253'/%3E%3Cellipse cx='45' cy='280' rx='13' ry='18'/%3E%3Ccircle cx='45' cy='280' r='3' fill='%23b8975a' opacity='0.4'/%3E%3Cpath d='M35 270 Q25 258 30 250 Q38 244 43 256'/%3E%3Cpath d='M55 270 Q65 258 60 250 Q52 244 47 256'/%3E%3Cpath d='M40 298 Q35 310 38 318'/%3E%3C/g%3E%3C/svg%3E");
+    background-size: 120px 320px;
+    background-repeat: repeat-y;
   }
   .floral-section::before { left: 0; }
   .floral-section::after  { right: 0; transform: scaleX(-1); }
   .floral-section.floral-visible::before,
-  .floral-section.floral-visible::after { opacity: 0.13; }
+  .floral-section.floral-visible::after { opacity: 1; }
   .floral-section > * { position: relative; z-index: 1; }
 
   /* ── ZOOM SECTION ── */
@@ -1251,7 +1251,7 @@
 <div id="welcome-screen">
   <div class="welcome-bg"></div>
   <div class="welcome-content">
-    <p class="welcome-label">Os invitamos a celebrar</p>
+    <p class="welcome-label">Los invitamos a celebrar</p>
     <div class="welcome-names">
       <span>Daniel</span>
       <span class="welcome-amp">&amp;</span>
@@ -1314,7 +1314,7 @@
   <div class="hero-bg"></div>
   <div class="hero-overlay"></div>
   <div class="hero-content">
-    <p class="hero-eyebrow">Os invitamos a celebrar</p>
+    <p class="hero-eyebrow">Los invitamos a celebrar</p>
     <div class="hero-rule"></div>
     <div class="hero-names">
       <span class="hero-name-first">Daniel</span>
@@ -1442,16 +1442,16 @@
   <div class="evento-grid reveal">
     <!-- CEREMONIA -->
     <div class="evento-card">
-      <!-- Anillo SVG -->
-      <svg class="svg-icon" width="56" height="56" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="50" cy="62" r="28" stroke="#b8975a" stroke-width="5" fill="none"/>
-        <circle cx="50" cy="62" r="20" stroke="#b8975a" stroke-width="2" fill="none" stroke-dasharray="3 3"/>
-        <ellipse cx="50" cy="34" rx="12" ry="8" stroke="#b8975a" stroke-width="3" fill="none"/>
-        <line x1="38" y1="34" x2="34" y2="44" stroke="#b8975a" stroke-width="2"/>
-        <line x1="62" y1="34" x2="66" y2="44" stroke="#b8975a" stroke-width="2"/>
-        <circle cx="50" cy="34" r="5" stroke="#d4b483" stroke-width="2" fill="rgba(184,151,90,0.15)"/>
-        <path d="M 30 44 Q 24 38 28 34 Q 32 30 38 34" stroke="#b8975a" stroke-width="1.5" fill="none"/>
-        <path d="M 70 44 Q 76 38 72 34 Q 68 30 62 34" stroke="#b8975a" stroke-width="1.5" fill="none"/>
+      <!-- Anillo SVG elegante minimal -->
+      <svg class="svg-icon" width="52" height="52" viewBox="0 0 70 70" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="35" cy="42" r="22" stroke="#b8975a" stroke-width="1.8"/>
+        <circle cx="35" cy="42" r="15" stroke="#b8975a" stroke-width="1" stroke-dasharray="2 3"/>
+        <path d="M24 20 Q35 10 46 20" stroke="#b8975a" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+        <line x1="24" y1="20" x2="21" y2="30" stroke="#b8975a" stroke-width="1.5" stroke-linecap="round"/>
+        <line x1="46" y1="20" x2="49" y2="30" stroke="#b8975a" stroke-width="1.5" stroke-linecap="round"/>
+        <polygon points="35,6 38,14 46,14 40,19 42,27 35,22 28,27 30,19 24,14 32,14" stroke="#b8975a" stroke-width="1.2" fill="rgba(184,151,90,0.12)"/>
+        <path d="M20 20 Q14 15 17 10 Q22 6 26 13" stroke="#b8975a" stroke-width="1" fill="none" stroke-linecap="round"/>
+        <path d="M50 20 Q56 15 53 10 Q48 6 44 13" stroke="#b8975a" stroke-width="1" fill="none" stroke-linecap="round"/>
       </svg>
       <span class="evento-card-type">Discurso de Consejo Matrimonial</span>
       <h3 class="evento-card-title">Ceremonia</h3>
@@ -1519,16 +1519,13 @@
   <div class="dresscode-grid reveal">
     <div class="dresscode-card">
       <p class="dresscode-card-gender">Damas</p>
-      <!-- Vestido SVG elegante -->
-      <svg class="svg-icon" width="52" height="60" viewBox="0 0 80 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M32 8 Q40 4 48 8 L52 22 Q56 28 52 32 L68 85 Q68 90 40 90 Q12 90 12 85 L28 32 Q24 28 28 22 Z" stroke="#b8975a" stroke-width="2.5" fill="none" stroke-linejoin="round"/>
-        <path d="M28 32 Q40 38 52 32" stroke="#b8975a" stroke-width="2" fill="none"/>
-        <line x1="36" y1="8" x2="34" y2="22" stroke="#b8975a" stroke-width="1.5"/>
-        <line x1="44" y1="8" x2="46" y2="22" stroke="#b8975a" stroke-width="1.5"/>
-        <path d="M20 58 Q40 52 60 58" stroke="#d4b483" stroke-width="1" fill="none" opacity="0.6"/>
-        <path d="M16 72 Q40 64 64 72" stroke="#d4b483" stroke-width="1" fill="none" opacity="0.4"/>
-        <line x1="36" y1="22" x2="44" y2="22" stroke="#b8975a" stroke-width="2"/>
-        <line x1="38" y1="20" x2="42" y2="24" stroke="#b8975a" stroke-width="1.5"/>
+      <!-- Vestido SVG elegante minimal -->
+      <svg class="svg-icon" width="48" height="60" viewBox="0 0 60 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M22 6 Q30 2 38 6 L44 18 Q48 24 44 30 L56 74 H4 L16 30 Q12 24 16 18 Z" stroke="#b8975a" stroke-width="1.8" fill="none" stroke-linejoin="round" stroke-linecap="round"/>
+        <path d="M16 30 Q30 36 44 30" stroke="#b8975a" stroke-width="1.5" fill="none"/>
+        <line x1="27" y1="6" x2="25" y2="18" stroke="#b8975a" stroke-width="1.2" stroke-linecap="round"/>
+        <line x1="33" y1="6" x2="35" y2="18" stroke="#b8975a" stroke-width="1.2" stroke-linecap="round"/>
+        <line x1="25" y1="18" x2="35" y2="18" stroke="#b8975a" stroke-width="1.5" stroke-linecap="round"/>
       </svg>
       <span class="dresscode-badge">Formal</span>
       <p class="dresscode-rule-title">Por favor evitar</p>
@@ -1539,17 +1536,14 @@
     </div>
     <div class="dresscode-card">
       <p class="dresscode-card-gender">Caballeros</p>
-      <!-- Tuxedo SVG elegante -->
-      <svg class="svg-icon" width="52" height="60" viewBox="0 0 80 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M15 30 L8 90 L72 90 L65 30 Q55 20 50 15 L40 35 L30 15 Q25 20 15 30Z" stroke="#b8975a" stroke-width="2.5" fill="none" stroke-linejoin="round"/>
-        <path d="M30 15 L40 35 L50 15" stroke="#b8975a" stroke-width="2" fill="none"/>
-        <path d="M15 30 Q20 35 26 32" stroke="#b8975a" stroke-width="2" fill="none"/>
-        <path d="M65 30 Q60 35 54 32" stroke="#b8975a" stroke-width="2" fill="none"/>
-        <line x1="40" y1="35" x2="40" y2="90" stroke="#b8975a" stroke-width="1.5" stroke-dasharray="3 3"/>
-        <rect x="36" y="38" width="8" height="5" rx="1" stroke="#d4b483" stroke-width="1.5" fill="none"/>
-        <rect x="37" y="43" width="6" height="16" rx="1" stroke="#d4b483" stroke-width="1.5" fill="none"/>
-        <path d="M22 30 L18 55" stroke="#b8975a" stroke-width="1" opacity="0.5"/>
-        <path d="M58 30 L62 55" stroke="#b8975a" stroke-width="1" opacity="0.5"/>
+      <!-- Tuxedo SVG elegante minimal -->
+      <svg class="svg-icon" width="48" height="60" viewBox="0 0 60 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M10 20 L4 76 H56 L50 20 Q42 12 36 8 L30 28 L24 8 Q18 12 10 20Z" stroke="#b8975a" stroke-width="1.8" fill="none" stroke-linejoin="round" stroke-linecap="round"/>
+        <path d="M24 8 L30 28 L36 8" stroke="#b8975a" stroke-width="1.5" fill="none" stroke-linejoin="round"/>
+        <path d="M10 20 Q14 26 20 24" stroke="#b8975a" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+        <path d="M50 20 Q46 26 40 24" stroke="#b8975a" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+        <rect x="27" y="30" width="6" height="4" rx="1" stroke="#b8975a" stroke-width="1.2" fill="none"/>
+        <rect x="28" y="34" width="4" height="12" rx="1" stroke="#b8975a" stroke-width="1.2" fill="none"/>
       </svg>
       <span class="dresscode-badge">Formal</span>
       <p class="dresscode-rule-title">Por favor evitar</p>
