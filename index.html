@@ -155,7 +155,7 @@
     background-image: url('assets/photos/hero.jpg');
     background-size: cover;
     background-position: center center;
-    opacity: 0.65;
+    opacity: 0.78;
     transform: scale(1.05);
     animation: heroZoom 20s ease-in-out infinite alternate;
   }
@@ -163,7 +163,7 @@
     .hero-bg {
       background-image: url('assets/photos/hero-desktop.jpg') !important;
       background-position: center center;
-      opacity: 0.65;
+      opacity: 0.78;
     }
   }
   @keyframes heroZoom {
@@ -1179,22 +1179,24 @@
 
   /* ── GOLD CORNER ORNAMENTS (navy sections) ── */
   .navy-corners { position: relative; overflow: hidden; }
-  .corner-tl, .corner-br {
+  .corner-tl, .corner-tr, .corner-bl, .corner-br {
     position: absolute;
     width: 120px;
     height: 120px;
     pointer-events: none;
     z-index: 0;
-    opacity: 0.25;
+    opacity: 0.85;
     background-image: url('assets/photos/corner-gold.png');
     background-size: contain;
     background-repeat: no-repeat;
   }
   .corner-tl { top: 0; left: 0; }
+  .corner-tr { top: 0; right: 0; transform: scaleX(-1); }
+  .corner-bl { bottom: 0; left: 0; transform: scaleY(-1); }
   .corner-br { bottom: 0; right: 0; transform: rotate(180deg); }
-  .navy-corners > *:not(.corner-tl):not(.corner-br) { position: relative; z-index: 1; }
+  .navy-corners > *:not(.corner-tl):not(.corner-tr):not(.corner-bl):not(.corner-br) { position: relative; z-index: 1; }
   @media (min-width: 768px) {
-    .corner-tl, .corner-br { width: 180px; height: 180px; }
+    .corner-tl, .corner-tr, .corner-bl, .corner-br { width: 180px; height: 180px; }
   }
 
   /* ── ZOOM SECTION ── */
@@ -1362,6 +1364,8 @@
 <!-- COUNTDOWN -->
 <section id="countdown" class="navy-corners">
   <div class="corner-tl"></div>
+  <div class="corner-tr"></div>
+  <div class="corner-bl"></div>
   <div class="corner-br"></div>
   <span class="section-label">El tiempo corre</span>
   <h2 class="section-title">Faltan</h2>
@@ -1428,6 +1432,8 @@
 <!-- GALERÍA -->
 <section id="galeria" class="navy-corners" style="padding: 100px 24px;">
   <div class="corner-tl"></div>
+  <div class="corner-tr"></div>
+  <div class="corner-bl"></div>
   <div class="corner-br"></div>
   <span class="section-label reveal">Instantes que atesoramos</span>
   <h2 class="section-title reveal">Galería</h2>
@@ -1548,6 +1554,8 @@
 <!-- DRESS CODE -->
 <section id="dresscode" class="navy-corners">
   <div class="corner-tl"></div>
+  <div class="corner-tr"></div>
+  <div class="corner-bl"></div>
   <div class="corner-br"></div>
   <span class="section-label reveal">Código de vestimenta</span>
   <h2 class="section-title reveal" style="color: var(--white);">Dress Code</h2>
@@ -1664,6 +1672,8 @@
 <!-- ZOOM -->
 <section id="zoom" class="navy-corners">
   <div class="corner-tl"></div>
+  <div class="corner-tr"></div>
+  <div class="corner-bl"></div>
   <div class="corner-br"></div>
   <span class="section-label reveal">Transmisión en vivo</span>
   <h2 class="section-title reveal">Únete desde donde estés</h2>
@@ -1691,6 +1701,8 @@
 <!-- RSVP -->
 <section id="rsvp" class="navy-corners">
   <div class="corner-tl"></div>
+  <div class="corner-tr"></div>
+  <div class="corner-bl"></div>
   <div class="corner-br"></div>
   <span class="section-label reveal">Confirmación de asistencia</span>
   <h2 class="section-title reveal">¿Nos acompañarás?</h2>
@@ -1735,6 +1747,8 @@
 <!-- FOTOS QR -->
 <section id="fotos" class="navy-corners">
   <div class="corner-tl"></div>
+  <div class="corner-tr"></div>
+  <div class="corner-bl"></div>
   <div class="corner-br"></div>
   <span class="section-label reveal">Recuerdos compartidos</span>
   <h2 class="section-title reveal">Comparte este día con nosotros</h2>
