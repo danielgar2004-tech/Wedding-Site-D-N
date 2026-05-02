@@ -155,7 +155,7 @@
     background-image: url('assets/photos/hero.jpg');
     background-size: cover;
     background-position: center center;
-    opacity: 0.42;
+    opacity: 0.65;
     transform: scale(1.05);
     animation: heroZoom 20s ease-in-out infinite alternate;
   }
@@ -163,7 +163,7 @@
     .hero-bg {
       background-image: url('assets/photos/hero-desktop.jpg') !important;
       background-position: center center;
-      opacity: 0.45;
+      opacity: 0.65;
     }
   }
   @keyframes heroZoom {
@@ -705,7 +705,7 @@
     color: #888;
   }
   .evento-card-day {
-    font-family: var(--serif);
+    font-family: var(--sans);
     font-size: clamp(3rem, 8vw, 4.5rem);
     font-weight: 700;
     color: var(--gold);
@@ -1177,6 +1177,26 @@
   .floral-section.floral-visible .floral-right { opacity: 0.12; transform: scaleX(-1) scaleY(1); }
   .floral-section > *:not(.floral-left):not(.floral-right) { position: relative; z-index: 1; }
 
+  /* ── GOLD CORNER ORNAMENTS (navy sections) ── */
+  .navy-corners { position: relative; overflow: hidden; }
+  .corner-tl, .corner-br {
+    position: absolute;
+    width: 120px;
+    height: 120px;
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.25;
+    background-image: url('assets/photos/corner-gold.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+  .corner-tl { top: 0; left: 0; }
+  .corner-br { bottom: 0; right: 0; transform: rotate(180deg); }
+  .navy-corners > *:not(.corner-tl):not(.corner-br) { position: relative; z-index: 1; }
+  @media (min-width: 768px) {
+    .corner-tl, .corner-br { width: 180px; height: 180px; }
+  }
+
   /* ── ZOOM SECTION ── */
   #zoom { background: var(--navy-dark); padding: 80px 24px; text-align: center; }
   #zoom .section-label { color: rgba(184,151,90,0.7); }
@@ -1340,7 +1360,9 @@
 </section>
 
 <!-- COUNTDOWN -->
-<section id="countdown">
+<section id="countdown" class="navy-corners">
+  <div class="corner-tl"></div>
+  <div class="corner-br"></div>
   <span class="section-label">El tiempo corre</span>
   <h2 class="section-title">Faltan</h2>
   <div class="countdown-grid">
@@ -1404,7 +1426,9 @@
 </section>
 
 <!-- GALERÍA -->
-<section id="galeria" style="padding: 100px 24px;">
+<section id="galeria" class="navy-corners" style="padding: 100px 24px;">
+  <div class="corner-tl"></div>
+  <div class="corner-br"></div>
   <span class="section-label reveal">Instantes que atesoramos</span>
   <h2 class="section-title reveal">Galería</h2>
   <p class="section-subtitle reveal">Momentos que nos definen</p>
@@ -1441,6 +1465,9 @@
   <span class="section-label reveal">11 de Abril · 2027</span>
   <h2 class="section-title reveal">El Gran Día</h2>
   <p class="section-subtitle reveal">Dos momentos que recordaremos toda la vida</p>
+  <p class="reveal" style="font-family: var(--serif); font-style: italic; font-size: clamp(0.95rem, 2vw, 1.1rem); color: var(--gold-dark); text-align: center; margin-bottom: 40px; line-height: 1.8;">
+    Eclesiastés 4:12 — «Una cuerda triple no se rompe fácilmente.»
+  </p>
   <div class="gold-ornament reveal">
     <div class="gold-ornament-line"></div>
     <div class="gold-ornament-diamond"></div>
@@ -1519,7 +1546,9 @@
 </section>
 
 <!-- DRESS CODE -->
-<section id="dresscode">
+<section id="dresscode" class="navy-corners">
+  <div class="corner-tl"></div>
+  <div class="corner-br"></div>
   <span class="section-label reveal">Código de vestimenta</span>
   <h2 class="section-title reveal" style="color: var(--white);">Dress Code</h2>
   <div class="gold-ornament reveal">
@@ -1633,7 +1662,9 @@
 </section>
 
 <!-- ZOOM -->
-<section id="zoom">
+<section id="zoom" class="navy-corners">
+  <div class="corner-tl"></div>
+  <div class="corner-br"></div>
   <span class="section-label reveal">Transmisión en vivo</span>
   <h2 class="section-title reveal">Únete desde donde estés</h2>
   <div class="gold-ornament reveal" style="margin-bottom: 40px;">
@@ -1658,7 +1689,9 @@
 </section>
 
 <!-- RSVP -->
-<section id="rsvp">
+<section id="rsvp" class="navy-corners">
+  <div class="corner-tl"></div>
+  <div class="corner-br"></div>
   <span class="section-label reveal">Confirmación de asistencia</span>
   <h2 class="section-title reveal">¿Nos acompañarás?</h2>
   <p class="section-subtitle reveal">Por favor confirma tu asistencia antes del 1 de marzo de 2027</p>
@@ -1677,7 +1710,7 @@
       </svg>
       <p class="rsvp-card-name">Narumi Cristobal Zegarra</p>
       <p class="rsvp-card-info">+51 934 888 078</p>
-      <a href="https://wa.me/51934888078?text=Hola%20Narumi%2C%20confirmo%20mi%20asistencia%20a%20tu%20boda%20con%20Daniel%20el%2011%20de%20abril%20de%202027%20%F0%9F%A4%8D" target="_blank" class="btn-rsvp">
+      <a href="https://wa.me/51934888078?text=Hola,%20quiero%20confirmar%20mi%20asistencia%20a%20la%20boda" target="_blank" class="btn-rsvp">
         Confirmar por WhatsApp
       </a>
     </div>
@@ -1691,19 +1724,21 @@
       </svg>
       <p class="rsvp-card-name">Correo de la Boda</p>
       <p class="rsvp-card-info">bodadanielynarumi@gmail.com</p>
-      <a href="mailto:bodadanielynarumi@gmail.com?subject=Confirmación%20de%20asistencia%20-%20Boda%20Daniel%20%26%20Narumi&body=Hola%2C%20confirmo%20mi%20asistencia%20a%20la%20boda%20el%2011%20de%20abril%20de%202027." class="btn-rsvp">
+      <button class="btn-rsvp" onclick="openModal('modal-email-rsvp')">
         Confirmar por Email
-      </a>
+      </button>
     </div>
   </div>
   <p class="rsvp-deadline reveal">Por favor confirma antes del 1 de marzo de 2027</p>
 </section>
 
 <!-- FOTOS QR -->
-<section id="fotos">
+<section id="fotos" class="navy-corners">
+  <div class="corner-tl"></div>
+  <div class="corner-br"></div>
   <span class="section-label reveal">Recuerdos compartidos</span>
   <h2 class="section-title reveal">Comparte este día con nosotros</h2>
-  <p class="section-subtitle reveal">Sube tus fotos y videos a nuestra carpeta de Google Drive</p>
+  <p class="section-subtitle reveal">Sube tus fotos y videos de nuestro civil, discurso o boda a nuestra carpeta de Google Drive para conservar este recuerdo para siempre.</p>
   <div class="gold-ornament reveal" style="margin-bottom: 48px;">
     <div class="gold-ornament-line" style="background: rgba(184,151,90,0.35);"></div>
     <div class="gold-ornament-diamond" style="background: rgba(184,151,90,0.35);"></div>
@@ -1721,7 +1756,6 @@
 <section id="regalos" class="floral-section">
   <div class="floral-left"></div>
   <div class="floral-right"></div>
-  <span class="section-label reveal">Con todo nuestro cariño</span>
   <h2 class="section-title reveal">Regalos</h2>
   <p class="section-subtitle reveal">Si deseas obsequiarnos algo más que tu hermosa presencia…</p>
   <div class="gold-ornament reveal">
@@ -1776,6 +1810,35 @@
   <p class="footer-copy">Con amor, para quienes hacen parte de este camino.</p>
 </footer>
 
+<!-- MODAL EMAIL RSVP -->
+<div class="modal-overlay" id="modal-email-rsvp" onclick="closeModalOutside(event, 'modal-email-rsvp')">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('modal-email-rsvp')">×</button>
+    <svg style="display: block; margin: 0 auto 20px;" width="40" height="40" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x="6" y="14" width="48" height="32" rx="3" stroke="#b8975a" stroke-width="2" fill="none"/>
+      <path d="M6 17 L30 33 L54 17" stroke="#b8975a" stroke-width="2" fill="none"/>
+    </svg>
+    <h3 class="modal-title">Confirmar Asistencia</h3>
+    <p class="modal-subtitle">¿Nos acompañarás en este día tan especial?</p>
+
+    <div id="rsvp-form">
+      <div class="modal-field">
+        <input class="modal-input" id="rsvp-nombre" type="text" placeholder="Tu nombre completo" autocomplete="off">
+      </div>
+      <div style="margin-top: 32px; text-align: center;">
+        <button class="btn-primary" onclick="enviarRSVP()" style="width: 100%; justify-content: center;">
+          Confirmar asistencia
+        </button>
+      </div>
+    </div>
+
+    <div class="modal-success" id="rsvp-success">
+      <span class="modal-success-icon">♥</span>
+      <p class="modal-success-text">¡Gracias! Tu confirmación fue enviada.<br>Nos vemos el 11 de abril.</p>
+    </div>
+  </div>
+</div>
+
 <!-- MODAL MÚSICA -->
 <div class="modal-overlay" id="modal-musica" onclick="closeModalOutside(event, 'modal-musica')">
   <div class="modal-box">
@@ -1798,7 +1861,10 @@
         <input class="modal-input" id="m-nombre" type="text" placeholder="Tu nombre" autocomplete="off">
       </div>
       <div class="modal-field">
-        <input class="modal-input" id="m-cancion" type="text" placeholder="Nombre de la canción y artista" autocomplete="off">
+        <input class="modal-input" id="m-cancion" type="text" placeholder="Nombre de la canción" autocomplete="off">
+      </div>
+      <div class="modal-field">
+        <input class="modal-input" id="m-artista" type="text" placeholder="Artista" autocomplete="off">
       </div>
       <div class="modal-field">
         <input class="modal-input" id="m-link" type="text" placeholder="Link de YouTube, Spotify u otro (opcional)" autocomplete="off">
@@ -1901,15 +1967,17 @@ function closeModalOutside(e, id) {
 function enviarCancion() {
   const nombre = document.getElementById('m-nombre').value.trim();
   const cancion = document.getElementById('m-cancion').value.trim();
+  const artista = document.getElementById('m-artista').value.trim();
   const link = document.getElementById('m-link').value.trim();
   if (!nombre || !cancion) {
     alert('Por favor completa tu nombre y el nombre de la canción.');
     return;
   }
-  const asunto = encodeURIComponent('Recomendación de canción — Boda Daniel & Narumi');
-  let cuerpo = `Hola Daniel y Narumi,\n\nMe llamo ${nombre} y quisiera recomendar la siguiente canción para su boda:\n\nCanción: ${cancion}`;
-  if (link) cuerpo += `\nEnlace: ${link}`;
-  cuerpo += '\n\nCon mucho cariño.';
+  const asunto = encodeURIComponent('🎵 Sugerencia de canción — Boda Daniel & Narumi');
+  let cuerpo = `¡Hola!\n\n🎉 Buenas noticias: ${nombre} quiere ponerle ritmo a tu gran día 💃🕺\nHa sugerido la canción "${cancion}"`;
+  if (artista) cuerpo += ` de ${artista}`;
+  if (link) cuerpo += ` (${link})`;
+  cuerpo += ` para que suene en tu boda.\n\n¿La agregamos a la playlist? 😉\n\n¡Se viene una fiesta increíble!`;
   window.location.href = `mailto:bodadanielynarumi@gmail.com?subject=${asunto}&body=${encodeURIComponent(cuerpo)}`;
   document.getElementById('musica-form').style.display = 'none';
   document.getElementById('musica-success').style.display = 'block';
@@ -1920,6 +1988,7 @@ function enviarCancion() {
       document.getElementById('musica-success').style.display = 'none';
       document.getElementById('m-nombre').value = '';
       document.getElementById('m-cancion').value = '';
+      document.getElementById('m-artista').value = '';
       document.getElementById('m-link').value = '';
     }, 400);
   }, 3000);
@@ -1931,6 +2000,28 @@ function toggleRegalos() {
   d.classList.toggle('open');
   const btn = d.previousElementSibling.querySelector('button');
   btn.textContent = d.classList.contains('open') ? 'Ocultar información' : 'Ver opciones de regalo';
+}
+
+// ── EMAIL RSVP ──
+function enviarRSVP() {
+  const nombre = document.getElementById('rsvp-nombre').value.trim();
+  if (!nombre) {
+    alert('Por favor escribe tu nombre.');
+    return;
+  }
+  const asunto = encodeURIComponent('Confirmación de asistencia — Boda Daniel & Narumi');
+  const cuerpo = encodeURIComponent(`Estimados,\n\nNos complace informarles que ${nombre} ha confirmado su asistencia a su boda.\n\nReciban nuestras más sinceras felicitaciones por este importante y feliz acontecimiento. ¡Ya falta poco!`);
+  window.location.href = `mailto:bodadanielynarumi@gmail.com?subject=${asunto}&body=${cuerpo}`;
+  document.getElementById('rsvp-form').style.display = 'none';
+  document.getElementById('rsvp-success').style.display = 'block';
+  setTimeout(() => {
+    closeModal('modal-email-rsvp');
+    setTimeout(() => {
+      document.getElementById('rsvp-form').style.display = 'block';
+      document.getElementById('rsvp-success').style.display = 'none';
+      document.getElementById('rsvp-nombre').value = '';
+    }, 400);
+  }, 3000);
 }
 
 // ── NAV MOBILE ──
