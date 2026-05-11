@@ -768,6 +768,28 @@
   }
   .btn-map-gold:hover { background: var(--gold-dark); border-color: var(--gold-dark); }
 
+  /* Mensaje de puntualidad en tarjetas de evento */
+  .evento-card-puntualidad {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: clamp(0.85rem, 1.6vw, 0.95rem);
+    color: var(--navy);
+    line-height: 1.75;
+    text-align: center;
+    margin: 8px auto 24px;
+    padding: 16px 6px 0;
+    max-width: 380px;
+    border-top: 1px solid rgba(184,151,90,0.25);
+  }
+  .evento-card-puntualidad .underline-gold {
+    text-decoration: underline;
+    text-decoration-color: var(--gold);
+    text-decoration-thickness: 1.5px;
+    text-underline-offset: 4px;
+    color: var(--gold-dark);
+    font-weight: 600;
+  }
+
   /* ── DRESS CODE ── */
   #dresscode { background: var(--navy); padding: 100px 24px; }
   #dresscode .section-title { color: var(--white); }
@@ -1576,6 +1598,9 @@
       <p class="evento-card-year">MMXXVII</p>
       <p class="evento-card-place">Salón del Reino de los Testigos de Jehová</p>
       <p class="evento-card-address">Prol. Pachacútec 537<br>Baños del Inca 06004, Cajamarca</p>
+      <p class="evento-card-puntualidad">
+        Les solicitamos cordialmente asistir <span class="underline-gold">con puntualidad</span> a este discurso especial. Nos encantaría contar con su compañía desde el inicio de este momento tan significativo, permitiéndonos seguir la armonía de la celebración tal como ha sido planeada.
+      </p>
       <a href="https://maps.app.goo.gl/wPzTrCNyCXgLqcY28" target="_blank" class="btn-map">
         <svg width="10" height="10" viewBox="0 0 12 12" fill="currentColor" style="display:inline-block;vertical-align:middle;margin-right:4px"><path d="M2 4l4 5 4-5z"/></svg>Cómo llegar
       </a>
@@ -1614,9 +1639,10 @@
     <div class="zoom-timezones">
       <p class="zoom-tz-label">Horarios equivalentes</p>
       <p class="zoom-detail zoom-tz-item"><strong>2:30 PM</strong> — Venezuela (VET)</p>
-      <p class="zoom-detail zoom-tz-item"><strong>2:30 PM</strong> — Miami (EDT)</p>
+      <p class="zoom-detail zoom-tz-item"><strong>2:30 PM</strong> — Florida (EDT)</p>
       <p class="zoom-detail zoom-tz-item"><strong>10:30 AM</strong> — California (PDT)</p>
       <p class="zoom-detail zoom-tz-item"><strong>8:30 PM</strong> — España (CEST)</p>
+      <p class="zoom-detail zoom-tz-item"><strong>2:30 PM</strong> — Chile (CLT)</p>
     </div>
 
     <div class="zoom-divider"></div>
@@ -1664,6 +1690,9 @@
       <p class="evento-card-year">MMXXVII</p>
       <p class="evento-card-place">Castillo de Yanamarca</p>
       <p class="evento-card-address">Cajamarca, Perú<br>&nbsp;</p>
+      <p class="evento-card-puntualidad">
+        Una vez concluido el discurso de consejo matrimonial, les esperamos para la recepción <span class="underline-gold">a la hora y en el lugar señalados.</span> Su puntualidad al ocupar sus asientos nos permitirá dar inicio a la celebración con la alegría de ver a todos nuestros <span class="underline-gold">invitados presentes.</span>
+      </p>
       <a href="https://maps.app.goo.gl/KsMXFbg18AjFusXE6" target="_blank" class="btn-map btn-map-gold">
         <svg width="10" height="10" viewBox="0 0 12 12" fill="currentColor" style="display:inline-block;vertical-align:middle;margin-right:4px"><path d="M2 4l4 5 4-5z"/></svg>Cómo llegar
       </a>
