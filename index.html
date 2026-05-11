@@ -3,6 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="format-detection" content="telephone=no, date=no, address=no, email=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
 <title>Daniel & Narumi — 11 · IV · MMXXVII</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -55,9 +57,10 @@
     transition: transform 0.2s, background 0.2s;
   }
   #music-btn:hover { transform: scale(1.1); background: var(--navy-mid); }
+  #music-btn svg { display: block; }
+  #music-btn .icon-pause { display: none; }
   #music-btn.playing .icon-play { display: none; }
-  #music-btn.playing .icon-pause { display: flex; }
-  #music-btn .icon-pause { display: none; align-items: center; justify-content: center; }
+  #music-btn.playing .icon-pause { display: block; }
 
   /* ── NAV ── */
   nav {
@@ -638,6 +641,10 @@
     gap: 32px;
     max-width: 900px;
     margin: 0 auto;
+  }
+  .evento-grid.evento-grid-single {
+    grid-template-columns: 1fr;
+    max-width: 480px;
   }
   .evento-card {
     background: var(--white);
@@ -1225,7 +1232,25 @@
     color: rgba(255,255,255,0.5);
     margin-bottom: 6px;
   }
-  .zoom-detail strong { color: var(--gold-light); font-weight: 600; }
+  .zoom-detail strong {
+    color: var(--gold-light) !important;
+    -webkit-text-fill-color: var(--gold-light);
+    font-weight: 600;
+  }
+  /* Override iOS Safari auto-linking of phone numbers, dates, addresses */
+  a[x-apple-data-detectors],
+  a[href^="tel:"],
+  a[href^="sms:"] {
+    color: inherit !important;
+    -webkit-text-fill-color: inherit !important;
+    text-decoration: none !important;
+    pointer-events: none !important;
+  }
+  .zoom-detail a[x-apple-data-detectors],
+  .zoom-detail strong a {
+    color: var(--gold-light) !important;
+    -webkit-text-fill-color: var(--gold-light) !important;
+  }
   .zoom-divider { width: 40px; height: 1px; background: rgba(184,151,90,0.3); margin: 20px auto; }
 
   /* ── SVG ICONS ── */
@@ -1290,7 +1315,7 @@
       <div class="welcome-divider-line"></div>
     </div>
     <button class="welcome-btn" onclick="enterSite()">
-      ♥ &nbsp; Abrir invitación
+      <svg width="14" height="13" viewBox="0 0 14 13" fill="currentColor" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0;display:inline-block;vertical-align:middle;margin-bottom:1px"><path d="M7 12S1 7.5 1 4a3 3 0 0 1 6 0 3 3 0 0 1 6 0c0 3.5-6 8-6 8z"/></svg>&nbsp; Abrir invitación
     </button>
     <p class="welcome-verse">1 Corintios 13:4-8</p>
   </div>
@@ -1303,8 +1328,13 @@
 
 <!-- MUSIC BUTTON -->
 <button id="music-btn" title="Reproducir / Pausar música" onclick="toggleMusic()">
-  <span class="icon-play">♪</span>
-  <span class="icon-pause">⏸</span>
+  <svg class="icon-play" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+    <path d="M9 6c-.55 0-1 .45-1 1l0 10c0 .55.45 1 1 1 .19 0 .38-.06.54-.16l8-5c.62-.39.62-1.3 0-1.69l-8-5C9.38 6.06 9.19 6 9 6z"/>
+  </svg>
+  <svg class="icon-pause" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+    <rect x="6.5" y="5.5" width="4" height="13" rx="1"/>
+    <rect x="13.5" y="5.5" width="4" height="13" rx="1"/>
+  </svg>
 </button>
 
 <!-- NAV -->
@@ -1313,7 +1343,9 @@
   <ul class="nav-links">
     <li><a href="#historia">Nuestra Historia</a></li>
     <li><a href="#galeria">Galería</a></li>
-    <li><a href="#evento">El Gran Día</a></li>
+    <li><a href="#evento">Ceremonia</a></li>
+    <li><a href="#zoom">Zoom</a></li>
+    <li><a href="#recepcion">Recepción</a></li>
     <li><a href="#dresscode">Dress Code</a></li>
     <li><a href="#musica">Música</a></li>
     <li><a href="#rsvp">Confirmación</a></li>
@@ -1327,7 +1359,9 @@
 <div class="nav-mobile" id="nav-mobile">
   <a href="#historia" onclick="closeMobileNav()">Nuestra Historia</a>
   <a href="#galeria" onclick="closeMobileNav()">Galería</a>
-  <a href="#evento" onclick="closeMobileNav()">El Gran Día</a>
+  <a href="#evento" onclick="closeMobileNav()">Ceremonia</a>
+  <a href="#zoom" onclick="closeMobileNav()">Zoom</a>
+  <a href="#recepcion" onclick="closeMobileNav()">Recepción</a>
   <a href="#dresscode" onclick="closeMobileNav()">Dress Code</a>
   <a href="#musica" onclick="closeMobileNav()">Música</a>
   <a href="#rsvp" onclick="closeMobileNav()">Confirmación</a>
@@ -1387,7 +1421,9 @@
       <span class="countdown-label">Segundos</span>
     </div>
   </div>
-  <span class="countdown-heart">♥</span>
+  <span class="countdown-heart" aria-hidden="true">
+    <svg width="22" height="20" viewBox="0 0 14 13" fill="currentColor" xmlns="http://www.w3.org/2000/svg" style="display:inline-block"><path d="M7 12S1 7.5 1 4a3 3 0 0 1 6 0 3 3 0 0 1 6 0c0 3.5-6 8-6 8z"/></svg>
+  </span>
   <p class="section-subtitle" style="margin-top: 32px;">Para nuestra unión ante Jehová como matrimonio</p>
 </section>
 
@@ -1469,8 +1505,8 @@
   <div class="floral-left"></div>
   <div class="floral-right"></div>
   <span class="section-label reveal">11 de Abril · 2027</span>
-  <h2 class="section-title reveal">El Gran Día</h2>
-  <p class="section-subtitle reveal">Dos momentos que recordaremos toda la vida</p>
+  <h2 class="section-title reveal">Ceremonia</h2>
+  <p class="section-subtitle reveal">Un momento que recordaremos toda la vida</p>
   <p class="reveal" style="font-family: var(--serif); font-style: italic; font-size: clamp(0.95rem, 2vw, 1.1rem); color: var(--gold-dark); text-align: center; margin-bottom: 40px; line-height: 1.8;">
     Eclesiastés 4:12 — «Una cuerda triple no se rompe fácilmente.»
   </p>
@@ -1480,7 +1516,7 @@
     <div class="gold-ornament-line"></div>
   </div>
 
-  <div class="evento-grid reveal">
+  <div class="evento-grid evento-grid-single reveal">
     <!-- CEREMONIA -->
     <div class="evento-card">
       <!-- Anillo de compromiso SVG -->
@@ -1511,11 +1547,62 @@
       <p class="evento-card-place">Salón del Reino de los Testigos de Jehová</p>
       <p class="evento-card-address">Prol. Pachacútec 537<br>Baños del Inca 06004, Cajamarca</p>
       <a href="https://maps.app.goo.gl/wPzTrCNyCXgLqcY28" target="_blank" class="btn-map">
-        &#9660; Cómo llegar
+        <svg width="10" height="10" viewBox="0 0 12 12" fill="currentColor" style="display:inline-block;vertical-align:middle;margin-right:4px"><path d="M2 4l4 5 4-5z"/></svg>Cómo llegar
       </a>
     </div>
 
-    <!-- RECEPCIÓN -->
+  </div>
+
+  <div style="text-align: center; margin-top: 48px;" class="reveal">
+    <p style="font-family: var(--serif); font-style: italic; font-size: 1rem; color: var(--gold-dark); max-width: 480px; margin: 0 auto; line-height: 1.8;">
+      Al finalizar el discurso, nos uniremos en el Castillo de Yanamarca para dar inicio a la celebración.
+    </p>
+  </div>
+</section>
+
+<!-- ZOOM -->
+<section id="zoom" class="navy-corners">
+  <div class="corner-tl"></div>
+  <div class="corner-tr"></div>
+  <div class="corner-bl"></div>
+  <div class="corner-br"></div>
+  <span class="section-label reveal">Transmisión en vivo</span>
+  <h2 class="section-title reveal">Únete desde donde estés</h2>
+  <div class="gold-ornament reveal" style="margin-bottom: 40px;">
+    <div class="gold-ornament-line" style="background: rgba(184,151,90,0.4);"></div>
+    <div class="gold-ornament-diamond" style="background: rgba(184,151,90,0.4);"></div>
+    <div class="gold-ornament-line" style="background: rgba(184,151,90,0.4);"></div>
+  </div>
+  <div class="zoom-card reveal">
+    <svg class="svg-icon" width="48" height="48" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x="6" y="20" width="48" height="36" rx="4" stroke="#b8975a" stroke-width="2.5" fill="none"/>
+      <path d="M54 32 L74 22 L74 56 L54 46 Z" stroke="#b8975a" stroke-width="2.5" fill="none" stroke-linejoin="round"/>
+    </svg>
+    <p class="zoom-detail">Domingo, 11 de abril de 2027</p>
+    <p class="zoom-detail" style="margin-bottom: 20px;"><strong>1:30 PM</strong> — hora de Perú (PET)</p>
+    <div class="zoom-divider"></div>
+    <p class="zoom-detail">ID de reunión: <strong>880 5973 7646</strong></p>
+    <p class="zoom-detail" style="margin-bottom: 24px;">Código de acceso: <strong>241314</strong></p>
+    <a href="https://jworg.zoom.us/j/88059737646" target="_blank" class="btn-primary" style="display: inline-flex; text-decoration: none;">
+      Unirse a la reunión Zoom
+    </a>
+  </div>
+</section>
+
+<!-- RECEPCIÓN -->
+<section id="recepcion" class="floral-section">
+  <div class="floral-left"></div>
+  <div class="floral-right"></div>
+  <span class="section-label reveal">11 de Abril · 2027</span>
+  <h2 class="section-title reveal">Recepción</h2>
+  <p class="section-subtitle reveal">La celebración continúa</p>
+  <div class="gold-ornament reveal">
+    <div class="gold-ornament-line"></div>
+    <div class="gold-ornament-diamond"></div>
+    <div class="gold-ornament-line"></div>
+  </div>
+
+  <div class="evento-grid evento-grid-single reveal">
     <div class="evento-card">
       <!-- Copas SVG -->
       <svg class="svg-icon" width="56" height="56" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -1539,18 +1626,11 @@
       <p class="evento-card-place">Castillo de Yanamarca</p>
       <p class="evento-card-address">Cajamarca, Perú<br>&nbsp;</p>
       <a href="https://maps.app.goo.gl/KsMXFbg18AjFusXE6" target="_blank" class="btn-map btn-map-gold">
-        &#9660; Cómo llegar
+        <svg width="10" height="10" viewBox="0 0 12 12" fill="currentColor" style="display:inline-block;vertical-align:middle;margin-right:4px"><path d="M2 4l4 5 4-5z"/></svg>Cómo llegar
       </a>
     </div>
   </div>
-
-  <div style="text-align: center; margin-top: 48px;" class="reveal">
-    <p style="font-family: var(--serif); font-style: italic; font-size: 1rem; color: var(--gold-dark); max-width: 480px; margin: 0 auto; line-height: 1.8;">
-      Al finalizar el discurso, los invitados se dirigen directamente al Castillo de Yanamarca para dar inicio a la celebración.
-    </p>
-  </div>
 </section>
-
 <!-- DRESS CODE -->
 <section id="dresscode" class="navy-corners">
   <div class="corner-tl"></div>
@@ -1669,34 +1749,6 @@
   </div>
 </section>
 
-<!-- ZOOM -->
-<section id="zoom" class="navy-corners">
-  <div class="corner-tl"></div>
-  <div class="corner-tr"></div>
-  <div class="corner-bl"></div>
-  <div class="corner-br"></div>
-  <span class="section-label reveal">Transmisión en vivo</span>
-  <h2 class="section-title reveal">Únete desde donde estés</h2>
-  <div class="gold-ornament reveal" style="margin-bottom: 40px;">
-    <div class="gold-ornament-line" style="background: rgba(184,151,90,0.4);"></div>
-    <div class="gold-ornament-diamond" style="background: rgba(184,151,90,0.4);"></div>
-    <div class="gold-ornament-line" style="background: rgba(184,151,90,0.4);"></div>
-  </div>
-  <div class="zoom-card reveal">
-    <svg class="svg-icon" width="48" height="48" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <rect x="6" y="20" width="48" height="36" rx="4" stroke="#b8975a" stroke-width="2.5" fill="none"/>
-      <path d="M54 32 L74 22 L74 56 L54 46 Z" stroke="#b8975a" stroke-width="2.5" fill="none" stroke-linejoin="round"/>
-    </svg>
-    <p class="zoom-detail">Domingo, 11 de abril de 2027</p>
-    <p class="zoom-detail" style="margin-bottom: 20px;"><strong>1:30 PM</strong> — hora de Perú (PET)</p>
-    <div class="zoom-divider"></div>
-    <p class="zoom-detail">ID de reunión: <strong>880 5973 7646</strong></p>
-    <p class="zoom-detail" style="margin-bottom: 24px;">Código de acceso: <strong>241314</strong></p>
-    <a href="https://jworg.zoom.us/j/88059737646" target="_blank" class="btn-primary" style="display: inline-flex; text-decoration: none;">
-      Unirse a la reunión Zoom
-    </a>
-  </div>
-</section>
 
 <!-- RSVP -->
 <section id="rsvp" class="navy-corners">
@@ -1847,7 +1899,9 @@
     </div>
 
     <div class="modal-success" id="rsvp-success">
-      <span class="modal-success-icon">♥</span>
+      <span class="modal-success-icon">
+        <svg width="32" height="29" viewBox="0 0 14 13" fill="currentColor" xmlns="http://www.w3.org/2000/svg" style="display:inline-block"><path d="M7 12S1 7.5 1 4a3 3 0 0 1 6 0 3 3 0 0 1 6 0c0 3.5-6 8-6 8z"/></svg>
+      </span>
       <p class="modal-success-text">¡Gracias! Tu confirmación fue enviada.<br>Nos vemos el 11 de abril.</p>
     </div>
   </div>
@@ -1857,7 +1911,9 @@
 <div class="modal-overlay" id="modal-musica" onclick="closeModalOutside(event, 'modal-musica')">
   <div class="modal-box">
     <button class="modal-close" onclick="closeModal('modal-musica')">×</button>
-    <span class="modal-icon">♪</span>
+    <span class="modal-icon">
+      <svg width="32" height="32" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg" style="display:inline-block"><circle cx="24" cy="60" r="10" stroke="currentColor" stroke-width="2.5" fill="none"/><line x1="34" y1="60" x2="34" y2="18" stroke="currentColor" stroke-width="2.5"/><path d="M34 18 Q50 22 50 32" stroke="currentColor" stroke-width="2.5" fill="none"/></svg>
+    </span>
     <h3 class="modal-title">Sugerir Canción</h3>
     <p class="modal-subtitle">¿Cuál es la canción que no puede faltar?</p>
 
@@ -1885,13 +1941,15 @@
       </div>
       <div style="margin-top: 32px; text-align: center;">
         <button class="btn-primary" onclick="enviarCancion()" style="width: 100%; justify-content: center;">
-          ♫ &nbsp; Enviar sugerencia
+          <svg width="16" height="16" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg" style="display:inline-block;vertical-align:middle;margin-right:8px"><circle cx="24" cy="60" r="10" fill="currentColor"/><circle cx="56" cy="52" r="10" fill="currentColor"/><line x1="34" y1="60" x2="34" y2="20" stroke="currentColor" stroke-width="3"/><line x1="66" y1="52" x2="66" y2="12" stroke="currentColor" stroke-width="3"/><line x1="34" y1="20" x2="66" y2="12" stroke="currentColor" stroke-width="3"/></svg>Enviar sugerencia
         </button>
       </div>
     </div>
 
     <div class="modal-success" id="musica-success">
-      <span class="modal-success-icon">♥</span>
+      <span class="modal-success-icon">
+        <svg width="32" height="29" viewBox="0 0 14 13" fill="currentColor" xmlns="http://www.w3.org/2000/svg" style="display:inline-block"><path d="M7 12S1 7.5 1 4a3 3 0 0 1 6 0 3 3 0 0 1 6 0c0 3.5-6 8-6 8z"/></svg>
+      </span>
       <p class="modal-success-text">¡Gracias! Tu canción fue enviada.<br>La tendremos muy en cuenta.</p>
     </div>
   </div>
@@ -2064,6 +2122,3 @@ revealEls.forEach(el => observer.observe(el));
 </script>
 </body>
 </html>
-HTMLEOF
-echo "✅ index.html creado"
-wc -l /home/claude/boda/index.html
