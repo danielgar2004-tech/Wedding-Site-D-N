@@ -1253,6 +1253,36 @@
   }
   .zoom-divider { width: 40px; height: 1px; background: rgba(184,151,90,0.3); margin: 20px auto; }
 
+  /* Horarios internacionales */
+  .zoom-timezones {
+    margin: 18px auto 4px;
+    padding: 18px 20px 14px;
+    max-width: 320px;
+    border-top: 1px solid rgba(184,151,90,0.18);
+    border-bottom: 1px solid rgba(184,151,90,0.18);
+  }
+  .zoom-tz-label {
+    font-family: var(--sans);
+    font-size: 0.6rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: rgba(184,151,90,0.65);
+    text-align: center;
+    margin-bottom: 12px;
+  }
+  .zoom-tz-item {
+    margin-bottom: 4px;
+    font-size: 0.68rem;
+  }
+  .zoom-tz-item:last-child { margin-bottom: 0; }
+  .zoom-tz-item strong {
+    color: var(--gold-light) !important;
+    -webkit-text-fill-color: var(--gold-light);
+    font-weight: 600;
+    display: inline-block;
+    min-width: 72px;
+  }
+
   /* ── SVG ICONS ── */
   .svg-icon { display: block; margin: 0 auto 20px; }
 
@@ -1579,7 +1609,16 @@
       <path d="M54 32 L74 22 L74 56 L54 46 Z" stroke="#b8975a" stroke-width="2.5" fill="none" stroke-linejoin="round"/>
     </svg>
     <p class="zoom-detail">Domingo, 11 de abril de 2027</p>
-    <p class="zoom-detail" style="margin-bottom: 20px;"><strong>1:30 PM</strong> — hora de Perú (PET)</p>
+    <p class="zoom-detail" style="margin-bottom: 16px;"><strong>1:30 PM</strong> — hora de Perú (PET)</p>
+
+    <div class="zoom-timezones">
+      <p class="zoom-tz-label">Horarios equivalentes</p>
+      <p class="zoom-detail zoom-tz-item"><strong>2:30 PM</strong> — Venezuela (VET)</p>
+      <p class="zoom-detail zoom-tz-item"><strong>2:30 PM</strong> — Miami (EDT)</p>
+      <p class="zoom-detail zoom-tz-item"><strong>10:30 AM</strong> — California (PDT)</p>
+      <p class="zoom-detail zoom-tz-item"><strong>8:30 PM</strong> — España (CEST)</p>
+    </div>
+
     <div class="zoom-divider"></div>
     <p class="zoom-detail">ID de reunión: <strong>880 5973 7646</strong></p>
     <p class="zoom-detail" style="margin-bottom: 24px;">Código de acceso: <strong>241314</strong></p>
