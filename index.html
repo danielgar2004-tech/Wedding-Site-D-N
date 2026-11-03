@@ -398,6 +398,75 @@
     50% { transform: translateX(-50%) translateY(8px); }
   }
 
+  /* ── PORTADA: el texto no debe tapar los rostros de la pareja ── */
+  /* Móvil: pareja arriba, texto en la parte baja */
+  @media (max-width: 767px) and (max-aspect-ratio: 3/5) {
+    #hero { align-items: flex-end; }
+    .hero-bg { background-size: auto 114%; background-position: 50% 100%; opacity: 0.85; }
+    .hero-overlay {
+      background: linear-gradient(to bottom,
+        rgba(10,17,31,0.32) 0%, rgba(10,17,31,0.05) 30%,
+        rgba(10,17,31,0.38) 40%, rgba(10,17,31,0.62) 58%, rgba(10,17,31,0.85) 80%, rgba(10,17,31,0.93) 100%);
+    }
+    .hero-content { padding-bottom: clamp(104px, 15vh, 150px); }
+    .hero-eyebrow { margin-bottom: 16px; text-shadow: 0 0 12px rgba(10,17,31,0.9), 0 1px 3px rgba(10,17,31,0.8); }
+    .hero-date, .hero-subtitle { text-shadow: 0 1px 12px rgba(10,17,31,0.85); }
+    .hero-rule { margin-bottom: 18px; }
+    .hero-name-first, .hero-name-second {
+      font-size: clamp(3.4rem, 14vw, 4.6rem);
+      text-shadow: 0 2px 24px rgba(0,0,0,0.5);
+    }
+    .hero-divider { margin: 20px 0; }
+    .hero-subtitle { margin-top: 12px; }
+  }
+  /* Móviles de pantalla baja: se compacta el texto para seguir despejando los rostros */
+  @media (max-width: 767px) and (max-aspect-ratio: 3/5) and (max-height: 700px) {
+    .hero-content { padding-bottom: 92px; }
+    .hero-eyebrow { margin-bottom: 12px; }
+    .hero-rule { margin-bottom: 12px; }
+    .hero-name-first, .hero-name-second { font-size: 2.9rem; }
+    .hero-ampersand { font-size: 1.2rem; margin: 2px 0; }
+    .hero-divider { margin: 14px 0; }
+    .hero-subtitle { margin-top: 8px; }
+  }
+  /* Tableta vertical: igual, con la foto de escritorio */
+  @media (min-width: 768px) and (max-width: 1023px) {
+    #hero { align-items: flex-end; }
+    /* en vertical se usa la foto vertical, con la pareja en la parte alta */
+    .hero-bg { background-image: url('assets/photos/hero.jpg') !important; background-size: cover; background-position: 50% 100%; }
+    .hero-overlay {
+      background: linear-gradient(to bottom,
+        rgba(10,17,31,0.3) 0%, rgba(10,17,31,0.05) 30%,
+        rgba(10,17,31,0.4) 52%, rgba(10,17,31,0.82) 80%, rgba(10,17,31,0.92) 100%);
+    }
+    .hero-content { padding-bottom: 150px; }
+    .hero-name-first, .hero-name-second { text-shadow: 0 2px 24px rgba(0,0,0,0.5); }
+  }
+  /* Escritorio: texto a la izquierda sobre la roca oscura, pareja a la derecha */
+  @media (min-width: 1024px) and (min-aspect-ratio: 5/4) {
+    #hero { justify-content: flex-start; }
+    .hero-bg {
+      left: 22%;
+      background-position: 35% 50%;
+      -webkit-mask-image: linear-gradient(to right, transparent 0, #000 30%);
+      mask-image: linear-gradient(to right, transparent 0, #000 30%);
+    }
+    .hero-overlay {
+      background:
+        linear-gradient(to right, rgba(10,17,31,0.5) 0%, rgba(10,17,31,0.1) 50%, rgba(10,17,31,0.2) 100%),
+        linear-gradient(to top, rgba(10,17,31,0.5) 0%, rgba(10,17,31,0) 35%);
+    }
+    .hero-content {
+      margin: 0 0 0 clamp(40px, 7vw, 120px);
+      padding: 0;
+      max-width: 620px;
+      text-align: left;
+    }
+    .hero-rule { margin-left: 0; margin-right: auto; }
+    .hero-divider { justify-content: flex-start; }
+    .hero-name-first, .hero-name-second { font-size: clamp(3.6rem, 9vw, 7rem); }
+  }
+
   /* ── SECTION BASE ── */
   section { padding: 100px 24px; }
   .section-label {
@@ -551,86 +620,142 @@
   #galeria .section-title { color: var(--white); }
   #galeria .section-subtitle { color: rgba(184,151,90,0.7); }
   #galeria .section-label { color: rgba(184,151,90,0.7); }
-  .gallery-carousel {
+  .gallery {
+    --visible: 2;          /* fotos visibles a la vez */
+    --step: 2;             /* fotos que avanza cada clic (1 = de una en una) */
+    --gap: 6px;
     position: relative;
-    max-width: 480px;
-    margin: 0 auto;
-    overflow: hidden;
-    border: 1px solid rgba(184,151,90,0.3);
+    margin: 0 -16px;       /* móvil: la galería casi llega a los bordes de la pantalla */
+    outline: none;
   }
+  .gallery-viewport {
+    overflow: hidden;
+    touch-action: pan-y;   /* el scroll vertical sigue funcionando; el horizontal lo maneja el carrusel */
+    cursor: grab;
+    -webkit-user-select: none;
+    user-select: none;
+  }
+  .gallery-viewport.is-dragging { cursor: grabbing; }
+  .gallery:focus-visible .gallery-viewport { outline: 1px solid var(--gold-light); outline-offset: 4px; }
   .gallery-track {
+    position: relative;
     display: flex;
-    transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    align-items: flex-start;
+    gap: var(--gap);
+    transition: transform 0.95s cubic-bezier(0.33, 0, 0.15, 1);
+    will-change: transform;
   }
   .gallery-slide {
-    min-width: 100%;
-    aspect-ratio: 3/4;
-    background: var(--navy-mid);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
+    flex: 0 0 calc((100% - (var(--visible) - 1) * var(--gap)) / var(--visible));
+    aspect-ratio: 2 / 3;
+    margin: 0;
     position: relative;
+    overflow: hidden;
+    background: var(--navy-mid);
+    border: 1px solid rgba(184,151,90,0.28);
+    transition: opacity 0.95s ease;
   }
   .gallery-slide img {
+    position: absolute;
+    inset: 0;
     width: 100%;
     height: 100%;
     object-fit: cover;
+    object-position: var(--pos, 50% 50%);
     display: block;
+    pointer-events: none;
+    -webkit-user-drag: none;
   }
-  .gallery-placeholder {
+  /* Con JavaScript: las fotos fuera de vista se atenúan y aparecen con un fundido suave */
+  .gallery.is-ready .gallery-slide { opacity: 0.2; }
+  .gallery.is-ready .gallery-slide.is-active { opacity: 1; }
+  .gallery.is-ready .gallery-slide img { opacity: 0; transition: opacity 0.8s ease; }
+  .gallery.is-ready .gallery-slide img.is-loaded { opacity: 1; }
+
+  .gallery-controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 22px;
+    margin-top: 28px;
+  }
+  .gallery-nav {
+    width: 50px; height: 50px;
+    flex: 0 0 auto;
+    border-radius: 50%;
+    background: rgba(10,17,31,0.6);
+    border: 1px solid rgba(184,151,90,0.5);
+    color: var(--gold-light);
+    font-size: 1.6rem;
+    line-height: 1;
+    padding: 0 0 4px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.25s, opacity 0.25s, transform 0.25s;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .gallery-nav:hover:not(:disabled) { background: rgba(184,151,90,0.22); }
+  .gallery-nav:active:not(:disabled) { transform: scale(0.94); }
+  .gallery-nav:disabled { opacity: 0.25; cursor: default; }
+  .gallery-nav:focus-visible,
+  .gallery-dot:focus-visible { outline: 2px solid var(--gold-light); outline-offset: 3px; }
+  .gallery-status {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 16px;
-    color: rgba(184,151,90,0.4);
-    font-family: var(--serif);
-    font-style: italic;
-    font-size: 0.95rem;
+    gap: 10px;
+    min-width: 120px;
   }
-  .gallery-placeholder svg { opacity: 0.3; }
-  .gallery-nav {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background: rgba(10,17,31,0.6);
-    border: 1px solid rgba(184,151,90,0.4);
-    color: var(--gold-light);
-    width: 44px; height: 44px;
-    border-radius: 50%;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.1rem;
-    transition: background 0.2s;
-    z-index: 10;
-  }
-  .gallery-nav:hover { background: rgba(184,151,90,0.2); }
-  .gallery-prev { left: 12px; }
-  .gallery-next { right: 12px; }
-  .gallery-dots {
-    display: flex;
-    justify-content: center;
-    gap: 8px;
-    margin-top: 24px;
-  }
+  .gallery-dots { display: flex; gap: 2px; justify-content: center; }
   .gallery-dot {
+    position: relative;
+    width: 22px; height: 22px;
+    padding: 0;
+    border: 0;
+    background: none;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .gallery-dot::after {
+    content: '';
+    position: absolute;
+    left: 50%; top: 50%;
     width: 6px; height: 6px;
+    margin: -3px 0 0 -3px;
     border-radius: 50%;
     background: rgba(184,151,90,0.3);
-    cursor: pointer;
-    transition: background 0.2s, transform 0.2s;
+    transition: background 0.25s, transform 0.25s;
   }
-  .gallery-dot.active { background: var(--gold); transform: scale(1.4); }
+  .gallery-dot[aria-current="true"]::after { background: var(--gold); transform: scale(1.5); }
+  .gallery-counter {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 1.05rem;
+    letter-spacing: 0.08em;
+    color: rgba(212,180,131,0.85);
+  }
   .gallery-instruction {
     text-align: center;
-    margin-top: 20px;
+    margin-top: 22px;
     font-family: var(--sans);
     font-size: 0.68rem;
     letter-spacing: 0.15em;
     text-transform: uppercase;
-    color: rgba(184,151,90,0.45);
+    color: rgba(184,151,90,0.5);
+  }
+  @media (min-width: 700px) {
+    .gallery {
+      --gap: 14px;
+      margin: 0 auto;
+      /* ancho para que las dos fotos (2:3) quepan completas en la altura de la pantalla */
+      max-width: clamp(640px, calc((100vh - 250px) * 1.3333 + 14px), 1180px);
+    }
+    .gallery-slide { border-color: rgba(184,151,90,0.32); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .gallery-track, .gallery-slide, .gallery-slide img { transition-duration: 0.01s !important; }
   }
 
   /* ── EVENTO ── */
@@ -1066,35 +1191,85 @@
     margin-top: 28px;
   }
 
-  /* ── FOOTER ── */
+  /* ── FOOTER (foto final que emerge del azul del sitio) ── */
   footer {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
     background: var(--navy-dark);
-    border-top: 1px solid rgba(184,151,90,0.2);
-    padding: 60px 24px;
+    min-height: min(100vh, 920px);
+    min-height: min(100svh, 920px);
+    padding: 0 24px 104px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
     text-align: center;
+  }
+  .footer-photo {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 50% 62%;
+    z-index: -2;
+  }
+  /* Difuminado: arriba se funde con el azul oscuro del sitio, abajo oscurece para leer el texto */
+  footer::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    background:
+      linear-gradient(to bottom,
+        #0e1929 0%,
+        rgba(14,25,41,0.97) 8%,
+        rgba(20,32,56,0.82) 20%,
+        rgba(26,39,68,0.54) 34%,
+        rgba(26,39,68,0.24) 48%,
+        rgba(26,39,68,0) 62%),
+      linear-gradient(to top,
+        rgba(14,25,41,0.92) 0%,
+        rgba(14,25,41,0.68) 16%,
+        rgba(14,25,41,0.28) 34%,
+        rgba(14,25,41,0) 52%);
   }
   .footer-names {
     font-family: var(--serif);
-    font-size: clamp(2rem, 6vw, 3.2rem);
+    font-size: clamp(2.2rem, 7vw, 3.6rem);
     font-weight: 700;
     color: var(--gold-light);
-    margin-bottom: 8px;
+    margin-bottom: 10px;
+    text-shadow: 0 2px 18px rgba(0,0,0,0.55);
   }
   .footer-date {
     font-family: var(--sans);
-    font-size: 0.68rem;
-    font-weight: 400;
+    font-size: 0.7rem;
+    font-weight: 500;
     letter-spacing: 0.3em;
     text-transform: uppercase;
-    color: rgba(255,255,255,0.35);
-    margin-bottom: 32px;
+    color: rgba(255,255,255,0.82);
+    margin-bottom: 30px;
+    text-shadow: 0 1px 10px rgba(0,0,0,0.6);
   }
-  .footer-rule { width: 40px; height: 1px; background: rgba(184,151,90,0.3); margin: 0 auto 24px; }
+  @media (min-width: 900px) {
+    /* más alto que la pantalla para que los rostros queden bajo el difuminado */
+    footer { min-height: min(118vh, 1080px); }
+    .footer-photo { object-position: 50% 44%; }
+  }
+  .footer-place::before { content: ' · '; }
+  @media (max-width: 520px) {
+    .footer-place { display: block; margin-top: 8px; }
+    .footer-place::before { content: none; }
+  }
+  .footer-rule { width: 40px; height: 1px; background: rgba(212,180,131,0.6); margin: 0 auto 24px; }
   .footer-copy {
     font-family: var(--sans);
-    font-size: 0.65rem;
-    color: rgba(255,255,255,0.2);
+    font-size: 0.68rem;
+    color: rgba(255,255,255,0.6);
     letter-spacing: 0.1em;
+    text-shadow: 0 1px 10px rgba(0,0,0,0.6);
   }
 
   /* ── MODALS ── */
@@ -1527,29 +1702,48 @@
   <h2 class="section-title reveal">Galería</h2>
   <p class="section-subtitle reveal">Momentos que nos definen</p>
 
-  <div class="gallery-carousel reveal" style="max-width: 420px; margin: 0 auto; position: relative;">
-    <div class="gallery-track" id="galleryTrack">
-      <div class="gallery-slide"><img src="assets/photos/foto1.jpg" alt="Daniel y Narumi"></div>
-      <div class="gallery-slide"><img src="assets/photos/foto4.jpg" alt="Daniel y Narumi"></div>
-      <div class="gallery-slide"><img src="assets/photos/foto6.jpg" alt="Daniel y Narumi en Cajamarca"></div>
-      <div class="gallery-slide"><img src="assets/photos/foto7.jpg" alt="Daniel y Narumi en el Salón del Reino"></div>
-      <div class="gallery-slide"><img src="assets/photos/foto8.jpg" alt="Daniel y Narumi en las montañas"></div>
-      <div class="gallery-slide"><img src="assets/photos/foto9.webp" alt="Daniel y Narumi en Lima"></div>
+  <div class="gallery reveal" id="galleryCarousel" role="region" aria-roledescription="carousel" aria-label="Galería de fotos de Daniel y Narumi" tabindex="0">
+    <div class="gallery-viewport" id="galleryViewport">
+      <div class="gallery-track" id="galleryTrack">
+        <figure class="gallery-slide" role="group" aria-roledescription="slide" aria-label="Foto 1 de 9">
+          <img src="assets/photos/galeria/galeria-01.webp" srcset="assets/photos/galeria/galeria-01-sm.webp 720w, assets/photos/galeria/galeria-01.webp 853w" sizes="(min-width: 700px) 560px, 48vw" width="853" height="1280" alt="Daniel y Narumi abrazados en una cueva junto al mar, al atardecer" style="--pos: 50% 60%;" decoding="async" draggable="false">
+        </figure>
+        <figure class="gallery-slide" role="group" aria-roledescription="slide" aria-label="Foto 2 de 9">
+          <img src="assets/photos/galeria/galeria-02.webp" srcset="assets/photos/galeria/galeria-02-sm.webp 720w, assets/photos/galeria/galeria-02.webp 1334w" sizes="(min-width: 700px) 560px, 48vw" width="1334" height="2000" alt="Narumi y Daniel contemplando el anillo de compromiso" style="--pos: 50% 35%;" decoding="async" draggable="false">
+        </figure>
+        <figure class="gallery-slide" role="group" aria-roledescription="slide" aria-label="Foto 3 de 9">
+          <img src="assets/photos/galeria/galeria-03.webp" srcset="assets/photos/galeria/galeria-03-sm.webp 720w, assets/photos/galeria/galeria-03.webp 874w" sizes="(min-width: 700px) 560px, 48vw" width="874" height="1280" alt="Daniel y Narumi abrazados en la orilla, con el reflejo del atardecer" style="--pos: 50% 50%;" loading="lazy" decoding="async" draggable="false">
+        </figure>
+        <figure class="gallery-slide" role="group" aria-roledescription="slide" aria-label="Foto 4 de 9">
+          <img src="assets/photos/galeria/galeria-04.webp" srcset="assets/photos/galeria/galeria-04-sm.webp 720w, assets/photos/galeria/galeria-04.webp 1280w" sizes="(min-width: 700px) 560px, 48vw" width="1280" height="2000" alt="Daniel y Narumi sonriéndose en una cena romántica en la playa" style="--pos: 50% 50%;" loading="lazy" decoding="async" draggable="false">
+        </figure>
+        <figure class="gallery-slide" role="group" aria-roledescription="slide" aria-label="Foto 5 de 9">
+          <img src="assets/photos/galeria/galeria-05.webp" srcset="assets/photos/galeria/galeria-05-sm.webp 720w, assets/photos/galeria/galeria-05.webp 1345w" sizes="(min-width: 700px) 560px, 48vw" width="1345" height="2000" alt="Daniel y Narumi caminando de la mano por la orilla del mar" style="--pos: 50% 65%;" loading="lazy" decoding="async" draggable="false">
+        </figure>
+        <figure class="gallery-slide" role="group" aria-roledescription="slide" aria-label="Foto 6 de 9">
+          <img src="assets/photos/galeria/galeria-06.webp" srcset="assets/photos/galeria/galeria-06-sm.webp 720w, assets/photos/galeria/galeria-06.webp 1016w" sizes="(min-width: 700px) 560px, 48vw" width="1016" height="1280" alt="Daniel y Narumi en blanco y negro, con la caja del anillo" style="--pos: 45% 50%;" loading="lazy" decoding="async" draggable="false">
+        </figure>
+        <figure class="gallery-slide" role="group" aria-roledescription="slide" aria-label="Foto 7 de 9">
+          <img src="assets/photos/galeria/galeria-07.webp" srcset="assets/photos/galeria/galeria-07-sm.webp 720w, assets/photos/galeria/galeria-07.webp 854w" sizes="(min-width: 700px) 560px, 48vw" width="854" height="1280" alt="Daniel cargando a Narumi sobre la playa al atardecer" style="--pos: 50% 65%;" loading="lazy" decoding="async" draggable="false">
+        </figure>
+        <figure class="gallery-slide" role="group" aria-roledescription="slide" aria-label="Foto 8 de 9">
+          <img src="assets/photos/galeria/galeria-08.webp" srcset="assets/photos/galeria/galeria-08-sm.webp 720w, assets/photos/galeria/galeria-08.webp 854w" sizes="(min-width: 700px) 560px, 48vw" width="854" height="1280" alt="Daniel y Narumi en una cena a la luz de las velas junto al mar" style="--pos: 50% 60%;" loading="lazy" decoding="async" draggable="false">
+        </figure>
+        <figure class="gallery-slide" role="group" aria-roledescription="slide" aria-label="Foto 9 de 9">
+          <img src="assets/photos/galeria/galeria-09.webp" srcset="assets/photos/galeria/galeria-09-sm.webp 720w, assets/photos/galeria/galeria-09.webp 1334w" sizes="(min-width: 700px) 560px, 48vw" width="1334" height="2000" alt="Daniel y Narumi besándose en una cueva marina con el sol al fondo" style="--pos: 50% 55%;" loading="lazy" decoding="async" draggable="false">
+        </figure>
+      </div>
     </div>
-    <button class="gallery-nav gallery-prev" onclick="galleryMove(-1)">&#8249;</button>
-    <button class="gallery-nav gallery-next" onclick="galleryMove(1)">&#8250;</button>
+    <div class="gallery-controls">
+      <button class="gallery-nav gallery-prev" id="galleryPrev" type="button" aria-label="Fotos anteriores" disabled>&#8249;</button>
+      <div class="gallery-status">
+        <div class="gallery-dots" id="galleryDots"></div>
+        <p class="gallery-counter" id="galleryCounter" aria-live="polite">1 – 2 / 9</p>
+      </div>
+      <button class="gallery-nav gallery-next" id="galleryNext" type="button" aria-label="Fotos siguientes">&#8250;</button>
+    </div>
   </div>
-  <div class="gallery-dots" id="galleryDots">
-    <div class="gallery-dot active" onclick="galleryGoTo(0)"></div>
-    <div class="gallery-dot" onclick="galleryGoTo(1)"></div>
-    <div class="gallery-dot" onclick="galleryGoTo(2)"></div>
-    <div class="gallery-dot" onclick="galleryGoTo(3)"></div>
-    <div class="gallery-dot" onclick="galleryGoTo(4)"></div>
-    <div class="gallery-dot" onclick="galleryGoTo(5)"></div>
-  </div>
-  <p class="gallery-instruction reveal" style="margin-top: 20px; color: rgba(184,151,90,0.45); font-family: var(--sans); font-size: 0.68rem; letter-spacing: 0.15em; text-transform: uppercase; text-align:center;">
-    Desliza para ver más momentos
-  </p>
+  <p class="gallery-instruction reveal">Desliza o usa las flechas</p>
 </section>
 
 <!-- EVENTO -->
@@ -1938,10 +2132,11 @@
 
 <!-- FOOTER -->
 <footer>
-  <p class="footer-names">Daniel &amp; Narumi</p>
-  <p class="footer-date">11 · Abril · MMXXVII · Cajamarca, Perú</p>
-  <div class="footer-rule"></div>
-  <p class="footer-copy">Con amor, para quienes hacen parte de este camino.</p>
+  <img class="footer-photo" src="assets/photos/final.webp" srcset="assets/photos/final-sm.webp 900w, assets/photos/final.webp 1420w" sizes="100vw" width="1420" height="2080" alt="Daniel y Narumi abrazados en el agua frente a la luz del atardecer" loading="lazy" decoding="async">
+  <p class="footer-names reveal">Daniel &amp; Narumi</p>
+  <p class="footer-date reveal"><span>11 · Abril · MMXXVII</span><span class="footer-place">Cajamarca, Perú</span></p>
+  <div class="footer-rule reveal"></div>
+  <p class="footer-copy reveal">Con amor, para quienes hacen parte de este camino.</p>
 </footer>
 
 <!-- MODAL EMAIL RSVP -->
@@ -2078,17 +2273,166 @@ updateCountdown();
 setInterval(updateCountdown, 1000);
 
 // ── GALERÍA ──
-let galleryIndex = 0;
-const slides = document.querySelectorAll('.gallery-slide');
-const dots = document.querySelectorAll('.gallery-dot');
+// Carrusel sin reproducción automática. Para cambiar cuántas fotos se ven y cuántas avanza
+// cada clic, edita --visible y --step en la regla ".gallery" del CSS (por ejemplo 1 y 1).
+(function () {
+  const root = document.getElementById('galleryCarousel');
+  if (!root) return;
+  const viewport = document.getElementById('galleryViewport');
+  const track = document.getElementById('galleryTrack');
+  const slides = Array.from(track.children);
+  const prevBtn = document.getElementById('galleryPrev');
+  const nextBtn = document.getElementById('galleryNext');
+  const dotsEl = document.getElementById('galleryDots');
+  const counter = document.getElementById('galleryCounter');
+  const total = slides.length;
 
-function galleryGoTo(n) {
-  galleryIndex = (n + slides.length) % slides.length;
-  document.getElementById('galleryTrack').style.transform = `translateX(-${galleryIndex * 100}%)`;
-  dots.forEach((d, i) => d.classList.toggle('active', i === galleryIndex));
-}
-function galleryMove(dir) { galleryGoTo(galleryIndex + dir); }
-setInterval(() => galleryMove(1), 4500);
+  let visible = 2, step = 2, stops = [0], stopIdx = 0, dragging = false;
+
+  function readConfig() {
+    const cs = getComputedStyle(root);
+    visible = Math.max(1, Math.min(total, parseInt(cs.getPropertyValue('--visible'), 10) || 1));
+    step = Math.max(1, parseInt(cs.getPropertyValue('--step'), 10) || 1);
+  }
+
+  // Posiciones de parada: de "step" en "step" y siempre una última parada que muestra el final
+  function buildStops() {
+    const maxStart = Math.max(0, total - visible);
+    stops = [];
+    for (let i = 0; i < maxStart; i += step) stops.push(i);
+    stops.push(maxStart);
+  }
+
+  function buildDots() {
+    dotsEl.innerHTML = '';
+    stops.forEach((start, i) => {
+      const b = document.createElement('button');
+      b.type = 'button';
+      b.className = 'gallery-dot';
+      const last = Math.min(total, start + visible);
+      b.setAttribute('aria-label', visible > 1 ? `Ver fotos ${start + 1} a ${last}` : `Ver foto ${start + 1}`);
+      b.addEventListener('click', () => goTo(i));
+      dotsEl.appendChild(b);
+    });
+  }
+
+  function offsetFor(start) { return slides[start].offsetLeft; }
+
+  // Carga con antelación las fotos de las páginas vecinas para que no aparezcan vacías
+  function warm(start) {
+    const from = Math.max(0, start - visible * 2), to = Math.min(total, start + visible * 3);
+    for (let i = from; i < to; i++) {
+      const img = slides[i].querySelector('img');
+      if (img && img.loading === 'lazy') img.loading = 'eager';
+    }
+  }
+
+  function render(animate) {
+    const start = stops[stopIdx];
+    if (animate === false) track.style.transition = 'none';
+    track.style.transform = `translate3d(${-offsetFor(start)}px,0,0)`;
+    if (animate === false) { void track.offsetWidth; track.style.transition = ''; }
+    slides.forEach((s, i) => {
+      const active = i >= start && i < start + visible;
+      s.classList.toggle('is-active', active);
+      s.setAttribute('aria-hidden', active ? 'false' : 'true');
+    });
+    Array.from(dotsEl.children).forEach((d, i) => {
+      if (i === stopIdx) d.setAttribute('aria-current', 'true'); else d.removeAttribute('aria-current');
+    });
+    const last = Math.min(total, start + visible);
+    counter.textContent = visible > 1 ? `${start + 1} – ${last} / ${total}` : `${start + 1} / ${total}`;
+    prevBtn.disabled = stopIdx === 0;
+    nextBtn.disabled = stopIdx === stops.length - 1;
+    warm(start);
+  }
+
+  function goTo(i) {
+    stopIdx = Math.max(0, Math.min(stops.length - 1, i));
+    render(true);
+  }
+
+  prevBtn.addEventListener('click', () => goTo(stopIdx - 1));
+  nextBtn.addEventListener('click', () => goTo(stopIdx + 1));
+
+  root.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowLeft') { e.preventDefault(); goTo(stopIdx - 1); }
+    else if (e.key === 'ArrowRight') { e.preventDefault(); goTo(stopIdx + 1); }
+  });
+
+  // ── Deslizamiento táctil y con el ratón ──
+  let startX = 0, startY = 0, startT = 0, baseOffset = 0, pid = null, pressed = false;
+
+  viewport.addEventListener('pointerdown', (e) => {
+    if (e.pointerType === 'mouse' && e.button !== 0) return;
+    pressed = true; dragging = false; pid = e.pointerId;
+    startX = e.clientX; startY = e.clientY; startT = e.timeStamp;
+    baseOffset = offsetFor(stops[stopIdx]);
+  });
+
+  viewport.addEventListener('pointermove', (e) => {
+    if (!pressed || e.pointerId !== pid) return;
+    const dx = e.clientX - startX, dy = e.clientY - startY;
+    if (!dragging) {
+      if (Math.abs(dx) < 8 || Math.abs(dx) < Math.abs(dy)) return;
+      dragging = true;
+      viewport.classList.add('is-dragging');
+      track.style.transition = 'none';
+      try { viewport.setPointerCapture(pid); } catch (_) {}
+    }
+    const maxOffset = offsetFor(stops[stops.length - 1]);
+    let pos = baseOffset - dx;
+    if (pos < 0) pos = pos * 0.35;                                   // resistencia en el inicio
+    else if (pos > maxOffset) pos = maxOffset + (pos - maxOffset) * 0.35; // y en el final
+    track.style.transform = `translate3d(${-pos}px,0,0)`;
+  });
+
+  function endDrag(e, cancelled) {
+    if (!pressed || (e && e.pointerId !== pid)) return;
+    pressed = false;
+    if (!dragging) return;
+    dragging = false;
+    viewport.classList.remove('is-dragging');
+    track.style.transition = '';
+    const dx = e.clientX - startX, dt = Math.max(1, e.timeStamp - startT);
+    const tileW = slides[0].getBoundingClientRect().width;
+    const fast = Math.abs(dx) > 30 && dt < 320;
+    const far = Math.abs(dx) > Math.max(40, tileW * 0.18);
+    if (!cancelled && (fast || far)) goTo(stopIdx + (dx < 0 ? 1 : -1));
+    else render(true);
+  }
+  viewport.addEventListener('pointerup', (e) => endDrag(e, false));
+  viewport.addEventListener('pointercancel', (e) => endDrag(e, true));
+
+  // ── Aparición suave de cada foto al terminar de cargar ──
+  slides.forEach((s) => {
+    const img = s.querySelector('img');
+    if (!img) return;
+    const show = () => img.classList.add('is-loaded');
+    if (img.complete && img.naturalWidth > 0) show();
+    else { img.addEventListener('load', show, { once: true }); img.addEventListener('error', show, { once: true }); }
+  });
+
+  // ── Inicio y adaptación al tamaño de pantalla ──
+  function setup(keepStart) {
+    const currentStart = stops[stopIdx] || 0;
+    readConfig();
+    buildStops();
+    stopIdx = 0;
+    if (keepStart) stops.forEach((s, i) => { if (s <= currentStart) stopIdx = i; });
+    buildDots();
+    render(false);
+  }
+  root.classList.add('is-ready');
+  setup(false);
+
+  let rz;
+  window.addEventListener('resize', () => {
+    clearTimeout(rz);
+    rz = setTimeout(() => setup(true), 120);
+  });
+  window.addEventListener('load', () => render(false));
+})();
 
 // ── MODALS ──
 function openModal(id) {
