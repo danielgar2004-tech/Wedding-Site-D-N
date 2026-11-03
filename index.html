@@ -155,7 +155,7 @@
   .hero-bg {
     position: absolute;
     inset: 0;
-    background-image: url('assets/photos/hero.jpg');
+    background-image: url('assets/photos/galeria/galeria-01.webp');
     background-size: cover;
     background-position: center center;
     opacity: 0.78;
@@ -399,51 +399,82 @@
   }
 
   /* ── PORTADA: el texto no debe tapar los rostros de la pareja ── */
-  /* Móvil: pareja arriba, texto en la parte baja */
+  /* Móvil: la pareja está en la parte baja de la foto. La foto se apoya abajo (su parte alta es roca
+     oscura que se funde con el fondo) y el texto va arriba, en el espacio oscuro */
   @media (max-width: 767px) and (max-aspect-ratio: 3/5) {
-    #hero { align-items: flex-end; }
-    .hero-bg { background-size: auto 114%; background-position: 50% 100%; opacity: 0.85; }
+    #hero { align-items: flex-start; }
+    .hero-bg {
+      top: auto;
+      height: 68%;
+      background-size: auto 100%;
+      background-repeat: no-repeat;
+      background-position: 100% 100%;   /* pegada a la derecha: el hueco queda a la izquierda, donde la foto es roca oscura */
+      opacity: 0.95;
+      -webkit-mask-image: linear-gradient(to bottom, transparent 0, #000 32%), linear-gradient(to right, transparent 0, #000 40px);
+      -webkit-mask-composite: source-in;
+      mask-image: linear-gradient(to bottom, transparent 0, #000 32%), linear-gradient(to right, transparent 0, #000 40px);
+      mask-composite: intersect;
+    }
     .hero-overlay {
       background: linear-gradient(to bottom,
-        rgba(10,17,31,0.32) 0%, rgba(10,17,31,0.05) 30%,
-        rgba(10,17,31,0.38) 40%, rgba(10,17,31,0.62) 58%, rgba(10,17,31,0.85) 80%, rgba(10,17,31,0.93) 100%);
+        rgba(10,17,31,0.35) 0%, rgba(10,17,31,0.18) 30%, rgba(10,17,31,0) 55%,
+        rgba(10,17,31,0) 84%, rgba(10,17,31,0.5) 100%);
     }
-    .hero-content { padding-bottom: clamp(104px, 15vh, 150px); }
-    .hero-eyebrow { margin-bottom: 16px; text-shadow: 0 0 12px rgba(10,17,31,0.9), 0 1px 3px rgba(10,17,31,0.8); }
+    .hero-content { padding-top: clamp(76px, 10.5vh, 104px); }
+    .hero-eyebrow { margin-bottom: 14px; text-shadow: 0 0 12px rgba(10,17,31,0.9), 0 1px 3px rgba(10,17,31,0.8); }
     .hero-date, .hero-subtitle { text-shadow: 0 1px 12px rgba(10,17,31,0.85); }
-    .hero-rule { margin-bottom: 18px; }
+    .hero-rule { margin-bottom: 16px; }
     .hero-name-first, .hero-name-second {
-      font-size: clamp(3.4rem, 14vw, 4.6rem);
+      font-size: clamp(2.6rem, min(13vw, 6.4vh), 4.4rem);
       text-shadow: 0 2px 24px rgba(0,0,0,0.5);
     }
-    .hero-divider { margin: 20px 0; }
-    .hero-subtitle { margin-top: 12px; }
+    .hero-divider { margin: 16px 0; }
+    .hero-subtitle { margin-top: 10px; }
   }
-  /* Móviles de pantalla baja: se compacta el texto para seguir despejando los rostros */
+  /* Móviles más anchos en proporción (p. ej. 360x640, 375x667): la foto llena el ancho sin hueco lateral */
+  @media (max-width: 767px) and (min-aspect-ratio: 47/100) and (max-aspect-ratio: 3/5) {
+    .hero-bg {
+      height: 74%;
+      background-size: cover;
+      background-position: 16% 100%;
+      -webkit-mask-image: linear-gradient(to bottom, transparent 0, #000 30%);
+      -webkit-mask-composite: initial;
+      mask-image: linear-gradient(to bottom, transparent 0, #000 30%);
+      mask-composite: initial;
+    }
+  }
+  /* Móviles de pantalla baja: el texto se compacta para dejar libres las cabezas de la pareja */
   @media (max-width: 767px) and (max-aspect-ratio: 3/5) and (max-height: 700px) {
-    .hero-content { padding-bottom: 92px; }
-    .hero-eyebrow { margin-bottom: 12px; }
-    .hero-rule { margin-bottom: 12px; }
-    .hero-name-first, .hero-name-second { font-size: 2.9rem; }
-    .hero-ampersand { font-size: 1.2rem; margin: 2px 0; }
-    .hero-divider { margin: 14px 0; }
-    .hero-subtitle { margin-top: 8px; }
+    .hero-content { padding-top: 68px; }
+    .hero-eyebrow { margin-bottom: 10px; }
+    .hero-rule { margin-bottom: 10px; }
+    .hero-name-first, .hero-name-second { font-size: clamp(2.3rem, 5.8vh, 3rem); }
+    .hero-ampersand { font-size: 1.1rem; margin: 0; }
+    .hero-divider { margin: 10px 0; }
+    .hero-subtitle { margin-top: 6px; }
   }
-  /* Tableta vertical: igual, con la foto de escritorio */
-  @media (min-width: 768px) and (max-width: 1023px) {
-    #hero { align-items: flex-end; }
-    /* en vertical se usa la foto vertical, con la pareja en la parte alta */
-    .hero-bg { background-image: url('assets/photos/hero.jpg') !important; background-size: cover; background-position: 50% 100%; }
+  /* Tableta vertical: foto horizontal apoyada abajo y texto arriba */
+  @media (min-width: 768px) and (max-aspect-ratio: 99/100) {
+    #hero { align-items: flex-start; }
+    .hero-bg {
+      top: auto;
+      height: 58%;
+      background-position: 50% 100%;
+      opacity: 0.95;
+      -webkit-mask-image: linear-gradient(to bottom, transparent 0, #000 24%);
+      mask-image: linear-gradient(to bottom, transparent 0, #000 24%);
+    }
     .hero-overlay {
       background: linear-gradient(to bottom,
-        rgba(10,17,31,0.3) 0%, rgba(10,17,31,0.05) 30%,
-        rgba(10,17,31,0.4) 52%, rgba(10,17,31,0.82) 80%, rgba(10,17,31,0.92) 100%);
+        rgba(10,17,31,0.35) 0%, rgba(10,17,31,0.18) 30%, rgba(10,17,31,0) 55%,
+        rgba(10,17,31,0) 84%, rgba(10,17,31,0.5) 100%);
     }
-    .hero-content { padding-bottom: 150px; }
-    .hero-name-first, .hero-name-second { text-shadow: 0 2px 24px rgba(0,0,0,0.5); }
+    .hero-content { padding-top: 104px; }
+    .hero-name-first, .hero-name-second { font-size: clamp(3rem, min(9vw, 7vh), 5.4rem); text-shadow: 0 2px 24px rgba(0,0,0,0.5); }
+    .hero-divider { margin: 22px 0; }
   }
-  /* Escritorio: texto a la izquierda sobre la roca oscura, pareja a la derecha */
-  @media (min-width: 1024px) and (min-aspect-ratio: 5/4) {
+  /* Escritorio y pantallas apaisadas: texto a la izquierda sobre la roca oscura, pareja a la derecha */
+  @media (min-width: 768px) and (min-aspect-ratio: 1/1) {
     #hero { justify-content: flex-start; }
     .hero-bg {
       left: 22%;
@@ -621,19 +652,22 @@
   #galeria .section-subtitle { color: rgba(184,151,90,0.7); }
   #galeria .section-label { color: rgba(184,151,90,0.7); }
   .gallery {
-    --visible: 2;          /* fotos visibles a la vez */
-    --step: 2;             /* fotos que avanza cada clic (1 = de una en una) */
-    --gap: 6px;
+    --visible: 1;          /* fotos visibles a la vez */
+    --step: 1;             /* fotos que avanza cada clic */
+    --gap: 12px;
     position: relative;
-    margin: 0 -16px;       /* móvil: la galería casi llega a los bordes de la pantalla */
+    margin: 0 -24px;       /* móvil: la foto ocupa todo el ancho de la pantalla */
     outline: none;
   }
+  .gallery-stage { position: relative; }
   .gallery-viewport {
     overflow: hidden;
     touch-action: pan-y;   /* el scroll vertical sigue funcionando; el horizontal lo maneja el carrusel */
-    cursor: grab;
+    cursor: zoom-in;
     -webkit-user-select: none;
     user-select: none;
+    border-top: 1px solid rgba(184,151,90,0.3);
+    border-bottom: 1px solid rgba(184,151,90,0.3);
   }
   .gallery-viewport.is-dragging { cursor: grabbing; }
   .gallery:focus-visible .gallery-viewport { outline: 1px solid var(--gold-light); outline-offset: 4px; }
@@ -648,20 +682,28 @@
   .gallery-slide {
     flex: 0 0 calc((100% - (var(--visible) - 1) * var(--gap)) / var(--visible));
     aspect-ratio: 2 / 3;
+    max-height: 80vh;
+    max-height: 80svh;
     margin: 0;
     position: relative;
     overflow: hidden;
     background: var(--navy-mid);
-    border: 1px solid rgba(184,151,90,0.28);
     transition: opacity 0.95s ease;
+  }
+  /* Fondo suave con los colores de la propia foto (rellena los lados cuando la foto no ocupa todo el marco) */
+  .gallery-slide::before {
+    content: '';
+    position: absolute;
+    inset: -20px;
+    background: var(--bg, none) center / cover no-repeat;
+    filter: blur(14px) brightness(0.5) saturate(1.15);
   }
   .gallery-slide img {
     position: absolute;
     inset: 0;
     width: 100%;
     height: 100%;
-    object-fit: cover;
-    object-position: var(--pos, 50% 50%);
+    object-fit: contain;
     display: block;
     pointer-events: none;
     -webkit-user-drag: none;
@@ -672,43 +714,52 @@
   .gallery.is-ready .gallery-slide img { opacity: 0; transition: opacity 0.8s ease; }
   .gallery.is-ready .gallery-slide img.is-loaded { opacity: 1; }
 
-  .gallery-controls {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 22px;
-    margin-top: 28px;
-  }
-  .gallery-nav {
-    width: 50px; height: 50px;
-    flex: 0 0 auto;
+  .gallery-nav,
+  .gallery-expand {
+    position: absolute;
+    z-index: 2;
     border-radius: 50%;
-    background: rgba(10,17,31,0.6);
-    border: 1px solid rgba(184,151,90,0.5);
+    background: rgba(10,17,31,0.55);
+    -webkit-backdrop-filter: blur(6px);
+    backdrop-filter: blur(6px);
+    border: 1px solid rgba(212,180,131,0.55);
     color: var(--gold-light);
-    font-size: 1.6rem;
-    line-height: 1;
-    padding: 0 0 4px;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
+    padding: 0;
     transition: background 0.25s, opacity 0.25s, transform 0.25s;
     -webkit-tap-highlight-color: transparent;
   }
-  .gallery-nav:hover:not(:disabled) { background: rgba(184,151,90,0.22); }
-  .gallery-nav:active:not(:disabled) { transform: scale(0.94); }
+  .gallery-nav {
+    width: 46px; height: 46px;
+    bottom: 14px;
+    font-size: 1.6rem;
+    line-height: 1;
+    padding-bottom: 4px;
+  }
+  .gallery-prev { left: 14px; }
+  .gallery-next { right: 14px; }
+  .gallery-expand { width: 40px; height: 40px; top: 12px; right: 12px; }
+  .gallery-expand svg { width: 18px; height: 18px; }
+  .gallery-nav:hover:not(:disabled),
+  .gallery-expand:hover { background: rgba(184,151,90,0.3); }
+  .gallery-nav:active:not(:disabled),
+  .gallery-expand:active { transform: scale(0.94); }
   .gallery-nav:disabled { opacity: 0.25; cursor: default; }
   .gallery-nav:focus-visible,
+  .gallery-expand:focus-visible,
   .gallery-dot:focus-visible { outline: 2px solid var(--gold-light); outline-offset: 3px; }
+
   .gallery-status {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 10px;
-    min-width: 120px;
+    margin-top: 22px;
   }
-  .gallery-dots { display: flex; gap: 2px; justify-content: center; }
+  .gallery-dots { display: flex; gap: 2px; justify-content: center; flex-wrap: wrap; }
   .gallery-dot {
     position: relative;
     width: 22px; height: 22px;
@@ -738,7 +789,7 @@
   }
   .gallery-instruction {
     text-align: center;
-    margin-top: 22px;
+    margin-top: 18px;
     font-family: var(--sans);
     font-size: 0.68rem;
     letter-spacing: 0.15em;
@@ -746,16 +797,112 @@
     color: rgba(184,151,90,0.5);
   }
   @media (min-width: 700px) {
-    .gallery {
-      --gap: 14px;
-      margin: 0 auto;
-      /* ancho para que las dos fotos (2:3) quepan completas en la altura de la pantalla */
-      max-width: clamp(640px, calc((100vh - 250px) * 1.3333 + 14px), 1180px);
+    .gallery { margin: 0 auto; max-width: 1100px; }
+    .gallery-viewport { border: 1px solid rgba(184,151,90,0.32); }
+    .gallery-slide {
+      aspect-ratio: auto;
+      max-height: none;
+      /* la foto aprovecha casi toda la altura de la pantalla */
+      height: clamp(480px, calc(100vh - 200px), 840px);
     }
-    .gallery-slide { border-color: rgba(184,151,90,0.32); }
+    .gallery-nav { width: 54px; height: 54px; bottom: auto; top: 50%; margin-top: -27px; font-size: 1.8rem; }
+    .gallery-prev { left: 22px; }
+    .gallery-next { right: 22px; }
+    .gallery-expand { width: 44px; height: 44px; top: 16px; right: 16px; }
+  }
+
+  /* ── VISOR AMPLIADO ── */
+  .lightbox {
+    position: fixed;
+    inset: 0;
+    z-index: 10000;
+    background: #060b14;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.35s ease, visibility 0s linear 0.35s;
+    overscroll-behavior: contain;
+    touch-action: none;
+  }
+  .lightbox.is-open { opacity: 1; visibility: visible; transition: opacity 0.35s ease; }
+  .lb-viewport {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    touch-action: none;
+    -webkit-user-select: none;
+    user-select: none;
+  }
+  .lb-track {
+    display: flex;
+    height: 100%;
+    transition: transform 0.55s cubic-bezier(0.33, 0, 0.15, 1);
+    will-change: transform;
+  }
+  .lb-slide {
+    flex: 0 0 100%;
+    height: 100%;
+    padding: 64px 0 74px;
+    box-sizing: border-box;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+  }
+  .lb-slide img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    pointer-events: none;
+    -webkit-user-drag: none;
+  }
+  .lb-slide img.is-loaded { opacity: 1; }
+  .lb-btn {
+    position: absolute;
+    z-index: 2;
+    width: 46px; height: 46px;
+    border-radius: 50%;
+    background: rgba(10,17,31,0.6);
+    border: 1px solid rgba(212,180,131,0.55);
+    color: var(--gold-light);
+    font-size: 1.6rem;
+    line-height: 1;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 0 4px;
+    transition: background 0.25s, opacity 0.25s, transform 0.25s;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .lb-btn:hover:not(:disabled) { background: rgba(184,151,90,0.3); }
+  .lb-btn:active:not(:disabled) { transform: scale(0.94); }
+  .lb-btn:disabled { opacity: 0.25; cursor: default; }
+  .lb-btn:focus-visible { outline: 2px solid var(--gold-light); outline-offset: 3px; }
+  .lb-close { top: 14px; right: 14px; font-size: 2rem; padding-bottom: 3px; }
+  .lb-prev { bottom: 14px; left: 14px; }
+  .lb-next { bottom: 14px; right: 14px; }
+  .lb-counter {
+    position: absolute;
+    z-index: 2;
+    left: 0; right: 0; bottom: 28px;
+    text-align: center;
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 1.05rem;
+    letter-spacing: 0.08em;
+    color: rgba(212,180,131,0.9);
+    pointer-events: none;
+  }
+  @media (min-width: 700px) {
+    .lb-slide { padding: 40px 110px 64px; }
+    .lb-close { top: 20px; right: 24px; }
+    .lb-prev, .lb-next { bottom: auto; top: 50%; margin-top: -23px; }
+    .lb-prev { left: 28px; }
+    .lb-next { right: 28px; }
+    .lb-counter { bottom: 24px; }
   }
   @media (prefers-reduced-motion: reduce) {
-    .gallery-track, .gallery-slide, .gallery-slide img { transition-duration: 0.01s !important; }
+    .gallery-track, .gallery-slide, .gallery-slide img, .lightbox, .lb-track, .lb-slide, .lb-slide img { transition-duration: 0.01s !important; }
   }
 
   /* ── EVENTO ── */
@@ -1703,47 +1850,50 @@
   <p class="section-subtitle reveal">Momentos que nos definen</p>
 
   <div class="gallery reveal" id="galleryCarousel" role="region" aria-roledescription="carousel" aria-label="Galería de fotos de Daniel y Narumi" tabindex="0">
-    <div class="gallery-viewport" id="galleryViewport">
-      <div class="gallery-track" id="galleryTrack">
-        <figure class="gallery-slide" role="group" aria-roledescription="slide" aria-label="Foto 1 de 9">
-          <img src="assets/photos/galeria/galeria-01.webp" srcset="assets/photos/galeria/galeria-01-sm.webp 720w, assets/photos/galeria/galeria-01.webp 853w" sizes="(min-width: 700px) 560px, 48vw" width="853" height="1280" alt="Daniel y Narumi abrazados en una cueva junto al mar, al atardecer" style="--pos: 50% 60%;" decoding="async" draggable="false">
-        </figure>
-        <figure class="gallery-slide" role="group" aria-roledescription="slide" aria-label="Foto 2 de 9">
-          <img src="assets/photos/galeria/galeria-02.webp" srcset="assets/photos/galeria/galeria-02-sm.webp 720w, assets/photos/galeria/galeria-02.webp 1334w" sizes="(min-width: 700px) 560px, 48vw" width="1334" height="2000" alt="Narumi y Daniel contemplando el anillo de compromiso" style="--pos: 50% 35%;" decoding="async" draggable="false">
-        </figure>
-        <figure class="gallery-slide" role="group" aria-roledescription="slide" aria-label="Foto 3 de 9">
-          <img src="assets/photos/galeria/galeria-03.webp" srcset="assets/photos/galeria/galeria-03-sm.webp 720w, assets/photos/galeria/galeria-03.webp 874w" sizes="(min-width: 700px) 560px, 48vw" width="874" height="1280" alt="Daniel y Narumi abrazados en la orilla, con el reflejo del atardecer" style="--pos: 50% 50%;" loading="lazy" decoding="async" draggable="false">
-        </figure>
-        <figure class="gallery-slide" role="group" aria-roledescription="slide" aria-label="Foto 4 de 9">
-          <img src="assets/photos/galeria/galeria-04.webp" srcset="assets/photos/galeria/galeria-04-sm.webp 720w, assets/photos/galeria/galeria-04.webp 1280w" sizes="(min-width: 700px) 560px, 48vw" width="1280" height="2000" alt="Daniel y Narumi sonriéndose en una cena romántica en la playa" style="--pos: 50% 50%;" loading="lazy" decoding="async" draggable="false">
-        </figure>
-        <figure class="gallery-slide" role="group" aria-roledescription="slide" aria-label="Foto 5 de 9">
-          <img src="assets/photos/galeria/galeria-05.webp" srcset="assets/photos/galeria/galeria-05-sm.webp 720w, assets/photos/galeria/galeria-05.webp 1345w" sizes="(min-width: 700px) 560px, 48vw" width="1345" height="2000" alt="Daniel y Narumi caminando de la mano por la orilla del mar" style="--pos: 50% 65%;" loading="lazy" decoding="async" draggable="false">
-        </figure>
-        <figure class="gallery-slide" role="group" aria-roledescription="slide" aria-label="Foto 6 de 9">
-          <img src="assets/photos/galeria/galeria-06.webp" srcset="assets/photos/galeria/galeria-06-sm.webp 720w, assets/photos/galeria/galeria-06.webp 1016w" sizes="(min-width: 700px) 560px, 48vw" width="1016" height="1280" alt="Daniel y Narumi en blanco y negro, con la caja del anillo" style="--pos: 45% 50%;" loading="lazy" decoding="async" draggable="false">
-        </figure>
-        <figure class="gallery-slide" role="group" aria-roledescription="slide" aria-label="Foto 7 de 9">
-          <img src="assets/photos/galeria/galeria-07.webp" srcset="assets/photos/galeria/galeria-07-sm.webp 720w, assets/photos/galeria/galeria-07.webp 854w" sizes="(min-width: 700px) 560px, 48vw" width="854" height="1280" alt="Daniel cargando a Narumi sobre la playa al atardecer" style="--pos: 50% 65%;" loading="lazy" decoding="async" draggable="false">
-        </figure>
-        <figure class="gallery-slide" role="group" aria-roledescription="slide" aria-label="Foto 8 de 9">
-          <img src="assets/photos/galeria/galeria-08.webp" srcset="assets/photos/galeria/galeria-08-sm.webp 720w, assets/photos/galeria/galeria-08.webp 854w" sizes="(min-width: 700px) 560px, 48vw" width="854" height="1280" alt="Daniel y Narumi en una cena a la luz de las velas junto al mar" style="--pos: 50% 60%;" loading="lazy" decoding="async" draggable="false">
-        </figure>
-        <figure class="gallery-slide" role="group" aria-roledescription="slide" aria-label="Foto 9 de 9">
-          <img src="assets/photos/galeria/galeria-09.webp" srcset="assets/photos/galeria/galeria-09-sm.webp 720w, assets/photos/galeria/galeria-09.webp 1334w" sizes="(min-width: 700px) 560px, 48vw" width="1334" height="2000" alt="Daniel y Narumi besándose en una cueva marina con el sol al fondo" style="--pos: 50% 55%;" loading="lazy" decoding="async" draggable="false">
-        </figure>
+    <div class="gallery-stage">
+      <div class="gallery-viewport" id="galleryViewport">
+        <div class="gallery-track" id="galleryTrack">
+          <figure class="gallery-slide" role="group" aria-roledescription="slide" aria-label="Foto 1 de 9" style="--bg: url('data:image/webp;base64,UklGRnQBAABXRUJQVlA4IGgBAACwBwCdASogADEAPtFWpkyoJKOiLAmZABoJZADF6UF5ArMMZkWbXMV5BQRftlpyN4AeHWAqzH+yCm/jjDCPg9VBVxhTuqEIAP7+Lp/2XX1a4nGnneqo7HFRmXAiWNf7/oBWnY9UFEvEarRCNTqLxbUhCMNDU1frrw69U2fHO3F/V8bKD7roQ1znW+MEQYXtNAdwHEfgVmnxqtxoZbY+h70xcKaVDFQZONwvfWZO/SVth/peul6QayL7b44VNU+Tw8nP1JNgNS5LfnRRT7O8pXvsdN3N6DD8upPSppMulJX9hv70wPfOFSxpJ7wf8tvpDzZg1D78miY9llA6I1Qga0kmJ7WKfvDFqrgchvd+z5BS/7bqZv/SA/sSOlo4aoSHfxBsSfyxrvGxrj7GBJnU7Ln5u9K/2gbv9+91eYiVlPHFXUGmWdUzXD8CoGehJBMbgRKjLgDxZeJM4NYYBIAiSAzw7NtF8AAAAAA=');">
+            <img src="assets/photos/hero.jpg" width="1680" height="2576" alt="Daniel muestra el anillo de compromiso junto a Narumi, en la playa" decoding="async" draggable="false">
+          </figure>
+          <figure class="gallery-slide" role="group" aria-roledescription="slide" aria-label="Foto 2 de 9" style="--bg: url('data:image/webp;base64,UklGRoIBAABXRUJQVlA4IHYBAABwCACdASogADAAPtFepk6oJSMiKrgKAQAaCWIArj1Rqog31Zd/ilOgWax/xB2Y+3eNKo5walCB0jdeboyOw9mOg0tuBqG/GMfsj72gAP78ExgPO19JvnlXNQv+6wJpz7RTJ2A9e9/5SmStWl9r7/CxvtWRMKJ3Ey9nb3mkpYdztoPli4FUbIdpR7wn5kMMNvUN8x96b9ehmh2r5ZfkIyknG1o5wTNrqoOnmbwN8vcM+9aNcyaK5tEU0es++iW3c2dqWKsp1+yGZztnuMNk+AyZNF0ROj6ZxO101mtZt26W+beaLeRUyg9/su3ioS5BI141dpEA12iIVlPgj0bp0VrIfBHqq5/kdlc03rz3cPjZgRtgYxFp8n2ponmj0QMTao/OvYNXT40CKl0yANdXbi+cCaQ4J3NUZGFdA/QUGTajR7lcHUTk4J9wCtyxve3wVPHKO5ZiTjqbSqwOmD3LbjqWsIO9sqC0Fn4McTsw2sTFcudVa3AAAA==');">
+            <img src="assets/photos/galeria/galeria-02.webp" srcset="assets/photos/galeria/galeria-02-sm.webp 720w, assets/photos/galeria/galeria-02.webp 1334w" sizes="(min-width: 700px) 560px, 100vw" width="1334" height="2000" alt="Narumi y Daniel contemplando el anillo de compromiso" loading="lazy" decoding="async" draggable="false">
+          </figure>
+          <figure class="gallery-slide" role="group" aria-roledescription="slide" aria-label="Foto 3 de 9" style="--bg: url('data:image/webp;base64,UklGRigBAABXRUJQVlA4IBwBAABQBwCdASogAC8APtFWpkyoJKOiMBVaqQAaCUAVyfCgUxItrlORjfxeefew1U6N16vnm8rDdm5gQK1ZrkV86ByPZqAAAP74y252PnU3ahbuD3WOq9sd5ote9Nl4D8nYWhOOnKVcQR04Rk+YN9tn0CMH8xbl0b1pb6K0j9EwDOEU4wJ3uhKqADOAtNAASn+Zoy/b6w4yoyOMwZnRhOMQj6OIa7ZXtppVYohy60BDiFIvLeBtLIZLWy9T2mmV56gWZrwOlfetdsLvjjgQqT3O3M0tnuY+6X4a5gQ/pZfuC589iIhaq2vCA60EXVtA22BVkIEI3B/hoLGVdYrZCrHdE60Wtd0tgb6zCN1xPuHbUeNudkCzYhpZbGDMApgAAA==');">
+            <img src="assets/photos/galeria/galeria-03.webp" srcset="assets/photos/galeria/galeria-03-sm.webp 720w, assets/photos/galeria/galeria-03.webp 874w" sizes="(min-width: 700px) 560px, 100vw" width="874" height="1280" alt="Daniel y Narumi abrazados en la orilla, con el reflejo del atardecer" loading="lazy" decoding="async" draggable="false">
+          </figure>
+          <figure class="gallery-slide" role="group" aria-roledescription="slide" aria-label="Foto 4 de 9" style="--bg: url('data:image/webp;base64,UklGRs4BAABXRUJQVlA4IMIBAAAwCQCdASogADIAPtFWokuoJKMhsAgBABoJQBkof5Ul2bRUdADJfrW7zbvaRttAS7/oqKvc/9AGvjA6cdGApfAMN/iIQe1rewP6S6zjfXOXLKvwAP7+fC8z2WA9q8HQmkVy8mIM+TosKLpZsdTKhNv1hIUZ4vy7PdcQqsXK5phy0NdPkzIvYOQE3t71CJSAvB7s8LX00WFUXORvg2OBdg0hbmjmK1xe+WzDrzObTB1PYbdEd6cxXJkKph9zjOF5OaADWHd9jAZFzVusoBSgsG3eweWbCHkTcocJLWlTB/wFAKH96G9YD+u+j6BWLz5gk3jfgfe/yiWrudrhosmgj8aFWEdWKCIAE+NYE30rAfGjHyvvJU94WIZ/ufaw13ee4opRfTd/dE8gD6MoccQ87ckVozrUpTsZct1qrF8dfrO9V32lj9UnA4x7meMNU4LyVbjvP1tAkaAYw7ISmZ2tjpC1lBSVzFjRkOttFRjU2UYKPsghbpqS1iL5HGNCa60Xzet50P+P5+7Fn0sUeQ7CH9Ipis+9iSEPXIGUTy+9HrSUJ62BZgjRb/rbpHBJo5cQiOv/JY1O8j8IL/lIrTOlzgjwAAA=');">
+            <img src="assets/photos/galeria/galeria-04.webp" srcset="assets/photos/galeria/galeria-04-sm.webp 720w, assets/photos/galeria/galeria-04.webp 1280w" sizes="(min-width: 700px) 560px, 100vw" width="1280" height="2000" alt="Daniel y Narumi sonriéndose en una cena romántica en la playa" loading="lazy" decoding="async" draggable="false">
+          </figure>
+          <figure class="gallery-slide" role="group" aria-roledescription="slide" aria-label="Foto 5 de 9" style="--bg: url('data:image/webp;base64,UklGRgoBAABXRUJQVlA4IP4AAADQBQCdASogADAAPtFYpEwoJSOiKqwBABoJZADPHoBOPA7aK+GsuZP+O3zYt/Lkx/mmg4v1ksegAP779mAH3vU2PCQbcvmal67eHAvslQZ8BpuP0XLFcnAgzp+gb2Qz08AavM5iwZCDNbYCcAFTeavTckwi6B5aqiZSNogrluyG2VWWs5HWRUyGaWpiGKAFqbzq+Q1wvVXPvOYV60J+EtR45NyQWsE+mZV2i923mrkdcLObeqHdZwWb6Nx9VPQreUbQ4gNKJO8ikyojhYqkLHaQrJHp76OVWxFkyaL9sllGNSNK8J1zXZFr2uCo1unMppx5dj3MhqA18DQGJP0AAA==');">
+            <img src="assets/photos/galeria/galeria-05.webp" srcset="assets/photos/galeria/galeria-05-sm.webp 720w, assets/photos/galeria/galeria-05.webp 1345w" sizes="(min-width: 700px) 560px, 100vw" width="1345" height="2000" alt="Daniel y Narumi caminando de la mano por la orilla del mar" loading="lazy" decoding="async" draggable="false">
+          </figure>
+          <figure class="gallery-slide" role="group" aria-roledescription="slide" aria-label="Foto 6 de 9" style="--bg: url('data:image/webp;base64,UklGRjwBAABXRUJQVlA4IDABAAAQBwCdASogACgAPtFepk4oJSOiKqgBABoJaQARVx1YbS6uhNkgpuoYbxT/WoUVqs2kRxGNIHooVnGfX6+SWk/QAAD+/DHNhwi8zCbfYZbT11AThhYTH9hUB4+GwjfkC2XewEQGOqOA3Njtg79BaB2fSupAuLxPqG6Q53UVCH6XnWFwfZEHt8bQ1HNCMgv1fMxreoL8r6oyIFr+ewgwyURTr5cRpqOFWVHFPd63TM4DN6rXr5zeUPyU3FpOIOio+fvHZZr4Dk5eRsWnTruzT9xuN1a8AiAaUIr84r6TxrY6W2Dx7s/1noZBP0qV3j91Rfg4GnF0dS06ZHxQL97pGp2TXThGYxZTC/JjRZ7xe8E8cbaNVfZvTtospZPnpVK1n7yTNq2ZliPE9YKHkXK4AAAA');">
+            <img src="assets/photos/galeria/galeria-06.webp" srcset="assets/photos/galeria/galeria-06-sm.webp 720w, assets/photos/galeria/galeria-06.webp 1016w" sizes="(min-width: 700px) 560px, 100vw" width="1016" height="1280" alt="Daniel y Narumi en blanco y negro, con la caja del anillo" loading="lazy" decoding="async" draggable="false">
+          </figure>
+          <figure class="gallery-slide" role="group" aria-roledescription="slide" aria-label="Foto 7 de 9" style="--bg: url('data:image/webp;base64,UklGRtYAAABXRUJQVlA4IMoAAADwBQCdASogADAAPtFOpUuoJCOhsBqqqQAaCUAXYA6t0woTKUijZ6t8VwH5g4gmFnbj9arKIaF5AAD++8svg9ww5VZbYigbGeN1tyL3FDMjbcSIirpFLWWk+Lz6BQ7Rd+p1N9VtzddnDCNjSFzHnR35+M2UVBRHS+SnZwizyN/XWQxDa5Gv40FwjrjlSWFMdJ9SAxLsQlnzEDCaYHzo1DVF9kGkYvzbQRDnhqxLpvw7Ifvogw+wKxAJAU3ovkvniw85raBFUqgDN1AA');">
+            <img src="assets/photos/galeria/galeria-07.webp" srcset="assets/photos/galeria/galeria-07-sm.webp 720w, assets/photos/galeria/galeria-07.webp 854w" sizes="(min-width: 700px) 560px, 100vw" width="854" height="1280" alt="Daniel cargando a Narumi sobre la playa al atardecer" loading="lazy" decoding="async" draggable="false">
+          </figure>
+          <figure class="gallery-slide" role="group" aria-roledescription="slide" aria-label="Foto 8 de 9" style="--bg: url('data:image/webp;base64,UklGRnYBAABXRUJQVlA4IGoBAACQBgCdASogADAAPtFYpUwoJSOwMBVaqgAaCUAVx6fNSnmgeSv0dyOiMLWnb7iXGVgIoHsM6txgm3uZ8e6gAP74D1FcavWkiZOJwipwCikRf/5CzjPT1cXSA+9XK6GJ1wiP0G9554KmPvZpJDm3LhYXc4YNl+loSm+rQ1zkpt9BeQ1ISNnpkD5QKIiL+CuUblNjuM2siqovSOjZ7hL3eHIL4zY7jh/tNidNRfttNduQGlRzS50eyYWJIN7Q4UQt3bK13zgv8PVhvJBJjXj7F58xLCfl7OI+1UPXzuklNUOi5FrTTu05y33UO9RN7zwRoopMmcDomMWPmfwRJq1VK6ObdAp0yJa+H4EqXNDUXhAENIsR21567rAiSur7lvFN5S85R1Zs+/FG9DG6J6qioEXoWEfw8rgIbFOmrpbo92vIUKtwRFNobctficT2dqssullO2hhS+Bd8sBiPOE8WEJi/2lSIo6tAXwAAAA==');">
+            <img src="assets/photos/galeria/galeria-08.webp" srcset="assets/photos/galeria/galeria-08-sm.webp 720w, assets/photos/galeria/galeria-08.webp 854w" sizes="(min-width: 700px) 560px, 100vw" width="854" height="1280" alt="Daniel y Narumi en una cena a la luz de las velas junto al mar" loading="lazy" decoding="async" draggable="false">
+          </figure>
+          <figure class="gallery-slide" role="group" aria-roledescription="slide" aria-label="Foto 9 de 9" style="--bg: url('data:image/webp;base64,UklGRswBAABXRUJQVlA4IMABAABwCACdASogADAAPrVCm0unI6KhurzIAOAWiWwAnRH/7NQN3ngyqpAar4fjvopA9E+dCqY3PyE1Iwa2hN2MPZX76CHBUiwxwa7PvVQAAP7+zSh9Cm15RuYnHOMsoOsd8eu5i0Q7tMn9YqvgDkyBXudeKFbmEnzZXgs7JfcYiKeWWjAaDBo6rFmc4F05M3+hRO5a7VnnPHpgKzvh+jRuU7JCVPfN6Y6hgEFSYprWaKW6/07Tx+xx0c3ncvdrwlrcwBlkVvrZvJe//u+1VZxJl7ttbVb4ZR6uE5ualJwQS/UGzCz32m8ZOs39Oq48lAM4DdFEP2JnEFs4Q7aOThuJpo28EL0s/oPjadDyBC8UAeRb3E5mL5daf0PFPylrvunx+dsb0B672iFUlTzDpspnRWtIojlAoQZ5jovUUVASc46DtvdGL/dedUaJ7E89qPhCxVFkVJjHVUi+RmIh8U6Lg23Dpay9o4slrWp4pl+YYNv1DUM5KN6h/gCrSpmZRUzek3gp02UjWc8ds1Y204ZfmIpE+tEpbFjRCcB73Id9wU/yF3aikXtZiEJYKh9JJDEItGLmlSF92EosuoBmYQcb/YAA');">
+            <img src="assets/photos/galeria/galeria-09.webp" srcset="assets/photos/galeria/galeria-09-sm.webp 720w, assets/photos/galeria/galeria-09.webp 1334w" sizes="(min-width: 700px) 560px, 100vw" width="1334" height="2000" alt="Daniel y Narumi besándose en una cueva marina con el sol al fondo" loading="lazy" decoding="async" draggable="false">
+          </figure>
+        </div>
       </div>
+      <button class="gallery-expand" id="galleryExpand" type="button" aria-label="Ver la foto en pantalla completa">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 4h6v6M10 20H4v-6M20 4l-7 7M4 20l7-7"/></svg>
+      </button>
+      <button class="gallery-nav gallery-prev" id="galleryPrev" type="button" aria-label="Foto anterior" disabled>&#8249;</button>
+      <button class="gallery-nav gallery-next" id="galleryNext" type="button" aria-label="Foto siguiente">&#8250;</button>
     </div>
-    <div class="gallery-controls">
-      <button class="gallery-nav gallery-prev" id="galleryPrev" type="button" aria-label="Fotos anteriores" disabled>&#8249;</button>
-      <div class="gallery-status">
-        <div class="gallery-dots" id="galleryDots"></div>
-        <p class="gallery-counter" id="galleryCounter" aria-live="polite">1 – 2 / 9</p>
-      </div>
-      <button class="gallery-nav gallery-next" id="galleryNext" type="button" aria-label="Fotos siguientes">&#8250;</button>
+    <div class="gallery-status">
+      <div class="gallery-dots" id="galleryDots"></div>
+      <p class="gallery-counter" id="galleryCounter" aria-live="polite">1 / 9</p>
     </div>
   </div>
-  <p class="gallery-instruction reveal">Desliza o usa las flechas</p>
+  <p class="gallery-instruction reveal">Toca la foto para ampliarla</p>
 </section>
 
 <!-- EVENTO -->
@@ -2138,6 +2288,13 @@
   <div class="footer-rule reveal"></div>
   <p class="footer-copy reveal">Con amor, para quienes hacen parte de este camino.</p>
 </footer>
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Galería ampliada" aria-hidden="true">
+  <div class="lb-viewport" id="lbViewport"><div class="lb-track" id="lbTrack"></div></div>
+  <button class="lb-btn lb-close" id="lbClose" type="button" aria-label="Cerrar">&times;</button>
+  <button class="lb-btn lb-prev" id="lbPrev" type="button" aria-label="Foto anterior">&#8249;</button>
+  <button class="lb-btn lb-next" id="lbNext" type="button" aria-label="Foto siguiente">&#8250;</button>
+  <p class="lb-counter" id="lbCounter" aria-live="polite">1 / 9</p>
+</div>
 
 <!-- MODAL EMAIL RSVP -->
 <div class="modal-overlay" id="modal-email-rsvp" onclick="closeModalOutside(event, 'modal-email-rsvp')">
@@ -2273,8 +2430,8 @@ updateCountdown();
 setInterval(updateCountdown, 1000);
 
 // ── GALERÍA ──
-// Carrusel sin reproducción automática. Para cambiar cuántas fotos se ven y cuántas avanza
-// cada clic, edita --visible y --step en la regla ".gallery" del CSS (por ejemplo 1 y 1).
+// Carrusel de una sola foto, sin reproducción automática, con visor ampliado al tocar la foto.
+// Para mostrar más de una foto a la vez, edita --visible y --step en la regla ".gallery" del CSS.
 (function () {
   const root = document.getElementById('galleryCarousel');
   if (!root) return;
@@ -2283,11 +2440,12 @@ setInterval(updateCountdown, 1000);
   const slides = Array.from(track.children);
   const prevBtn = document.getElementById('galleryPrev');
   const nextBtn = document.getElementById('galleryNext');
+  const expandBtn = document.getElementById('galleryExpand');
   const dotsEl = document.getElementById('galleryDots');
   const counter = document.getElementById('galleryCounter');
   const total = slides.length;
 
-  let visible = 2, step = 2, stops = [0], stopIdx = 0, dragging = false;
+  let visible = 1, step = 1, stops = [0], stopIdx = 0, dragging = false;
 
   function readConfig() {
     const cs = getComputedStyle(root);
@@ -2318,7 +2476,7 @@ setInterval(updateCountdown, 1000);
 
   function offsetFor(start) { return slides[start].offsetLeft; }
 
-  // Carga con antelación las fotos de las páginas vecinas para que no aparezcan vacías
+  // Carga con antelación las fotos vecinas para que no aparezcan vacías
   function warm(start) {
     const from = Math.max(0, start - visible * 2), to = Math.min(total, start + visible * 3);
     for (let i = from; i < to; i++) {
@@ -2351,6 +2509,13 @@ setInterval(updateCountdown, 1000);
     stopIdx = Math.max(0, Math.min(stops.length - 1, i));
     render(true);
   }
+  // Lleva el carrusel a la parada que contiene la foto "idx" (se usa al cerrar el visor)
+  function goToPhoto(idx) {
+    let s = 0;
+    stops.forEach((start, i) => { if (start <= idx) s = i; });
+    stopIdx = s;
+    render(false);
+  }
 
   prevBtn.addEventListener('click', () => goTo(stopIdx - 1));
   nextBtn.addEventListener('click', () => goTo(stopIdx + 1));
@@ -2358,14 +2523,15 @@ setInterval(updateCountdown, 1000);
   root.addEventListener('keydown', (e) => {
     if (e.key === 'ArrowLeft') { e.preventDefault(); goTo(stopIdx - 1); }
     else if (e.key === 'ArrowRight') { e.preventDefault(); goTo(stopIdx + 1); }
+    else if (e.key === 'Enter' && e.target === root) { e.preventDefault(); openLightbox(stops[stopIdx]); }
   });
 
   // ── Deslizamiento táctil y con el ratón ──
-  let startX = 0, startY = 0, startT = 0, baseOffset = 0, pid = null, pressed = false;
+  let startX = 0, startY = 0, startT = 0, baseOffset = 0, pid = null, pressed = false, suppressClick = false;
 
   viewport.addEventListener('pointerdown', (e) => {
     if (e.pointerType === 'mouse' && e.button !== 0) return;
-    pressed = true; dragging = false; pid = e.pointerId;
+    pressed = true; dragging = false; suppressClick = false; pid = e.pointerId;
     startX = e.clientX; startY = e.clientY; startT = e.timeStamp;
     baseOffset = offsetFor(stops[stopIdx]);
   });
@@ -2375,14 +2541,14 @@ setInterval(updateCountdown, 1000);
     const dx = e.clientX - startX, dy = e.clientY - startY;
     if (!dragging) {
       if (Math.abs(dx) < 8 || Math.abs(dx) < Math.abs(dy)) return;
-      dragging = true;
+      dragging = true; suppressClick = true;
       viewport.classList.add('is-dragging');
       track.style.transition = 'none';
       try { viewport.setPointerCapture(pid); } catch (_) {}
     }
     const maxOffset = offsetFor(stops[stops.length - 1]);
     let pos = baseOffset - dx;
-    if (pos < 0) pos = pos * 0.35;                                   // resistencia en el inicio
+    if (pos < 0) pos = pos * 0.35;                                        // resistencia en el inicio
     else if (pos > maxOffset) pos = maxOffset + (pos - maxOffset) * 0.35; // y en el final
     track.style.transform = `translate3d(${-pos}px,0,0)`;
   });
@@ -2404,6 +2570,14 @@ setInterval(updateCountdown, 1000);
   viewport.addEventListener('pointerup', (e) => endDrag(e, false));
   viewport.addEventListener('pointercancel', (e) => endDrag(e, true));
 
+  // Un toque (sin arrastrar) sobre la foto abre el visor ampliado
+  viewport.addEventListener('click', (e) => {
+    if (suppressClick) { suppressClick = false; return; }
+    const slide = e.target.closest('.gallery-slide');
+    if (slide) openLightbox(slides.indexOf(slide));
+  });
+  expandBtn.addEventListener('click', () => openLightbox(stops[stopIdx]));
+
   // ── Aparición suave de cada foto al terminar de cargar ──
   slides.forEach((s) => {
     const img = s.querySelector('img');
@@ -2412,6 +2586,161 @@ setInterval(updateCountdown, 1000);
     if (img.complete && img.naturalWidth > 0) show();
     else { img.addEventListener('load', show, { once: true }); img.addEventListener('error', show, { once: true }); }
   });
+
+  // ══════════ VISOR AMPLIADO ══════════
+  const lb = document.getElementById('lightbox');
+  const lbViewport = document.getElementById('lbViewport');
+  const lbTrack = document.getElementById('lbTrack');
+  const lbCloseBtn = document.getElementById('lbClose');
+  const lbPrevBtn = document.getElementById('lbPrev');
+  const lbNextBtn = document.getElementById('lbNext');
+  const lbCounter = document.getElementById('lbCounter');
+  let lbIdx = 0, lbOpen = false, lastFocus = null;
+
+  const lbImgs = slides.map((s) => {
+    const src = s.querySelector('img');
+    const wrap = document.createElement('div');
+    wrap.className = 'lb-slide';
+    const im = document.createElement('img');
+    im.alt = src.alt;
+    im.draggable = false;
+    im.dataset.src = src.getAttribute('src');   // versión grande de la foto
+    wrap.appendChild(im);
+    lbTrack.appendChild(wrap);
+    return im;
+  });
+
+  function lbLoad(i) {
+    for (let k = Math.max(0, i - 1); k <= Math.min(total - 1, i + 2); k++) {
+      const im = lbImgs[k];
+      if (im.getAttribute('src')) continue;
+      const show = () => im.classList.add('is-loaded');
+      im.addEventListener('load', show, { once: true });
+      im.addEventListener('error', show, { once: true });
+      im.src = im.dataset.src;
+    }
+  }
+
+  function lbRender(animate) {
+    if (animate === false) lbTrack.style.transition = 'none';
+    lbTrack.style.transform = `translate3d(${-lbIdx * 100}%,0,0)`;
+    if (animate === false) { void lbTrack.offsetWidth; lbTrack.style.transition = ''; }
+    lbImgs.forEach((im, i) => im.parentNode.setAttribute('aria-hidden', i === lbIdx ? 'false' : 'true'));
+    lbCounter.textContent = `${lbIdx + 1} / ${total}`;
+    lbPrevBtn.disabled = lbIdx === 0;
+    lbNextBtn.disabled = lbIdx === total - 1;
+    lbLoad(lbIdx);
+  }
+  function lbGo(i) {
+    lbIdx = Math.max(0, Math.min(total - 1, i));
+    lbRender(true);
+  }
+
+  function openLightbox(i) {
+    if (lbOpen) return;
+    lbIdx = Math.max(0, Math.min(total - 1, i || 0));
+    lastFocus = document.activeElement;
+    lbOpen = true;
+    lb.classList.add('is-open');
+    lb.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+    lbRender(false);
+    lbCloseBtn.focus({ preventScroll: true });
+  }
+  function closeLightbox() {
+    if (!lbOpen) return;
+    lbOpen = false;
+    lb.classList.remove('is-open');
+    lb.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+    goToPhoto(lbIdx);                       // el carrusel queda en la foto que se estaba viendo
+    if (lastFocus && lastFocus.focus) lastFocus.focus({ preventScroll: true });
+    setTimeout(() => {                      // restablece cualquier desplazamiento del gesto de cierre
+      lbImgs.forEach((im) => { im.parentNode.style.transform = ''; im.parentNode.style.opacity = ''; });
+      lb.style.background = '';
+    }, 400);
+  }
+
+  lbCloseBtn.addEventListener('click', closeLightbox);
+  lbPrevBtn.addEventListener('click', () => lbGo(lbIdx - 1));
+  lbNextBtn.addEventListener('click', () => lbGo(lbIdx + 1));
+
+  document.addEventListener('keydown', (e) => {
+    if (!lbOpen) return;
+    if (e.key === 'Escape') { e.preventDefault(); closeLightbox(); }
+    else if (e.key === 'ArrowLeft') { e.preventDefault(); lbGo(lbIdx - 1); }
+    else if (e.key === 'ArrowRight') { e.preventDefault(); lbGo(lbIdx + 1); }
+    else if (e.key === 'Tab') {              // el foco se queda dentro del visor
+      const f = [lbCloseBtn, lbPrevBtn, lbNextBtn].filter((b) => !b.disabled);
+      const i = f.indexOf(document.activeElement);
+      e.preventDefault();
+      f[(i + (e.shiftKey ? -1 : 1) + f.length) % f.length].focus();
+    }
+  });
+
+  // Gestos del visor: izquierda/derecha cambia de foto; hacia abajo cierra; un toque fuera de la foto cierra
+  let lx = 0, ly = 0, lt = 0, lpid = null, lDown = false, lAxis = null, lBase = 0;
+
+  lbViewport.addEventListener('pointerdown', (e) => {
+    if (e.pointerType === 'mouse' && e.button !== 0) return;
+    lDown = true; lAxis = null; lpid = e.pointerId;
+    lx = e.clientX; ly = e.clientY; lt = e.timeStamp;
+    lBase = -lbIdx * lbViewport.clientWidth;
+  });
+
+  lbViewport.addEventListener('pointermove', (e) => {
+    if (!lDown || e.pointerId !== lpid) return;
+    const dx = e.clientX - lx, dy = e.clientY - ly;
+    if (!lAxis) {
+      if (Math.hypot(dx, dy) < 8) return;
+      lAxis = Math.abs(dx) >= Math.abs(dy) ? 'x' : 'y';
+      lbTrack.style.transition = 'none';
+      lbImgs[lbIdx].parentNode.style.transition = 'none';
+      try { lbViewport.setPointerCapture(lpid); } catch (_) {}
+    }
+    if (lAxis === 'x') {
+      const vw = lbViewport.clientWidth, min = -(total - 1) * vw;
+      let pos = lBase + dx;
+      if (pos > 0) pos *= 0.35;
+      else if (pos < min) pos = min + (pos - min) * 0.35;
+      lbTrack.style.transform = `translate3d(${pos}px,0,0)`;
+    } else {
+      const wrap = lbImgs[lbIdx].parentNode;
+      wrap.style.transform = `translate3d(0,${dy}px,0)`;
+      wrap.style.opacity = String(Math.max(0.3, 1 - Math.abs(dy) / 500));
+      lb.style.background = `rgba(6,11,20,${Math.max(0.35, 1 - Math.abs(dy) / 450)})`;
+    }
+  });
+
+  function lbEnd(e, cancelled) {
+    if (!lDown || e.pointerId !== lpid) return;
+    lDown = false;
+    const dx = e.clientX - lx, dy = e.clientY - ly, dt = Math.max(1, e.timeStamp - lt);
+    const wrap = lbImgs[lbIdx].parentNode;
+    lbTrack.style.transition = '';
+    wrap.style.transition = '';
+    if (lAxis === 'x') {
+      const vw = lbViewport.clientWidth;
+      const move = !cancelled && (Math.abs(dx) > vw * 0.16 || (Math.abs(dx) > 30 && dt < 320));
+      lbGo(lbIdx + (move ? (dx < 0 ? 1 : -1) : 0));
+    } else if (lAxis === 'y') {
+      const close = !cancelled && (Math.abs(dy) > 110 || (Math.abs(dy) > 50 && dt < 320));
+      if (close) closeLightbox();
+      else { wrap.style.transform = ''; wrap.style.opacity = ''; lb.style.background = ''; }
+    } else if (!cancelled) {
+      // Toque: si cae fuera de la foto (en el fondo oscuro), se cierra el visor
+      const im = lbImgs[lbIdx], r = im.getBoundingClientRect();
+      const ar = im.naturalWidth && im.naturalHeight ? im.naturalWidth / im.naturalHeight : r.width / r.height;
+      let w = r.width, h = r.height;
+      if (w / h > ar) w = h * ar; else h = w / ar;
+      const inside = Math.abs(e.clientX - (r.left + r.width / 2)) <= w / 2 &&
+                     Math.abs(e.clientY - (r.top + r.height / 2)) <= h / 2;
+      if (!inside) closeLightbox();
+    }
+    lAxis = null;
+  }
+  lbViewport.addEventListener('pointerup', (e) => lbEnd(e, false));
+  lbViewport.addEventListener('pointercancel', (e) => lbEnd(e, true));
 
   // ── Inicio y adaptación al tamaño de pantalla ──
   function setup(keepStart) {
@@ -2422,6 +2751,7 @@ setInterval(updateCountdown, 1000);
     if (keepStart) stops.forEach((s, i) => { if (s <= currentStart) stopIdx = i; });
     buildDots();
     render(false);
+    if (lbOpen) lbRender(false);
   }
   root.classList.add('is-ready');
   setup(false);
