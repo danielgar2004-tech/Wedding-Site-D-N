@@ -2355,6 +2355,30 @@
     transform: translateY(0);
   }
 
+  /* ── LEGIBILIDAD EN SECCIONES CLARAS ──
+     El dorado brillante se reserva para fondos azules; sobre beige y blanco se usa un dorado
+     más profundo de la misma familia, para que los textos pequeños y en cursiva se lean bien. */
+  :root {
+    --gold-ink: #7a5c24;        /* textos dorados pequeños sobre fondo claro */
+    --gold-ink-large: #946f2f;  /* números y títulos grandes en dorado */
+    --ink-warm: #5e5548;        /* textos secundarios sobre tarjetas blancas */
+  }
+  .floral-section, .modal-box { --gold-dark: var(--gold-ink); }
+  .floral-section .section-label,
+  .tl-when,
+  .evento-card-type { color: var(--gold-ink); }
+  .floral-section .section-subtitle,
+  .historia-quote { color: var(--gold-ink); font-weight: 400; }
+  .evento-card-day { color: var(--gold-ink-large); }
+  .evento-card-dayname,
+  .evento-card-address,
+  .evento-card-year,
+  .regalos-note { color: var(--ink-warm); }
+  .evento-card-time { color: var(--ink-warm); font-weight: 600; }
+  .btn-primary { background: var(--gold-ink-large); }      /* texto blanco legible sobre el dorado */
+  .btn-primary:hover { background: var(--gold-ink); }
+  .modal-close { color: var(--ink-warm); }
+
   /* ── RESPONSIVE ── */
   /* Menú compacto hasta que caben todos los enlaces en una línea */
   @media (max-width: 1180px) {
@@ -2746,7 +2770,7 @@
       <div class="evento-card-day-row">
         <span class="evento-card-dayname">Domingo</span>
         <span class="evento-card-day">11</span>
-        <span class="evento-card-time">1:30 PM</span>
+        <span class="evento-card-time">2:00 PM</span>
       </div>
       <p class="evento-card-year">MMXXVII</p>
       <p class="evento-card-place">Salón del Reino de los Testigos de Jehová</p>
@@ -2782,15 +2806,15 @@
       <path d="M54 32 L74 22 L74 56 L54 46 Z" stroke="#b8975a" stroke-width="2.5" fill="none" stroke-linejoin="round"/>
     </svg>
     <p class="zoom-detail">Domingo, 11 de abril de 2027</p>
-    <p class="zoom-detail" style="margin-bottom: 16px;"><strong>1:30 PM</strong> — hora de Perú (PET)</p>
+    <p class="zoom-detail" style="margin-bottom: 16px;"><strong>2:00 PM</strong> — hora de Perú (PET)</p>
 
     <div class="zoom-timezones">
       <p class="zoom-tz-label">Horarios equivalentes</p>
-      <p class="zoom-detail zoom-tz-item"><strong>2:30 PM</strong> — Venezuela (VET)</p>
-      <p class="zoom-detail zoom-tz-item"><strong>2:30 PM</strong> — Florida (EDT)</p>
-      <p class="zoom-detail zoom-tz-item"><strong>10:30 AM</strong> — California (PDT)</p>
-      <p class="zoom-detail zoom-tz-item"><strong>8:30 PM</strong> — España (CEST)</p>
-      <p class="zoom-detail zoom-tz-item"><strong>2:30 PM</strong> — Chile (CLT)</p>
+      <p class="zoom-detail zoom-tz-item"><strong>3:00 PM</strong> — Venezuela (VET)</p>
+      <p class="zoom-detail zoom-tz-item"><strong>3:00 PM</strong> — Florida (EDT)</p>
+      <p class="zoom-detail zoom-tz-item"><strong>12:00 PM</strong> — California (PDT)</p>
+      <p class="zoom-detail zoom-tz-item"><strong>9:00 PM</strong> — España (CEST)</p>
+      <p class="zoom-detail zoom-tz-item"><strong>3:00 PM</strong> — Chile (CLT)</p>
     </div>
 
     <div class="zoom-divider"></div>
@@ -2833,7 +2857,7 @@
       <div class="evento-card-day-row">
         <span class="evento-card-dayname">Domingo</span>
         <span class="evento-card-day">11</span>
-        <span class="evento-card-time">3:30 PM</span>
+        <span class="evento-card-time">3:45 PM</span>
       </div>
       <p class="evento-card-year">MMXXVII</p>
       <p class="evento-card-place">Castillo de Yanamarca</p>
@@ -3359,7 +3383,7 @@ function toggleMusic() {
 
 // ── COUNTDOWN ──
 function updateCountdown() {
-  const target = new Date('2027-04-11T13:30:00-05:00').getTime();
+  const target = new Date('2027-04-11T14:00:00-05:00').getTime();
   const now = new Date().getTime();
   const diff = target - now;
   if (diff <= 0) {
