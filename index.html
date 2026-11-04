@@ -6,6 +6,31 @@
 <meta name="format-detection" content="telephone=no, date=no, address=no, email=no">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <title>Daniel & Narumi — 11 · IV · MMXXVII</title>
+<meta name="description" content="Con mucho cariño, te invitamos a celebrar nuestra boda el 11 de abril de 2027 en Cajamarca, Perú.">
+<meta name="theme-color" content="#0e1929">
+<meta name="apple-mobile-web-app-title" content="D&amp;N">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/icons/favicon-32.png">
+<link rel="icon" type="image/png" sizes="48x48" href="assets/icons/favicon-48.png">
+<link rel="icon" type="image/png" sizes="192x192" href="assets/icons/icon-192.png">
+<link rel="apple-touch-icon" sizes="180x180" href="assets/icons/apple-touch-icon.png">
+<!-- Vista previa al compartir el enlace (WhatsApp, Facebook, etc.) -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Boda Daniel & Narumi">
+<meta property="og:locale" content="es_PE">
+<meta property="og:url" content="https://boda-danielynarumi.netlify.app/">
+<meta property="og:title" content="Daniel & Narumi · 11 de abril de 2027">
+<meta property="og:description" content="Con mucho cariño, te invitamos a celebrar nuestra boda en Cajamarca, Perú.">
+<meta property="og:image" content="https://boda-danielynarumi.netlify.app/assets/og/vista-previa.jpg">
+<meta property="og:image:secure_url" content="https://boda-danielynarumi.netlify.app/assets/og/vista-previa.jpg">
+<meta property="og:image:type" content="image/jpeg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Daniel y Narumi abrazados en una cueva junto al mar. Nos casamos el 11 de abril de 2027 en Cajamarca, Perú.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Daniel & Narumi · 11 de abril de 2027">
+<meta name="twitter:description" content="Con mucho cariño, te invitamos a celebrar nuestra boda en Cajamarca, Perú.">
+<meta name="twitter:image" content="https://boda-danielynarumi.netlify.app/assets/og/vista-previa.jpg">
+<link rel="preload" as="image" href="assets/photos/hero.jpg" media="(max-width: 767px)">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=Montserrat:wght@200;300;400;500;600&display=swap" rel="stylesheet">
@@ -155,7 +180,7 @@
   .hero-bg {
     position: absolute;
     inset: 0;
-    background-image: url('assets/photos/galeria/galeria-01.webp');
+    background-image: url('assets/photos/final.webp');
     background-size: cover;
     background-position: center center;
     opacity: 0.78;
@@ -186,6 +211,7 @@
     justify-content: center;
     text-align: center;
     padding: 40px 24px;
+    overflow: hidden;
     transition: opacity 0.8s ease, visibility 0.8s ease;
   }
   #welcome-screen.hide {
@@ -200,11 +226,16 @@
     background-size: cover;
     background-position: center;
     opacity: 0.2;
+    transition: opacity 0.9s ease, transform 1.4s ease;
   }
-  @media (max-width: 767px) {
-    .welcome-bg { background-image: url('assets/photos/hero.jpg'); }
+  .welcome-content {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
-  .welcome-content { position: relative; z-index: 2; }
+  .welcome-content > * { transition: opacity 0.5s ease, transform 0.6s ease; }
   .welcome-label {
     font-family: var(--sans);
     font-size: 0.6rem;
@@ -222,6 +253,7 @@
     line-height: 1;
     margin-bottom: 8px;
   }
+  .welcome-names > span { display: block; }
   .welcome-amp {
     font-family: var(--serif);
     font-style: italic;
@@ -237,40 +269,288 @@
     letter-spacing: 0.3em;
     text-transform: uppercase;
     color: rgba(255,255,255,0.5);
-    margin: 20px 0 48px;
+    margin: 20px 0 40px;
   }
   .welcome-divider {
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 12px;
-    margin-bottom: 48px;
+    margin-bottom: 36px;
   }
   .welcome-divider-line { width: 40px; height: 1px; background: rgba(184,151,90,0.4); }
   .welcome-divider-diamond { width: 5px; height: 5px; background: var(--gold); transform: rotate(45deg); }
-  .welcome-btn {
-    font-family: var(--sans);
-    font-size: 0.72rem;
-    font-weight: 600;
-    letter-spacing: 0.25em;
-    text-transform: uppercase;
-    color: var(--navy-dark);
-    background: var(--gold-light);
-    border: none;
-    padding: 18px 48px;
-    cursor: pointer;
-    transition: background 0.2s, transform 0.15s;
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-  }
-  .welcome-btn:hover { background: var(--gold); transform: translateY(-2px); }
   .welcome-verse {
+    order: 10;
     font-family: var(--serif);
     font-style: italic;
     font-size: 0.9rem;
     color: rgba(255,255,255,0.3);
-    margin-top: 32px;
+    margin-top: 28px;
+  }
+
+  /* ── Sello de lacre ── */
+  .seal-wrap { display: flex; flex-direction: column; align-items: center; }
+  .seal-btn {
+    position: relative;
+    width: 112px; height: 112px;
+    padding: 0; border: 0; background: none;
+    border-radius: 50%;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+    animation: sealFloat 3.6s ease-in-out infinite;
+  }
+  .seal-btn::before {               /* halo dorado que invita a tocar */
+    content: '';
+    position: absolute;
+    inset: -18px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(232,203,140,0.45) 0%, rgba(232,203,140,0.12) 45%, rgba(232,203,140,0) 70%);
+    animation: sealGlow 3.6s ease-in-out infinite;
+    pointer-events: none;
+  }
+  .seal-btn:focus-visible { outline: 2px solid var(--gold-light); outline-offset: 8px; }
+  .seal-half {
+    position: absolute;
+    inset: 0;
+    transition: transform 0.95s cubic-bezier(0.45, 0, 0.75, 0.4), opacity 0.8s ease 0.15s;
+    filter: drop-shadow(0 6px 10px rgba(0,0,0,0.45));
+  }
+  .seal-half svg { width: 100%; height: 100%; display: block; }
+  .seal-half.left  { clip-path: polygon(0 0, 53% 0, 47% 17%, 56% 33%, 45% 50%, 55% 67%, 47% 84%, 52% 100%, 0 100%); }
+  .seal-half.right { clip-path: polygon(53% 0, 100% 0, 100% 100%, 52% 100%, 47% 84%, 55% 67%, 45% 50%, 56% 33%, 47% 17%); }
+  .seal-btn:hover .seal-half { transform: scale(1.04); }
+  .seal-btn:active .seal-half { transform: scale(0.95); transition-duration: 0.12s; }
+  .seal-caption {
+    font-family: var(--sans);
+    font-size: 0.62rem;
+    font-weight: 500;
+    letter-spacing: 0.34em;
+    padding-left: 0.34em;
+    text-transform: uppercase;
+    color: var(--gold-light);
+    margin-top: 16px;
+  }
+  @keyframes sealFloat {
+    0%, 100% { transform: translateY(0) rotate(-4deg); }
+    50%      { transform: translateY(-5px) rotate(-1deg); }
+  }
+  @keyframes sealGlow {
+    0%, 100% { opacity: 0.55; transform: scale(0.92); }
+    50%      { opacity: 1;    transform: scale(1.08); }
+  }
+
+  /* Apertura: el sello se parte y el contenido se desvanece */
+  #welcome-screen.is-opening .welcome-content > :not(.seal-wrap),
+  #welcome-screen.is-opening .seal-caption { opacity: 0; transform: translateY(-10px); }
+  #welcome-screen.is-opening .welcome-bg { opacity: 0; transform: scale(1.04); }
+  #welcome-screen.is-opening .seal-btn { animation: none; }
+  #welcome-screen.is-opening .seal-btn::before { animation: sealBurst 0.7s ease-out forwards; }
+  #welcome-screen.is-opening .seal-half.left  { transform: translate(-34px, 70px) rotate(-32deg); opacity: 0; }
+  #welcome-screen.is-opening .seal-half.right { transform: translate(34px, 76px) rotate(28deg); opacity: 0; }
+  @keyframes sealBurst {
+    0%   { opacity: 1; transform: scale(0.9); }
+    100% { opacity: 0; transform: scale(2.6); }
+  }
+
+  /* Móvil: foto nítida arriba, difuminado azul desde la mitad, texto y sello abajo */
+  @media (max-width: 767px) {
+    #welcome-screen {
+      justify-content: flex-end;
+      padding: 0 20px calc(clamp(18px, 3.2vh, 34px) + env(safe-area-inset-bottom));
+    }
+    .welcome-bg {
+      inset: 0 0 auto 0;
+      height: 62%;
+      background-image: url('assets/photos/hero.jpg');
+      background-size: 116% auto;
+      background-repeat: no-repeat;
+      background-position: 50% 12%;
+      opacity: 1;
+      -webkit-mask-image: linear-gradient(to bottom, #000 0, #000 80.6%, rgba(0,0,0,0.5) 89%, transparent 100%);
+      mask-image: linear-gradient(to bottom, #000 0, #000 80.6%, rgba(0,0,0,0.5) 89%, transparent 100%);
+    }
+    #welcome-screen::after {          /* difuminado azul que comienza a la mitad de la pantalla */
+      content: '';
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      pointer-events: none;
+      background: linear-gradient(to bottom,
+        rgba(14,25,41,0) 0%, rgba(14,25,41,0) 50%,
+        rgba(14,25,41,0.3) 51.5%, rgba(14,25,41,0.58) 53.5%, rgba(14,25,41,0.8) 56%,
+        rgba(14,25,41,0.93) 59%, #0e1929 62%);
+      transition: opacity 0.9s ease;
+    }
+    #welcome-screen.is-opening::after { opacity: 0; }
+    .welcome-names, .welcome-label { text-shadow: 0 2px 14px rgba(14,25,41,0.8); }
+    .welcome-label { color: var(--gold-light); }
+    .welcome-content::before {          /* velo suave detrás del texto: protege la lectura sin marcar una línea */
+      content: '';
+      position: absolute;
+      left: -30vw; right: -30vw;
+      top: -22px; height: 170px;
+      z-index: -1;
+      pointer-events: none;
+      background: radial-gradient(ellipse 48% 74% at 50% 34%, rgba(14,25,41,0.92) 0%, rgba(14,25,41,0.66) 45%, rgba(14,25,41,0) 100%);
+      -webkit-mask-image: linear-gradient(to bottom, transparent 0, #000 30px);
+      mask-image: linear-gradient(to bottom, transparent 0, #000 30px);
+    }
+    .welcome-label { margin-bottom: clamp(8px, 1.6vh, 18px); }
+    .welcome-names { font-size: clamp(2.3rem, min(13vw, 6.2vh), 4rem); margin-bottom: 0; }
+    .welcome-amp { font-size: clamp(1rem, 2.4vh, 1.5rem); margin: 0; }
+    .welcome-verse {
+      order: 0;
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.45);
+      margin-top: clamp(6px, 1.1vh, 12px);
+    }
+    .welcome-date { margin: clamp(8px, 1.4vh, 16px) 0 clamp(10px, 1.8vh, 20px); line-height: 1.7; }
+    .welcome-divider { margin-bottom: clamp(10px, 2.2vh, 26px); }
+    .seal-btn { width: clamp(84px, 12.5vh, 112px); height: clamp(84px, 12.5vh, 112px); }
+    .seal-caption { margin-top: clamp(8px, 1.4vh, 16px); }
+    .welcome-date { letter-spacing: 0.22em; font-size: 0.66rem; }
+  }
+  @media (max-width: 767px) and (max-height: 600px) {
+    #welcome-screen { padding-bottom: 12px; }
+    .welcome-label { margin-bottom: 4px !important; font-size: 0.55rem; }
+    .welcome-names { font-size: 1.85rem !important; }
+    .welcome-amp { font-size: 0.85rem !important; }
+    .welcome-verse { margin-top: 2px !important; font-size: 0.7rem !important; }
+    .welcome-date { margin: 4px 0 6px !important; font-size: 0.6rem; }
+    .welcome-divider { margin-bottom: 6px !important; }
+    .seal-btn { width: 66px !important; height: 66px !important; }
+    .seal-caption { margin-top: 4px !important; }
+    #welcome-screen.has-guest .welcome-guest { font-size: 0.95rem; margin-bottom: 1px; }
+  }
+  @media (max-width: 767px) and (max-height: 760px) {
+    .welcome-label { margin-bottom: 6px; }
+    .welcome-names { font-size: clamp(2rem, 5.6vh, 2.6rem); }
+    .welcome-amp { font-size: 0.95rem; }
+    .welcome-verse { margin-top: 4px; font-size: 0.76rem; }
+    .welcome-date { margin: 6px 0 8px; }
+    .welcome-divider { margin-bottom: 8px; }
+    .seal-btn { width: 80px; height: 80px; }
+    .seal-caption { margin-top: 6px; }
+  }
+
+  /* ── Carta que se abre ── */
+  .letter-scene {
+    position: fixed;
+    inset: 0;
+    z-index: 100000;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    cursor: pointer;
+  }
+  .letter-bg {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 50% 42%, #22355f 0%, #142039 48%, #0b1424 100%);
+  }
+  .letter-scene.is-on { display: flex; }
+  .letter-dust { position: absolute; inset: 0; pointer-events: none; overflow: hidden; }
+  .letter-dust i {
+    position: absolute;
+    width: 3px; height: 3px;
+    border-radius: 50%;
+    background: #f1d9a4;
+    box-shadow: 0 0 6px 1px rgba(241,217,164,0.7);
+    opacity: 0;
+    animation: dustTwinkle var(--d, 3s) ease-in-out var(--delay, 0s) infinite;
+  }
+  @keyframes dustTwinkle {
+    0%, 100% { opacity: 0; transform: translateY(0) scale(0.6); }
+    50%      { opacity: 0.9; transform: translateY(-14px) scale(1); }
+  }
+  .envelope {
+    position: relative;
+    width: min(86vw, 540px);
+    aspect-ratio: 290 / 200;
+    margin-top: 14vh;
+  }
+  .env-back {
+    position: absolute;
+    inset: 0;
+    border-radius: 6px;
+    background: linear-gradient(160deg, #1c2b4d 0%, #111c33 100%);
+    box-shadow: 0 30px 60px rgba(0,0,0,0.55), 0 0 0 1px rgba(212,180,131,0.25) inset;
+  }
+  .env-letter {
+    position: absolute;
+    left: 5%; right: 5%;
+    top: 6%; height: 90%;
+    z-index: 2;
+    background: #fbf7ee;
+    border-radius: 3px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.35);
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding-top: 9%;
+    overflow: hidden;
+  }
+  .env-letter::before {
+    content: '';
+    position: absolute;
+    inset: 7px;
+    border: 1px solid rgba(184,151,90,0.55);
+    box-shadow: 0 0 0 4px #fbf7ee, 0 0 0 5px rgba(184,151,90,0.3);
+    pointer-events: none;
+  }
+  .env-letter-inner { text-align: center; padding: 0 8%; }
+  .env-mono {
+    width: 46px; height: 46px; margin: 0 auto 10px;
+    border: 1px solid rgba(184,151,90,0.7);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--serif); font-weight: 600; font-size: 1.05rem;
+    color: var(--gold-dark);
+  }
+  .env-mono em { font-style: italic; font-weight: 400; margin: 0 1px; }
+  .env-small {
+    font-family: var(--sans);
+    font-size: 0.5rem;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--gold-dark);
+  }
+  .env-names {
+    font-family: var(--serif);
+    font-weight: 600;
+    font-size: clamp(1.5rem, 6vw, 2.3rem);
+    line-height: 1.1;
+    color: var(--navy);
+    margin: 6px 0 8px;
+  }
+  .env-names em { font-style: italic; font-weight: 400; color: var(--gold); }
+  .env-pocket, .env-flap { position: absolute; left: 0; width: 100%; }
+  .env-pocket { top: 0; height: 100%; z-index: 3; pointer-events: none; }
+  .env-pocket svg, .env-flap svg { width: 100%; height: 100%; display: block; overflow: visible; }
+  .env-flap {
+    top: 0; height: 62%;
+    z-index: 4;
+    transform-origin: 50% 0;
+    transform-style: preserve-3d;
+    transform: perspective(1400px) rotateX(0deg);
+  }
+  .env-flap-face { position: absolute; inset: 0; backface-visibility: hidden; -webkit-backface-visibility: hidden; }
+  .env-flap-face.inner { transform: rotateX(180deg); }
+  .env-seal-mark {                   /* restos del lacre en la punta de la solapa */
+    position: absolute;
+    left: 50%; top: 100%;
+    width: 30px; height: 30px;
+    margin: -15px 0 0 -15px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 40% 35%, #ecd398 0%, #c9a35f 55%, #8d6a32 100%);
+    opacity: 0.85;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .seal-btn, .seal-btn::before, .letter-dust i { animation: none !important; }
   }
   .hero-overlay {
     position: absolute;
@@ -399,53 +679,43 @@
   }
 
   /* ── PORTADA: el texto no debe tapar los rostros de la pareja ── */
-  /* Móvil: la pareja está en la parte baja de la foto. La foto se apoya abajo (su parte alta es roca
-     oscura que se funde con el fondo) y el texto va arriba, en el espacio oscuro */
-  @media (max-width: 767px) and (max-aspect-ratio: 3/5) {
+  /* Móvil: la foto se apoya abajo; su parte alta es roca oscura que se funde con el azul.
+     El texto va arriba, sobre fondo oscuro, y la pareja queda libre debajo */
+  @media (max-width: 767px) {
     #hero { align-items: flex-start; }
     .hero-bg {
       top: auto;
-      height: 68%;
-      background-size: auto 100%;
+      height: 66%;
+      background-image: url('assets/photos/final.webp');
+      background-size: cover;
       background-repeat: no-repeat;
-      background-position: 100% 100%;   /* pegada a la derecha: el hueco queda a la izquierda, donde la foto es roca oscura */
-      opacity: 0.95;
-      -webkit-mask-image: linear-gradient(to bottom, transparent 0, #000 32%), linear-gradient(to right, transparent 0, #000 40px);
-      -webkit-mask-composite: source-in;
-      mask-image: linear-gradient(to bottom, transparent 0, #000 32%), linear-gradient(to right, transparent 0, #000 40px);
-      mask-composite: intersect;
+      background-position: 60% 0%;
+      opacity: 0.96;
+      transform-origin: 60% 100%;
+      -webkit-mask-image: linear-gradient(to bottom, transparent 0, rgba(0,0,0,0.6) 14%, #000 30%);
+      mask-image: linear-gradient(to bottom, transparent 0, rgba(0,0,0,0.6) 14%, #000 30%);
     }
     .hero-overlay {
-      background: linear-gradient(to bottom,
-        rgba(10,17,31,0.35) 0%, rgba(10,17,31,0.18) 30%, rgba(10,17,31,0) 55%,
-        rgba(10,17,31,0) 84%, rgba(10,17,31,0.5) 100%);
+      background:
+        radial-gradient(ellipse 85% 34% at 50% 26%, rgba(10,17,31,0.55) 0%, rgba(10,17,31,0) 100%),
+        linear-gradient(to bottom, rgba(10,17,31,0.5) 0%, rgba(10,17,31,0.3) 30%, rgba(10,17,31,0) 48%,
+          rgba(10,17,31,0) 84%, rgba(10,17,31,0.55) 100%);
     }
     .hero-content { padding-top: clamp(76px, 10.5vh, 104px); }
-    .hero-eyebrow { margin-bottom: 14px; text-shadow: 0 0 12px rgba(10,17,31,0.9), 0 1px 3px rgba(10,17,31,0.8); }
-    .hero-date, .hero-subtitle { text-shadow: 0 1px 12px rgba(10,17,31,0.85); }
+    .hero-eyebrow { margin-bottom: 14px; text-shadow: 0 0 12px rgba(10,17,31,0.95), 0 1px 3px rgba(10,17,31,0.9); }
+    .hero-date, .hero-subtitle { text-shadow: 0 1px 12px rgba(10,17,31,0.95), 0 1px 3px rgba(10,17,31,0.8); }
     .hero-rule { margin-bottom: 16px; }
     .hero-name-first, .hero-name-second {
       font-size: clamp(2.6rem, min(13vw, 6.4vh), 4.4rem);
-      text-shadow: 0 2px 24px rgba(0,0,0,0.5);
+      text-shadow: 0 2px 24px rgba(0,0,0,0.6);
     }
     .hero-divider { margin: 16px 0; }
     .hero-subtitle { margin-top: 10px; }
   }
-  /* Móviles más anchos en proporción (p. ej. 360x640, 375x667): la foto llena el ancho sin hueco lateral */
-  @media (max-width: 767px) and (min-aspect-ratio: 47/100) and (max-aspect-ratio: 3/5) {
-    .hero-bg {
-      height: 74%;
-      background-size: cover;
-      background-position: 16% 100%;
-      -webkit-mask-image: linear-gradient(to bottom, transparent 0, #000 30%);
-      -webkit-mask-composite: initial;
-      mask-image: linear-gradient(to bottom, transparent 0, #000 30%);
-      mask-composite: initial;
-    }
-  }
   /* Móviles de pantalla baja: el texto se compacta para dejar libres las cabezas de la pareja */
-  @media (max-width: 767px) and (max-aspect-ratio: 3/5) and (max-height: 700px) {
-    .hero-content { padding-top: 68px; }
+  @media (max-width: 767px) and (max-height: 700px) {
+    .hero-bg { height: 62%; }
+    .hero-content { padding-top: 64px; }
     .hero-eyebrow { margin-bottom: 10px; }
     .hero-rule { margin-bottom: 10px; }
     .hero-name-first, .hero-name-second { font-size: clamp(2.3rem, 5.8vh, 3rem); }
@@ -458,7 +728,7 @@
     #hero { align-items: flex-start; }
     .hero-bg {
       top: auto;
-      height: 58%;
+      height: 52%;
       background-position: 50% 100%;
       opacity: 0.95;
       -webkit-mask-image: linear-gradient(to bottom, transparent 0, #000 24%);
@@ -470,6 +740,7 @@
         rgba(10,17,31,0) 84%, rgba(10,17,31,0.5) 100%);
     }
     .hero-content { padding-top: 104px; }
+    .hero-date, .hero-subtitle { text-shadow: 0 1px 12px rgba(10,17,31,0.95), 0 1px 3px rgba(10,17,31,0.8); }
     .hero-name-first, .hero-name-second { font-size: clamp(3rem, min(9vw, 7vh), 5.4rem); text-shadow: 0 2px 24px rgba(0,0,0,0.5); }
     .hero-divider { margin: 22px 0; }
   }
@@ -484,7 +755,7 @@
     }
     .hero-overlay {
       background:
-        linear-gradient(to right, rgba(10,17,31,0.5) 0%, rgba(10,17,31,0.1) 50%, rgba(10,17,31,0.2) 100%),
+        linear-gradient(to right, rgba(10,17,31,0.88) 0%, rgba(10,17,31,0.72) 30%, rgba(10,17,31,0.25) 50%, rgba(10,17,31,0) 64%),
         linear-gradient(to top, rgba(10,17,31,0.5) 0%, rgba(10,17,31,0) 35%);
     }
     .hero-content {
@@ -628,6 +899,98 @@
     line-height: 0.75;
     margin: 6px 8px 0 0;
   }
+  /* ── NUESTRA HISTORIA: línea de tiempo ── */
+  .timeline { position: relative; margin: 8px 0 12px; }
+  .tl-track, .tl-fill {
+    position: absolute;
+    left: 15px;
+    top: 10px;
+    width: 1px;
+  }
+  .tl-track { bottom: 10px; background: rgba(184,151,90,0.25); }
+  .tl-fill {
+    height: 0;
+    background: linear-gradient(to bottom, var(--gold-light), var(--gold));
+    box-shadow: 0 0 8px rgba(212,180,131,0.6);
+    will-change: height;
+  }
+  .tl-item {
+    position: relative;
+    padding: 0 0 46px 52px;
+    text-align: left;
+  }
+  .tl-item:last-child { padding-bottom: 0; }
+  .tl-node {
+    position: absolute;
+    left: 15px;
+    top: 6px;
+    width: 15px; height: 15px;
+    margin-left: -7px;
+    border-radius: 50%;
+    background: var(--beige);
+    border: 1px solid rgba(184,151,90,0.6);
+    transition: background 0.5s ease, box-shadow 0.5s ease, border-color 0.5s ease, transform 0.5s ease;
+  }
+  .tl-item.is-lit .tl-node {
+    background: var(--gold);
+    border-color: var(--gold);
+    box-shadow: 0 0 0 5px rgba(184,151,90,0.15), 0 0 14px rgba(212,180,131,0.7);
+    transform: scale(1.1);
+  }
+  .tl-item.is-final .tl-node {
+    width: 38px; height: 38px;
+    margin-left: -19px;
+    top: -6px;
+    display: flex; align-items: center; justify-content: center;
+    background: var(--beige);
+  }
+  .tl-item.is-final .tl-node svg { width: 22px; height: 22px; display: block; }
+  .tl-item.is-final.is-lit .tl-node { background: var(--navy); border-color: var(--gold); }
+  .tl-when {
+    display: block;
+    font-family: var(--sans);
+    font-size: 0.6rem;
+    font-weight: 600;
+    letter-spacing: 0.26em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 6px;
+  }
+  .tl-title {
+    font-family: var(--serif);
+    font-size: clamp(1.45rem, 3.6vw, 1.85rem);
+    font-weight: 700;
+    line-height: 1.15;
+    color: var(--navy);
+    margin-bottom: 12px;
+  }
+  .tl-item .historia-paragraph { margin: 0; text-align: left; }
+  .tl-item.is-final .tl-title { color: var(--gold-dark); }
+  .tl-item .historia-paragraph.has-cap::first-letter {
+    font-family: var(--serif);
+    font-size: 3.3em;
+    font-weight: 700;
+    color: var(--gold);
+    float: left;
+    line-height: 0.75;
+    margin: 6px 8px 0 0;
+  }
+  @media (min-width: 760px) {
+    .tl-track, .tl-fill, .tl-node { left: 170px; }
+    .tl-item { padding: 0 0 56px 214px; }
+    .tl-when {
+      position: absolute;
+      left: 0; top: 4px;
+      width: 140px;
+      text-align: right;
+      line-height: 1.7;
+      margin: 0;
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .tl-node { transition: none; }
+  }
+
   .historia-quote {
     font-family: var(--serif);
     font-style: italic;
@@ -651,75 +1014,61 @@
   #galeria .section-title { color: var(--white); }
   #galeria .section-subtitle { color: rgba(184,151,90,0.7); }
   #galeria .section-label { color: rgba(184,151,90,0.7); }
+  /* ── GALERÍA: carrusel que adopta la proporción de cada foto ── */
   .gallery {
-    --visible: 1;          /* fotos visibles a la vez */
-    --step: 1;             /* fotos que avanza cada clic */
-    --gap: 12px;
+    --g-maxh: min(74svh, 640px);
     position: relative;
-    margin: 0 -24px;       /* móvil: la foto ocupa todo el ancho de la pantalla */
+    margin: 0 -24px;
     outline: none;
   }
-  .gallery-stage { position: relative; }
-  .gallery-viewport {
+  .gallery:focus-visible .g-frame { outline: 1px solid var(--gold-light); outline-offset: 6px; }
+  .g-stage { position: relative; display: flex; justify-content: center; }
+  .g-frame {
+    position: relative;
+    width: 100%;
     overflow: hidden;
-    touch-action: pan-y;   /* el scroll vertical sigue funcionando; el horizontal lo maneja el carrusel */
+    background: var(--navy-mid);
+    box-shadow: 0 24px 50px rgba(0,0,0,0.35);
+    touch-action: pan-y;
     cursor: zoom-in;
     -webkit-user-select: none;
     user-select: none;
-    border-top: 1px solid rgba(184,151,90,0.3);
-    border-bottom: 1px solid rgba(184,151,90,0.3);
+    transition: width 0.6s cubic-bezier(0.33, 0, 0.15, 1), height 0.6s cubic-bezier(0.33, 0, 0.15, 1);
   }
-  .gallery-viewport.is-dragging { cursor: grabbing; }
-  .gallery:focus-visible .gallery-viewport { outline: 1px solid var(--gold-light); outline-offset: 4px; }
-  .gallery-track {
-    position: relative;
-    display: flex;
-    align-items: flex-start;
-    gap: var(--gap);
-    transition: transform 0.95s cubic-bezier(0.33, 0, 0.15, 1);
-    will-change: transform;
-  }
-  .gallery-slide {
-    flex: 0 0 calc((100% - (var(--visible) - 1) * var(--gap)) / var(--visible));
-    aspect-ratio: 2 / 3;
-    max-height: 80vh;
-    max-height: 80svh;
-    margin: 0;
-    position: relative;
-    overflow: hidden;
-    background: var(--navy-mid);
-    transition: opacity 0.95s ease;
-  }
-  /* Fondo suave con los colores de la propia foto (rellena los lados cuando la foto no ocupa todo el marco) */
-  .gallery-slide::before {
+  .g-frame::after {                 /* filo dorado fino */
     content: '';
     position: absolute;
-    inset: -20px;
-    background: var(--bg, none) center / cover no-repeat;
-    filter: blur(14px) brightness(0.5) saturate(1.15);
+    inset: 0;
+    border-top: 1px solid rgba(212,180,131,0.35);
+    border-bottom: 1px solid rgba(212,180,131,0.35);
+    pointer-events: none;
+    z-index: 3;
   }
-  .gallery-slide img {
+  .g-slide {
     position: absolute;
     inset: 0;
+    margin: 0;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.55s ease, transform 0.6s cubic-bezier(0.33, 0, 0.15, 1), visibility 0s linear 0.6s;
+  }
+  .g-slide.is-active { opacity: 1; visibility: visible; transform: none; transition-delay: 0s; z-index: 1; }
+  .g-slide img {
+    display: block;
     width: 100%;
     height: 100%;
-    object-fit: contain;
-    display: block;
+    object-fit: cover;               /* el marco ya tiene la proporción exacta: no hay recorte ni márgenes */
     pointer-events: none;
     -webkit-user-drag: none;
   }
-  /* Con JavaScript: las fotos fuera de vista se atenúan y aparecen con un fundido suave */
-  .gallery.is-ready .gallery-slide { opacity: 0.2; }
-  .gallery.is-ready .gallery-slide.is-active { opacity: 1; }
-  .gallery.is-ready .gallery-slide img { opacity: 0; transition: opacity 0.8s ease; }
-  .gallery.is-ready .gallery-slide img.is-loaded { opacity: 1; }
-
-  .gallery-nav,
-  .gallery-expand {
+  .g-slide img { opacity: 0; transition: opacity 0.5s ease; }
+  .g-slide img.is-loaded { opacity: 1; }
+  .g-frame.is-dragging .g-slide { transition: none; }
+  .g-nav, .g-expand {
     position: absolute;
-    z-index: 2;
+    z-index: 4;
     border-radius: 50%;
-    background: rgba(10,17,31,0.55);
+    background: rgba(10,17,31,0.5);
     -webkit-backdrop-filter: blur(6px);
     backdrop-filter: blur(6px);
     border: 1px solid rgba(212,180,131,0.55);
@@ -732,86 +1081,80 @@
     transition: background 0.25s, opacity 0.25s, transform 0.25s;
     -webkit-tap-highlight-color: transparent;
   }
-  .gallery-nav {
-    width: 46px; height: 46px;
-    bottom: 14px;
-    font-size: 1.6rem;
-    line-height: 1;
-    padding-bottom: 4px;
-  }
-  .gallery-prev { left: 14px; }
-  .gallery-next { right: 14px; }
-  .gallery-expand { width: 40px; height: 40px; top: 12px; right: 12px; }
-  .gallery-expand svg { width: 18px; height: 18px; }
-  .gallery-nav:hover:not(:disabled),
-  .gallery-expand:hover { background: rgba(184,151,90,0.3); }
-  .gallery-nav:active:not(:disabled),
-  .gallery-expand:active { transform: scale(0.94); }
-  .gallery-nav:disabled { opacity: 0.25; cursor: default; }
-  .gallery-nav:focus-visible,
-  .gallery-expand:focus-visible,
-  .gallery-dot:focus-visible { outline: 2px solid var(--gold-light); outline-offset: 3px; }
+  .g-nav { width: 46px; height: 46px; top: 50%; margin-top: -23px; }
+  .g-nav svg, .g-expand svg { width: 18px; height: 18px; display: block; }
+  .g-prev { left: 12px; }
+  .g-next { right: 12px; }
+  .g-expand { width: 40px; height: 40px; top: 12px; right: 12px; }
+  .g-nav:hover:not(:disabled), .g-expand:hover { background: rgba(184,151,90,0.32); }
+  .g-nav:active:not(:disabled), .g-expand:active { transform: scale(0.93); }
+  .g-nav:disabled { opacity: 0; pointer-events: none; }
+  .g-nav:focus-visible, .g-expand:focus-visible, .g-thumb:focus-visible { outline: 2px solid var(--gold-light); outline-offset: 3px; }
 
-  .gallery-status {
+  .g-meta {
     display: flex;
-    flex-direction: column;
     align-items: center;
-    gap: 10px;
-    margin-top: 22px;
-  }
-  .gallery-dots { display: flex; gap: 2px; justify-content: center; flex-wrap: wrap; }
-  .gallery-dot {
-    position: relative;
-    width: 22px; height: 22px;
-    padding: 0;
-    border: 0;
-    background: none;
-    cursor: pointer;
-    -webkit-tap-highlight-color: transparent;
-  }
-  .gallery-dot::after {
-    content: '';
-    position: absolute;
-    left: 50%; top: 50%;
-    width: 6px; height: 6px;
-    margin: -3px 0 0 -3px;
-    border-radius: 50%;
-    background: rgba(184,151,90,0.3);
-    transition: background 0.25s, transform 0.25s;
-  }
-  .gallery-dot[aria-current="true"]::after { background: var(--gold); transform: scale(1.5); }
-  .gallery-counter {
+    justify-content: center;
+    gap: 14px;
+    margin-top: 20px;
+    padding: 0 24px;
     font-family: var(--serif);
     font-style: italic;
     font-size: 1.05rem;
     letter-spacing: 0.08em;
-    color: rgba(212,180,131,0.85);
+    color: rgba(212,180,131,0.9);
   }
+  .g-meta::before, .g-meta::after { content: ''; width: 28px; height: 1px; background: rgba(212,180,131,0.4); }
+  .g-thumbs {
+    display: flex;
+    gap: 8px;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    scroll-snap-type: x proximity;
+    padding: 16px 24px 6px;
+    margin-top: 2px;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+    -webkit-mask-image: linear-gradient(to right, transparent 0, #000 24px, #000 calc(100% - 24px), transparent 100%);
+    mask-image: linear-gradient(to right, transparent 0, #000 24px, #000 calc(100% - 24px), transparent 100%);
+  }
+  .g-thumbs::-webkit-scrollbar { display: none; }
+  .g-thumb {
+    flex: 0 0 auto;
+    width: 52px; height: 68px;
+    padding: 0;
+    border: 1px solid rgba(212,180,131,0.25);
+    background: var(--navy-mid);
+    cursor: pointer;
+    opacity: 0.5;
+    scroll-snap-align: center;
+    transition: opacity 0.3s, border-color 0.3s, transform 0.3s;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .g-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; pointer-events: none; }
+  .g-thumb:hover { opacity: 0.85; }
+  .g-thumb[aria-current="true"] { opacity: 1; border-color: var(--gold-light); transform: translateY(-3px); }
   .gallery-instruction {
     text-align: center;
-    margin-top: 18px;
+    margin-top: 14px;
     font-family: var(--sans);
-    font-size: 0.68rem;
+    font-size: 0.66rem;
     letter-spacing: 0.15em;
     text-transform: uppercase;
-    color: rgba(184,151,90,0.5);
+    color: rgba(184,151,90,0.55);
   }
   @media (min-width: 700px) {
-    .gallery { margin: 0 auto; max-width: 1100px; }
-    .gallery-viewport { border: 1px solid rgba(184,151,90,0.32); }
-    .gallery-slide {
-      aspect-ratio: auto;
-      max-height: none;
-      /* la foto aprovecha casi toda la altura de la pantalla */
-      height: clamp(480px, calc(100vh - 200px), 840px);
-    }
-    .gallery-nav { width: 54px; height: 54px; bottom: auto; top: 50%; margin-top: -27px; font-size: 1.8rem; }
-    .gallery-prev { left: 22px; }
-    .gallery-next { right: 22px; }
-    .gallery-expand { width: 44px; height: 44px; top: 16px; right: 16px; }
+    .gallery { --g-maxh: min(78vh, 780px); margin: 0 auto; max-width: 1100px; }
+    .g-frame::after { border: 1px solid rgba(212,180,131,0.35); }
+    .g-nav { width: 54px; height: 54px; margin-top: -27px; }
+    .g-prev { left: 20px; }
+    .g-next { right: 20px; }
+    .g-expand { width: 44px; height: 44px; top: 16px; right: 16px; }
+    .g-thumbs { justify-content: safe center; padding-left: 0; padding-right: 0; }
+    .g-thumb { width: 60px; height: 78px; }
   }
 
-  /* ── VISOR AMPLIADO ── */
+  /* ── VISOR AMPLIADO CON ZOOM ── */
   .lightbox {
     position: fixed;
     inset: 0;
@@ -822,70 +1165,68 @@
     transition: opacity 0.35s ease, visibility 0s linear 0.35s;
     overscroll-behavior: contain;
     touch-action: none;
-  }
-  .lightbox.is-open { opacity: 1; visibility: visible; transition: opacity 0.35s ease; }
-  .lb-viewport {
-    position: absolute;
-    inset: 0;
-    overflow: hidden;
-    touch-action: none;
     -webkit-user-select: none;
     user-select: none;
   }
-  .lb-track {
-    display: flex;
-    height: 100%;
-    transition: transform 0.55s cubic-bezier(0.33, 0, 0.15, 1);
-    will-change: transform;
-  }
+  .lightbox.is-open { opacity: 1; visibility: visible; transition: opacity 0.35s ease; }
+  .lb-viewport { position: absolute; inset: 0 0 92px 0; overflow: hidden; touch-action: none; }
+  .lb-track { display: flex; height: 100%; will-change: transform; }
+  .lb-track.is-animating { transition: transform 0.5s cubic-bezier(0.33, 0, 0.15, 1); }
   .lb-slide {
+    position: relative;
     flex: 0 0 100%;
     height: 100%;
-    padding: 64px 0 74px;
-    box-sizing: border-box;
+    overflow: hidden;
     transition: transform 0.3s ease, opacity 0.3s ease;
   }
-  .lb-slide img {
+  .lb-zoom {
+    position: absolute;
+    left: 50%; top: 50%;
+    transform-origin: 50% 50%;
+    will-change: transform;
+  }
+  .lb-zoom.is-animating { transition: transform 0.32s cubic-bezier(0.25, 0.8, 0.25, 1); }
+  .lb-zoom img {
     display: block;
     width: 100%;
     height: 100%;
-    object-fit: contain;
     opacity: 0;
-    transition: opacity 0.5s ease;
+    transition: opacity 0.45s ease;
     pointer-events: none;
     -webkit-user-drag: none;
   }
-  .lb-slide img.is-loaded { opacity: 1; }
+  .lb-zoom img.is-loaded { opacity: 1; }
   .lb-btn {
     position: absolute;
-    z-index: 2;
+    z-index: 3;
     width: 46px; height: 46px;
     border-radius: 50%;
     background: rgba(10,17,31,0.6);
     border: 1px solid rgba(212,180,131,0.55);
     color: var(--gold-light);
-    font-size: 1.6rem;
-    line-height: 1;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 0 0 4px;
+    padding: 0;
     transition: background 0.25s, opacity 0.25s, transform 0.25s;
     -webkit-tap-highlight-color: transparent;
   }
+  .lb-btn svg { width: 18px; height: 18px; display: block; }
   .lb-btn:hover:not(:disabled) { background: rgba(184,151,90,0.3); }
-  .lb-btn:active:not(:disabled) { transform: scale(0.94); }
-  .lb-btn:disabled { opacity: 0.25; cursor: default; }
+  .lb-btn:active:not(:disabled) { transform: scale(0.93); }
+  .lb-btn:disabled { opacity: 0; pointer-events: none; }
   .lb-btn:focus-visible { outline: 2px solid var(--gold-light); outline-offset: 3px; }
-  .lb-close { top: 14px; right: 14px; font-size: 2rem; padding-bottom: 3px; }
-  .lb-prev { bottom: 14px; left: 14px; }
-  .lb-next { bottom: 14px; right: 14px; }
+  .lb-close { top: max(14px, env(safe-area-inset-top)); right: 14px; }
+  .lb-zoom-btn { top: max(14px, env(safe-area-inset-top)); right: 70px; }
+  .lb-prev, .lb-next { top: calc(50% - 46px - 23px); }
+  .lb-prev { left: 12px; }
+  .lb-next { right: 12px; }
   .lb-counter {
     position: absolute;
-    z-index: 2;
-    left: 0; right: 0; bottom: 28px;
-    text-align: center;
+    z-index: 3;
+    top: max(24px, calc(env(safe-area-inset-top) + 10px));
+    left: 20px;
     font-family: var(--serif);
     font-style: italic;
     font-size: 1.05rem;
@@ -893,16 +1234,50 @@
     color: rgba(212,180,131,0.9);
     pointer-events: none;
   }
+  .lb-hint {
+    position: absolute;
+    z-index: 3;
+    left: 0; right: 0;
+    bottom: 104px;
+    text-align: center;
+    font-family: var(--sans);
+    font-size: 0.62rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.55);
+    pointer-events: none;
+    transition: opacity 0.6s ease;
+  }
+  .lb-hint.is-hidden { opacity: 0; }
+  .lb-thumbs {
+    position: absolute;
+    z-index: 3;
+    left: 0; right: 0;
+    bottom: calc(12px + env(safe-area-inset-bottom));
+    height: 70px;
+    display: flex;
+    gap: 6px;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    padding: 4px 16px;
+    scrollbar-width: none;
+  }
+  .lb-thumbs::-webkit-scrollbar { display: none; }
+  .lb-thumbs .g-thumb { width: 46px; height: 60px; }
+  .lightbox.is-zoomed .lb-prev, .lightbox.is-zoomed .lb-next, .lightbox.is-zoomed .lb-hint { opacity: 0; pointer-events: none; }
   @media (min-width: 700px) {
-    .lb-slide { padding: 40px 110px 64px; }
-    .lb-close { top: 20px; right: 24px; }
-    .lb-prev, .lb-next { bottom: auto; top: 50%; margin-top: -23px; }
+    .lb-viewport { inset: 0 0 96px 0; }
+    .lb-prev, .lb-next { width: 54px; height: 54px; top: calc(50% - 48px - 27px); }
     .lb-prev { left: 28px; }
     .lb-next { right: 28px; }
-    .lb-counter { bottom: 24px; }
+    .lb-close { right: 24px; top: 20px; }
+    .lb-zoom-btn { right: 84px; top: 20px; }
+    .lb-counter { left: 28px; top: 30px; }
+    .lb-thumbs { justify-content: safe center; }
+    .lb-thumbs .g-thumb { width: 50px; height: 64px; }
   }
   @media (prefers-reduced-motion: reduce) {
-    .gallery-track, .gallery-slide, .gallery-slide img, .lightbox, .lb-track, .lb-slide, .lb-slide img { transition-duration: 0.01s !important; }
+    .g-frame, .g-slide, .lightbox, .lb-track.is-animating, .lb-zoom.is-animating, .lb-zoom img { transition-duration: 0.01s !important; }
   }
 
   /* ── EVENTO ── */
@@ -1344,44 +1719,37 @@
     isolation: isolate;
     overflow: hidden;
     background: var(--navy-dark);
-    min-height: min(100vh, 920px);
-    min-height: min(100svh, 920px);
-    padding: 0 24px 104px;
+    min-height: min(100vh, 900px);
+    min-height: min(100svh, 900px);
+    padding: clamp(92px, 13vh, 128px) 24px 0;
     display: flex;
     flex-direction: column;
-    justify-content: flex-end;
+    justify-content: flex-start;
     text-align: center;
   }
+  /* Móvil: la foto ocupa la parte baja y se funde hacia arriba con el azul */
   .footer-photo {
     position: absolute;
-    inset: 0;
+    left: 0; right: 0; bottom: 0;
     width: 100%;
-    height: 100%;
+    height: 72%;
     object-fit: cover;
-    object-position: 50% 62%;
+    object-position: 22% 100%;
     z-index: -2;
+    -webkit-mask-image: linear-gradient(to bottom, transparent 0, rgba(0,0,0,0.55) 16%, #000 34%);
+    mask-image: linear-gradient(to bottom, transparent 0, rgba(0,0,0,0.55) 16%, #000 34%);
   }
-  /* Difuminado: arriba se funde con el azul oscuro del sitio, abajo oscurece para leer el texto */
   footer::before {
     content: '';
     position: absolute;
     inset: 0;
     z-index: -1;
     pointer-events: none;
-    background:
-      linear-gradient(to bottom,
-        #0e1929 0%,
-        rgba(14,25,41,0.97) 8%,
-        rgba(20,32,56,0.82) 20%,
-        rgba(26,39,68,0.54) 34%,
-        rgba(26,39,68,0.24) 48%,
-        rgba(26,39,68,0) 62%),
-      linear-gradient(to top,
-        rgba(14,25,41,0.92) 0%,
-        rgba(14,25,41,0.68) 16%,
-        rgba(14,25,41,0.28) 34%,
-        rgba(14,25,41,0) 52%);
+    background: linear-gradient(to bottom,
+      #0e1929 0%, rgba(14,25,41,0.9) 30%, rgba(14,25,41,0.55) 40%, rgba(14,25,41,0) 54%,
+      rgba(14,25,41,0) 86%, rgba(14,25,41,0.6) 100%);
   }
+  .footer-text { position: relative; }
   .footer-names {
     font-family: var(--serif);
     font-size: clamp(2.2rem, 7vw, 3.6rem);
@@ -1397,26 +1765,357 @@
     letter-spacing: 0.3em;
     text-transform: uppercase;
     color: rgba(255,255,255,0.82);
-    margin-bottom: 30px;
+    margin-bottom: 24px;
     text-shadow: 0 1px 10px rgba(0,0,0,0.6);
-  }
-  @media (min-width: 900px) {
-    /* más alto que la pantalla para que los rostros queden bajo el difuminado */
-    footer { min-height: min(118vh, 1080px); }
-    .footer-photo { object-position: 50% 44%; }
   }
   .footer-place::before { content: ' · '; }
   @media (max-width: 520px) {
     .footer-place { display: block; margin-top: 8px; }
     .footer-place::before { content: none; }
   }
-  .footer-rule { width: 40px; height: 1px; background: rgba(212,180,131,0.6); margin: 0 auto 24px; }
+  .footer-rule { width: 40px; height: 1px; background: rgba(212,180,131,0.6); margin: 0 auto 20px; }
   .footer-copy {
     font-family: var(--sans);
     font-size: 0.68rem;
-    color: rgba(255,255,255,0.6);
+    line-height: 1.8;
+    color: rgba(255,255,255,0.62);
     letter-spacing: 0.1em;
     text-shadow: 0 1px 10px rgba(0,0,0,0.6);
+  }
+  /* Escritorio: texto a la izquierda sobre azul, foto a la derecha fundiéndose hacia el texto */
+  @media (min-width: 900px) {
+    footer {
+      min-height: min(100vh, 860px);
+      padding: 0 0 0 clamp(48px, 8vw, 140px);
+      justify-content: center;
+      align-items: flex-start;
+      text-align: left;
+    }
+    .footer-photo {
+      left: auto; top: 0;
+      width: 60%;
+      height: 100%;
+      object-position: 30% 62%;
+      -webkit-mask-image: linear-gradient(to right, transparent 0, rgba(0,0,0,0.6) 18%, #000 40%);
+      mask-image: linear-gradient(to right, transparent 0, rgba(0,0,0,0.6) 18%, #000 40%);
+    }
+    footer::before {
+      background:
+        linear-gradient(to bottom, #0e1929 0%, rgba(14,25,41,0.6) 10%, rgba(14,25,41,0) 24%),
+        linear-gradient(to right, #0e1929 0%, #0e1929 36%, rgba(14,25,41,0) 52%);
+    }
+    .footer-text { max-width: 520px; }
+    .footer-rule { margin-left: 0; }
+    .footer-names { font-size: clamp(3rem, 4.6vw, 4.4rem); }
+  }
+
+  /* ── CONFIRMACIÓN EN LÍNEA ── */
+  .modal-overlay { overflow-y: auto; z-index: 10050; }
+  .modal-overlay .modal-box { margin: auto 0; }
+  .rsvp-card.is-primary { border-color: rgba(212,180,131,0.55); background: rgba(212,180,131,0.05); }
+  .rsvp-done {
+    display: none;
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 0.98rem;
+    color: var(--gold-light);
+    margin: -4px 0 16px;
+  }
+  .rsvp-card.is-confirmed .rsvp-done { display: block; }
+  .rsvp-greeting {
+    font-family: var(--serif);
+    font-size: 1.35rem;
+    font-weight: 600;
+    color: var(--navy);
+    text-align: center;
+    margin: -18px 0 4px;
+  }
+  .rsvp-seats {
+    font-family: var(--sans);
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold-dark);
+    text-align: center;
+    margin-bottom: 26px;
+  }
+  .rsvp-choice { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 26px; }
+  .rsvp-choice button {
+    font-family: var(--sans);
+    font-size: 0.62rem;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    line-height: 1.5;
+    padding: 14px 8px;
+    color: var(--navy);
+    background: transparent;
+    border: 1px solid rgba(184,151,90,0.55);
+    cursor: pointer;
+    transition: background 0.25s, color 0.25s, border-color 0.25s;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .rsvp-choice button[aria-pressed="true"] { background: var(--navy); color: var(--gold-light); border-color: var(--navy); }
+  .rsvp-choice button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+  .rsvp-step-label {
+    font-family: var(--sans);
+    font-size: 0.6rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold-dark);
+    margin-bottom: 10px;
+  }
+  .rsvp-people { display: flex; flex-direction: column; gap: 8px; margin-bottom: 22px; }
+  .rsvp-person {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 12px 14px;
+    border: 1px solid rgba(184,151,90,0.3);
+    background: rgba(255,255,255,0.55);
+    cursor: pointer;
+    transition: border-color 0.2s, background 0.2s;
+  }
+  .rsvp-person input { position: absolute; opacity: 0; pointer-events: none; }
+  .rsvp-box {
+    flex: 0 0 auto;
+    width: 22px; height: 22px;
+    border: 1px solid var(--gold);
+    display: flex; align-items: center; justify-content: center;
+    transition: background 0.2s;
+  }
+  .rsvp-box svg { width: 14px; height: 14px; opacity: 0; transition: opacity 0.2s; }
+  .rsvp-person input:checked + .rsvp-box { background: var(--navy); border-color: var(--navy); }
+  .rsvp-person input:checked + .rsvp-box svg { opacity: 1; }
+  .rsvp-person input:focus-visible + .rsvp-box { outline: 2px solid var(--gold); outline-offset: 2px; }
+  .rsvp-person-name { font-family: var(--serif); font-size: 1.2rem; font-weight: 600; color: var(--navy); }
+  .rsvp-person:has(input:not(:checked)) .rsvp-person-name { color: #9a9a9a; text-decoration: line-through; text-decoration-color: rgba(0,0,0,0.2); }
+  .rsvp-name-row { display: flex; align-items: center; gap: 8px; }
+  .rsvp-name-row .modal-input { flex: 1; }
+  .rsvp-remove {
+    flex: 0 0 auto;
+    width: 32px; height: 32px;
+    border: none; background: none;
+    color: #aaa; font-size: 1.3rem; cursor: pointer;
+  }
+  .rsvp-remove:hover { color: var(--navy); }
+  .rsvp-add {
+    align-self: flex-start;
+    margin-top: 4px;
+    font-family: var(--sans);
+    font-size: 0.6rem;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--gold-dark);
+    background: none;
+    border: none;
+    padding: 8px 0;
+    cursor: pointer;
+  }
+  .rsvp-add:hover { color: var(--navy); }
+  textarea.modal-input { resize: vertical; min-height: 78px; line-height: 1.5; }
+  .form-error {
+    min-height: 1.2em;
+    font-family: var(--sans);
+    font-size: 0.7rem;
+    color: #a0423a;
+    text-align: center;
+    margin: 10px 0 0;
+  }
+  .hp-field { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
+  .btn-primary[disabled] { opacity: 0.6; cursor: wait; }
+  .btn-spinner {
+    width: 12px; height: 12px;
+    border: 2px solid rgba(255,255,255,0.4);
+    border-top-color: #fff;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+    display: none;
+  }
+  .is-sending .btn-spinner { display: inline-block; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  .thanks {
+    display: none;
+    text-align: center;
+    padding: 12px 0 4px;
+    animation: modalIn 0.5s ease both;
+  }
+  .thanks.is-on { display: block; }
+  .thanks-seal {
+    width: 72px; height: 72px;
+    margin: 0 auto 18px;
+    animation: thanksPop 0.7s cubic-bezier(0.2, 1.4, 0.4, 1) both;
+  }
+  .thanks-seal svg { width: 100%; height: 100%; display: block; }
+  @keyframes thanksPop { from { transform: scale(0.4) rotate(-20deg); opacity: 0; } to { transform: none; opacity: 1; } }
+  .thanks-title { font-family: var(--serif); font-size: 1.7rem; font-weight: 700; color: var(--navy); margin-bottom: 8px; }
+  .thanks-text { font-family: var(--serif); font-style: italic; font-size: 1.02rem; line-height: 1.6; color: var(--gold-dark); }
+  .thanks-actions { margin-top: 26px; display: flex; flex-direction: column; align-items: center; gap: 10px; }
+  .link-btn {
+    font-family: var(--sans);
+    font-size: 0.6rem;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--gold-dark);
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 6px;
+  }
+
+  .rsvp-role {
+    margin-left: auto;
+    font-family: var(--sans);
+    font-size: 0.55rem;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--gold-dark);
+    border: 1px solid rgba(184,151,90,0.5);
+    padding: 4px 8px;
+    white-space: nowrap;
+  }
+  .rsvp-honor {
+    max-width: 560px;
+    margin: -12px auto 40px;
+    padding: 26px 28px;
+    border: 1px solid rgba(212,180,131,0.5);
+    background: linear-gradient(180deg, rgba(212,180,131,0.1), rgba(212,180,131,0.03));
+    position: relative;
+  }
+  .rsvp-honor[hidden] { display: none; }
+  .rsvp-honor::before, .rsvp-honor::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    width: 7px; height: 7px;
+    margin-left: -3.5px;
+    background: var(--gold);
+    transform: rotate(45deg);
+  }
+  .rsvp-honor::before { top: -4px; }
+  .rsvp-honor::after { bottom: -4px; }
+  .rsvp-honor-label {
+    font-family: var(--sans);
+    font-size: 0.58rem;
+    font-weight: 600;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 10px;
+  }
+  .rsvp-honor-text {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 1.2rem;
+    line-height: 1.55;
+    color: var(--gold-light);
+  }
+  .rsvp-honor-text + .rsvp-honor-text { margin-top: 8px; }
+  .welcome-guest {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: clamp(1.15rem, 2.6vh, 1.5rem);
+    color: var(--gold-light);
+    margin-bottom: 8px;
+    line-height: 1.25;
+    max-width: 92vw;
+  }
+  .welcome-guest[hidden] { display: none; }
+  /* Móvil con nombre de invitación: se compactan los espacios para que el texto siga en la mitad inferior */
+  @media (max-width: 767px) {
+    #welcome-screen.has-guest .welcome-guest { font-size: clamp(1.05rem, 2.3vh, 1.35rem); margin-bottom: 3px; color: #ecd7a8; text-shadow: 0 0 10px rgba(14,25,41,0.95), 0 1px 3px rgba(14,25,41,0.9); }
+    #welcome-screen.has-guest .welcome-label { margin-bottom: clamp(5px, 1vh, 12px); }
+    #welcome-screen.has-guest .welcome-date { margin-bottom: clamp(6px, 1.1vh, 12px); }
+    #welcome-screen.has-guest .welcome-divider { margin-bottom: clamp(6px, 1.4vh, 16px); }
+  }
+
+  /* ── LIBRO DE BUENOS DESEOS ── */
+  #deseos { background: var(--navy-dark); padding: 100px 24px; text-align: center; }
+  #deseos .section-title { color: var(--white); }
+  #deseos .section-label { color: rgba(184,151,90,0.7); }
+  #deseos .section-subtitle { color: rgba(184,151,90,0.6); }
+  #deseos > *:not([class^="corner"]) { position: relative; z-index: 1; }
+  .deseos-form {
+    position: relative;
+    max-width: 560px;
+    margin: 0 auto;
+    padding: 40px 32px 34px;
+    border: 1px solid rgba(184,151,90,0.3);
+    background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0));
+    text-align: left;
+  }
+  .deseos-form::before {
+    content: '“';
+    position: absolute;
+    top: -34px; left: 50%;
+    transform: translateX(-50%);
+    font-family: var(--serif);
+    font-size: 5rem;
+    line-height: 1;
+    color: var(--gold);
+    background: linear-gradient(to bottom, var(--navy-dark) 0, var(--navy-dark) 40px, transparent 40px);
+    padding: 0 14px;
+  }
+  .deseos-input {
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid rgba(212,180,131,0.35);
+    background: transparent;
+    padding: 12px 2px;
+    font-family: var(--serif);
+    font-size: 1.08rem;
+    color: #fff;
+    outline: none;
+    transition: border-color 0.2s;
+    margin-bottom: 18px;
+  }
+  textarea.deseos-input { resize: vertical; min-height: 120px; line-height: 1.6; font-style: italic; }
+  .deseos-input::placeholder { color: rgba(255,255,255,0.4); font-style: italic; }
+  .deseos-input:focus { border-color: var(--gold-light); }
+  .deseos-count { font-family: var(--sans); font-size: 0.58rem; letter-spacing: 0.1em; color: rgba(255,255,255,0.4); text-align: right; margin: -12px 0 18px; }
+  .deseos-form .btn-primary { width: 100%; justify-content: center; }
+  .deseos-form .form-error { color: #e7a79f; }
+  .deseos-form .thanks-title { color: #fff; }
+  .deseos-form .thanks-text { color: var(--gold-light); }
+  .deseos-wall {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 18px;
+    max-width: 1000px;
+    margin: 56px auto 0;
+    text-align: left;
+  }
+  .deseos-wall:empty { display: none; }
+  .deseo-card {
+    padding: 26px 24px 22px;
+    border: 1px solid rgba(184,151,90,0.22);
+    background: rgba(255,255,255,0.025);
+    animation: modalIn 0.6s ease both;
+  }
+  .deseo-card p {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 1.05rem;
+    line-height: 1.65;
+    color: rgba(255,255,255,0.86);
+    margin-bottom: 14px;
+    white-space: pre-line;
+  }
+  .deseo-card span {
+    font-family: var(--sans);
+    font-size: 0.6rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold-light);
+  }
+  @media (max-width: 600px) {
+    .deseos-form { padding: 36px 22px 28px; }
+    .rsvp-choice button { font-size: 0.58rem; letter-spacing: 0.12em; }
   }
 
   /* ── MODALS ── */
@@ -1657,6 +2356,11 @@
   }
 
   /* ── RESPONSIVE ── */
+  /* Menú compacto hasta que caben todos los enlaces en una línea */
+  @media (max-width: 1180px) {
+    .nav-links { display: none; }
+    .nav-toggle { display: flex; }
+  }
   @media (max-width: 700px) {
     .nav-links { display: none; }
     .nav-toggle { display: flex; }
@@ -1673,29 +2377,107 @@
 <body>
 
 <!-- WELCOME SCREEN -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <radialGradient id="sealWax" cx="38%" cy="32%" r="78%">
+      <stop offset="0%" stop-color="#f4dfab"/>
+      <stop offset="38%" stop-color="#d6b273"/>
+      <stop offset="72%" stop-color="#b08847"/>
+      <stop offset="100%" stop-color="#7d5c27"/>
+    </radialGradient>
+    <radialGradient id="sealInner" cx="50%" cy="45%" r="60%">
+      <stop offset="0%" stop-color="#d9b877"/>
+      <stop offset="100%" stop-color="#a98140"/>
+    </radialGradient>
+    <symbol id="sealArt" viewBox="0 0 120 120">
+      <path fill="url(#sealWax)" d="M117.6,60.0 L119.8,65.2 L118.7,70.3 L114.6,74.6 L109.9,78.1 L106.6,81.7 L105.1,86.0 L103.9,90.8 L102.0,95.2 L99.1,99.1 L95.6,102.5 L91.9,105.5 L87.7,107.9 L83.0,109.4 L78.4,110.6 L74.1,112.7 L69.9,115.9 L65.1,118.7 L60.0,118.9 L55.1,116.0 L50.9,111.6 L47.0,108.4 L42.6,107.8 L37.4,108.4 L32.1,108.3 L27.4,106.5 L23.7,103.3 L20.4,99.6 L17.4,95.8 L14.7,91.7 L12.6,87.4 L10.5,83.1 L7.7,79.0 L4.8,74.8 L3.3,70.0 L4.5,64.9 L7.6,60.0 L10.2,55.6 L10.3,51.2 L8.3,46.2 L6.5,40.5 L6.9,35.2 L9.8,31.0 L13.8,27.7 L17.7,24.5 L21.3,21.3 L24.9,18.2 L28.8,15.4 L32.7,12.7 L36.5,9.7 L40.8,7.2 L45.7,6.4 L50.8,7.6 L55.5,9.1 L60.0,8.9 L64.7,6.4 L70.0,3.3 L75.5,2.2 L80.2,4.4 L83.9,8.7 L87.1,13.1 L90.5,16.4 L94.4,19.0 L98.2,21.8 L101.6,25.1 L104.8,28.6 L107.9,32.4 L110.2,36.6 L111.1,41.4 L111.1,46.3 L111.6,50.9 L114.0,55.3Z"/>
+      <circle cx="60" cy="60" r="41" fill="url(#sealInner)"/>
+      <circle cx="60" cy="60.8" r="41" fill="none" stroke="#f6e4b6" stroke-opacity="0.55" stroke-width="1.6"/>
+      <circle cx="60" cy="59.2" r="41" fill="none" stroke="#6e5021" stroke-opacity="0.55" stroke-width="1.6"/>
+      <circle cx="60" cy="60" r="34" fill="none" stroke="#7a5a26" stroke-opacity="0.45" stroke-width="0.8" stroke-dasharray="1.2 2.6"/>
+      <text x="60" y="68.5" text-anchor="middle" font-family="'Cormorant Garamond', Georgia, serif" font-weight="600" font-size="27" fill="#f6e4b6" fill-opacity="0.6">D<tspan font-style="italic" font-weight="400" font-size="19" dx="1.5">&amp;</tspan><tspan dx="1.5">N</tspan></text>
+      <text x="60" y="67.5" text-anchor="middle" font-family="'Cormorant Garamond', Georgia, serif" font-weight="600" font-size="27" fill="#6e4f1f">D<tspan font-style="italic" font-weight="400" font-size="19" dx="1.5">&amp;</tspan><tspan dx="1.5">N</tspan></text>
+      <ellipse cx="42" cy="33" rx="13" ry="6" fill="#fff6dc" fill-opacity="0.28" transform="rotate(-28 42 33)"/>
+    </symbol>
+  </defs>
+</svg>
 <div id="welcome-screen">
   <div class="welcome-bg"></div>
   <div class="welcome-content">
-    <p class="welcome-label">Los invitamos a celebrar</p>
+    <p class="welcome-guest" id="welcomeGuest" hidden></p>
+    <p class="welcome-label" id="welcomeLabel">Los invitamos a celebrar</p>
     <div class="welcome-names">
       <span>Daniel</span>
       <span class="welcome-amp">&amp;</span>
       <span>Narumi</span>
     </div>
+    <p class="welcome-verse">1 Corintios 13:4-8</p>
     <p class="welcome-date">11 · Abril · 2027 · Cajamarca, Perú</p>
     <div class="welcome-divider">
       <div class="welcome-divider-line"></div>
       <div class="welcome-divider-diamond"></div>
       <div class="welcome-divider-line"></div>
     </div>
-    <button class="welcome-btn" onclick="enterSite()">
-      <svg width="14" height="13" viewBox="0 0 14 13" fill="currentColor" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0;display:inline-block;vertical-align:middle;margin-bottom:1px"><path d="M7 12S1 7.5 1 4a3 3 0 0 1 6 0 3 3 0 0 1 6 0c0 3.5-6 8-6 8z"/></svg>&nbsp; Abrir invitación
-    </button>
-    <p class="welcome-verse">1 Corintios 13:4-8</p>
+    <div class="seal-wrap">
+      <button class="seal-btn" id="sealBtn" type="button" onclick="enterSite()" aria-label="Abrir invitación">
+        <span class="seal-half left"><svg aria-hidden="true"><use href="#sealArt"/></svg></span>
+        <span class="seal-half right"><svg aria-hidden="true"><use href="#sealArt"/></svg></span>
+      </button>
+      <p class="seal-caption">Abrir invitación</p>
+    </div>
   </div>
 </div>
 
-<!-- AUDIO -->
+<div class="letter-scene" id="letterScene" aria-hidden="true">
+  <div class="letter-bg" id="letterBg"></div>
+  <div class="letter-dust" id="letterDust"></div>
+  <div class="envelope" id="envelope">
+    <div class="env-back"></div>
+    <div class="env-letter" id="envLetter">
+      <div class="env-letter-inner" id="envLetterInner">
+        <div class="env-mono">D<em>&amp;</em>N</div>
+        <p class="env-small" id="envFor">Los invitamos a celebrar</p>
+        <p class="env-names">Daniel <em>&amp;</em> Narumi</p>
+        <p class="env-small">11 · 04 · 2027</p>
+      </div>
+    </div>
+    <div class="env-pocket">
+      <svg viewBox="0 0 290 200" preserveAspectRatio="none" aria-hidden="true">
+        <defs>
+          <linearGradient id="envPocketFill" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#22345c"/>
+            <stop offset="100%" stop-color="#17243f"/>
+          </linearGradient>
+        </defs>
+        <path d="M0,4 L145,114 L290,4 L290,194 Q290,200 284,200 L6,200 Q0,200 0,194 Z" fill="url(#envPocketFill)"/>
+        <path d="M0,4 L145,114 L290,4" fill="none" stroke="#d4b483" stroke-opacity="0.55" stroke-width="1"/>
+        <path d="M0,200 L118,96 M290,200 L172,96" fill="none" stroke="#d4b483" stroke-opacity="0.18" stroke-width="1"/>
+      </svg>
+    </div>
+    <div class="env-flap" id="envFlap">
+      <div class="env-flap-face outer">
+        <svg viewBox="0 0 290 124" preserveAspectRatio="none" aria-hidden="true">
+          <defs>
+            <linearGradient id="envFlapFill" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#1e2e52"/>
+              <stop offset="100%" stop-color="#2a3d68"/>
+            </linearGradient>
+          </defs>
+          <path d="M0,0 L290,0 L149,122 Q145,125 141,122 Z" fill="url(#envFlapFill)"/>
+          <path d="M0,0 L141,122 Q145,125 149,122 L290,0" fill="none" stroke="#d4b483" stroke-opacity="0.7" stroke-width="1.1"/>
+        </svg>
+        <span class="env-seal-mark"></span>
+      </div>
+      <div class="env-flap-face inner">
+        <svg viewBox="0 0 290 124" preserveAspectRatio="none" aria-hidden="true">
+          <path d="M0,124 L290,124 L149,2 Q145,-1 141,2 Z" fill="#152340"/>
+          <path d="M0,124 L141,2 Q145,-1 149,2 L290,124" fill="none" stroke="#d4b483" stroke-opacity="0.4" stroke-width="1"/>
+        </svg>
+      </div>
+    </div>
+  </div>
+</div>
+
 <audio id="bg-audio" loop preload="auto">
   <source src="assets/audio/cancion.mp3" type="audio/mpeg">
 </audio>
@@ -1741,6 +2523,7 @@
   <a href="#rsvp" onclick="closeMobileNav()">Confirmación</a>
   <a href="#fotos" onclick="closeMobileNav()">Fotos</a>
   <a href="#regalos" onclick="closeMobileNav()">Regalos</a>
+  <a href="#deseos" onclick="closeMobileNav()">Buenos deseos</a>
 </div>
 
 <!-- HERO -->
@@ -1818,19 +2601,43 @@
       Si algo es para ti, volverán a encontrarse — esta vez, para siempre.
     </div>
 
-    <div class="historia-text">
-      <p class="historia-paragraph reveal">
-        No es que antes hubiéramos hablado. La primera vez llegó de manera inesperada: fue muy breve, de hecho aquella vez no hubo tiempo de conversar, mucho menos de conocernos. Y aunque teníamos amigos en común y hasta habíamos estado en los mismos lugares en los mismos momentos, nunca tuvimos la oportunidad de cruzarnos, hasta más adelante.
-      </p>
-      <p class="historia-paragraph reveal">
-        En septiembre de 2025 tuvimos la primera conversación verdadera. Ambos estábamos en Cusco. Nos hicimos amigos rápidamente, congeniamos muy bien. Apenas nos conocíamos y sin embargo disfrutamos profundamente de ese pequeño viaje. Aunque solo fue una semana, lo sentimos muy largo — hicimos de ese viaje algo especial. Sin duda fue uno de los mejores de nuestras vidas, y aunque solo éramos amigos en ese momento, guardamos bellos recuerdos de aquella semana. Fue, verdaderamente, algo inolvidable.
-      </p>
-      <p class="historia-paragraph reveal">
-        Nuestra historia de amor se remonta a octubre de 2025. Ya en Lima, luego de muchas conversaciones, salidas grupales con amigos, llamadas y mensajes, Daniel pidió conocernos más. El sentimiento ya era mutuo — ambos sentíamos ese clic tan especial, iniciando así esta hermosa historia de amor de la cual nos sentimos muy enamorados, muy felices y profundamente agradecidos con Jehová por habernos presentado y permitirnos llegar a la vida del otro.
-      </p>
-      <p class="historia-paragraph reveal">
-        Tiempo después, ambos nos fuimos a servir en Cajamarca. Aunque hemos estado en distintos lugares, la conexión que tenemos y la buena comunicación hacen que nuestro amor crezca aún más cada día y se siga fortaleciendo. Con la ayuda de Jehová, nos sentimos muy felices y contentos de poder empezar nuestro futuro juntos y de poder dar más de nosotros a Jehová en diferentes facetas de servicio como pareja.
-      </p>
+    <div class="timeline historia-text" id="timeline">
+      <div class="tl-track" aria-hidden="true"></div>
+      <div class="tl-fill" id="tlFill" aria-hidden="true"></div>
+
+      <article class="tl-item reveal">
+        <span class="tl-node" aria-hidden="true"></span>
+        <span class="tl-when">El primer encuentro</span>
+        <h3 class="tl-title">Un instante fugaz</h3>
+        <p class="historia-paragraph has-cap">No es que antes hubiéramos hablado. La primera vez llegó de manera inesperada: fue muy breve, de hecho aquella vez no hubo tiempo de conversar, mucho menos de conocernos. Y aunque teníamos amigos en común y hasta habíamos estado en los mismos lugares en los mismos momentos, nunca tuvimos la oportunidad de cruzarnos, hasta más adelante.</p>
+      </article>
+
+      <article class="tl-item reveal">
+        <span class="tl-node" aria-hidden="true"></span>
+        <span class="tl-when">Septiembre 2025 · Cusco</span>
+        <h3 class="tl-title">La primera conversación</h3>
+        <p class="historia-paragraph">En septiembre de 2025 tuvimos la primera conversación verdadera. Ambos estábamos en Cusco. Nos hicimos amigos rápidamente, congeniamos muy bien. Apenas nos conocíamos y sin embargo disfrutamos profundamente de ese pequeño viaje. Aunque solo fue una semana, lo sentimos muy largo — hicimos de ese viaje algo especial. Sin duda fue uno de los mejores de nuestras vidas, y aunque solo éramos amigos en ese momento, guardamos bellos recuerdos de aquella semana. Fue, verdaderamente, algo inolvidable.</p>
+      </article>
+
+      <article class="tl-item reveal">
+        <span class="tl-node" aria-hidden="true"></span>
+        <span class="tl-when">Octubre 2025 · Lima</span>
+        <h3 class="tl-title">Comienza nuestra historia de amor</h3>
+        <p class="historia-paragraph">Nuestra historia de amor se remonta a octubre de 2025. Ya en Lima, luego de muchas conversaciones, salidas grupales con amigos, llamadas y mensajes, Daniel pidió conocernos más. El sentimiento ya era mutuo — ambos sentíamos ese clic tan especial, iniciando así esta hermosa historia de amor de la cual nos sentimos muy enamorados, muy felices y profundamente agradecidos con Jehová por habernos presentado y permitirnos llegar a la vida del otro.</p>
+      </article>
+
+      <article class="tl-item reveal">
+        <span class="tl-node" aria-hidden="true"></span>
+        <span class="tl-when">Cajamarca</span>
+        <h3 class="tl-title">Creciendo juntos</h3>
+        <p class="historia-paragraph">Tiempo después, ambos nos fuimos a servir en Cajamarca. Aunque hemos estado en distintos lugares, la conexión que tenemos y la buena comunicación hacen que nuestro amor crezca aún más cada día y se siga fortaleciendo. Con la ayuda de Jehová, nos sentimos muy felices y contentos de poder empezar nuestro futuro juntos y de poder dar más de nosotros a Jehová en diferentes facetas de servicio como pareja.</p>
+      </article>
+
+      <article class="tl-item is-final reveal">
+        <span class="tl-node" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="#d4b483" stroke-width="1.4"><circle cx="9" cy="14" r="5.5"/><circle cx="15" cy="14" r="5.5"/><path d="M13.2 4.6l1.8-1.8 1.8 1.8-1.8 1.8z" fill="#d4b483" stroke="none"/></svg></span>
+        <span class="tl-when">11 de abril de 2027</span>
+        <h3 class="tl-title">El día en que diremos «sí»</h3>
+      </article>
     </div>
 
     <div class="historia-quote reveal">
@@ -1849,48 +2656,50 @@
   <h2 class="section-title reveal">Galería</h2>
   <p class="section-subtitle reveal">Momentos que nos definen</p>
 
-  <div class="gallery reveal" id="galleryCarousel" role="region" aria-roledescription="carousel" aria-label="Galería de fotos de Daniel y Narumi" tabindex="0">
-    <div class="gallery-stage">
-      <div class="gallery-viewport" id="galleryViewport">
-        <div class="gallery-track" id="galleryTrack">
-          <figure class="gallery-slide" role="group" aria-roledescription="slide" aria-label="Foto 1 de 9" style="--bg: url('data:image/webp;base64,UklGRnQBAABXRUJQVlA4IGgBAACwBwCdASogADEAPtFWpkyoJKOiLAmZABoJZADF6UF5ArMMZkWbXMV5BQRftlpyN4AeHWAqzH+yCm/jjDCPg9VBVxhTuqEIAP7+Lp/2XX1a4nGnneqo7HFRmXAiWNf7/oBWnY9UFEvEarRCNTqLxbUhCMNDU1frrw69U2fHO3F/V8bKD7roQ1znW+MEQYXtNAdwHEfgVmnxqtxoZbY+h70xcKaVDFQZONwvfWZO/SVth/peul6QayL7b44VNU+Tw8nP1JNgNS5LfnRRT7O8pXvsdN3N6DD8upPSppMulJX9hv70wPfOFSxpJ7wf8tvpDzZg1D78miY9llA6I1Qga0kmJ7WKfvDFqrgchvd+z5BS/7bqZv/SA/sSOlo4aoSHfxBsSfyxrvGxrj7GBJnU7Ln5u9K/2gbv9+91eYiVlPHFXUGmWdUzXD8CoGehJBMbgRKjLgDxZeJM4NYYBIAiSAzw7NtF8AAAAAA=');">
-            <img src="assets/photos/hero.jpg" width="1680" height="2576" alt="Daniel muestra el anillo de compromiso junto a Narumi, en la playa" decoding="async" draggable="false">
-          </figure>
-          <figure class="gallery-slide" role="group" aria-roledescription="slide" aria-label="Foto 2 de 9" style="--bg: url('data:image/webp;base64,UklGRoIBAABXRUJQVlA4IHYBAABwCACdASogADAAPtFepk6oJSMiKrgKAQAaCWIArj1Rqog31Zd/ilOgWax/xB2Y+3eNKo5walCB0jdeboyOw9mOg0tuBqG/GMfsj72gAP78ExgPO19JvnlXNQv+6wJpz7RTJ2A9e9/5SmStWl9r7/CxvtWRMKJ3Ey9nb3mkpYdztoPli4FUbIdpR7wn5kMMNvUN8x96b9ehmh2r5ZfkIyknG1o5wTNrqoOnmbwN8vcM+9aNcyaK5tEU0es++iW3c2dqWKsp1+yGZztnuMNk+AyZNF0ROj6ZxO101mtZt26W+beaLeRUyg9/su3ioS5BI141dpEA12iIVlPgj0bp0VrIfBHqq5/kdlc03rz3cPjZgRtgYxFp8n2ponmj0QMTao/OvYNXT40CKl0yANdXbi+cCaQ4J3NUZGFdA/QUGTajR7lcHUTk4J9wCtyxve3wVPHKO5ZiTjqbSqwOmD3LbjqWsIO9sqC0Fn4McTsw2sTFcudVa3AAAA==');">
-            <img src="assets/photos/galeria/galeria-02.webp" srcset="assets/photos/galeria/galeria-02-sm.webp 720w, assets/photos/galeria/galeria-02.webp 1334w" sizes="(min-width: 700px) 560px, 100vw" width="1334" height="2000" alt="Narumi y Daniel contemplando el anillo de compromiso" loading="lazy" decoding="async" draggable="false">
-          </figure>
-          <figure class="gallery-slide" role="group" aria-roledescription="slide" aria-label="Foto 3 de 9" style="--bg: url('data:image/webp;base64,UklGRigBAABXRUJQVlA4IBwBAABQBwCdASogAC8APtFWpkyoJKOiMBVaqQAaCUAVyfCgUxItrlORjfxeefew1U6N16vnm8rDdm5gQK1ZrkV86ByPZqAAAP74y252PnU3ahbuD3WOq9sd5ote9Nl4D8nYWhOOnKVcQR04Rk+YN9tn0CMH8xbl0b1pb6K0j9EwDOEU4wJ3uhKqADOAtNAASn+Zoy/b6w4yoyOMwZnRhOMQj6OIa7ZXtppVYohy60BDiFIvLeBtLIZLWy9T2mmV56gWZrwOlfetdsLvjjgQqT3O3M0tnuY+6X4a5gQ/pZfuC589iIhaq2vCA60EXVtA22BVkIEI3B/hoLGVdYrZCrHdE60Wtd0tgb6zCN1xPuHbUeNudkCzYhpZbGDMApgAAA==');">
-            <img src="assets/photos/galeria/galeria-03.webp" srcset="assets/photos/galeria/galeria-03-sm.webp 720w, assets/photos/galeria/galeria-03.webp 874w" sizes="(min-width: 700px) 560px, 100vw" width="874" height="1280" alt="Daniel y Narumi abrazados en la orilla, con el reflejo del atardecer" loading="lazy" decoding="async" draggable="false">
-          </figure>
-          <figure class="gallery-slide" role="group" aria-roledescription="slide" aria-label="Foto 4 de 9" style="--bg: url('data:image/webp;base64,UklGRs4BAABXRUJQVlA4IMIBAAAwCQCdASogADIAPtFWokuoJKMhsAgBABoJQBkof5Ul2bRUdADJfrW7zbvaRttAS7/oqKvc/9AGvjA6cdGApfAMN/iIQe1rewP6S6zjfXOXLKvwAP7+fC8z2WA9q8HQmkVy8mIM+TosKLpZsdTKhNv1hIUZ4vy7PdcQqsXK5phy0NdPkzIvYOQE3t71CJSAvB7s8LX00WFUXORvg2OBdg0hbmjmK1xe+WzDrzObTB1PYbdEd6cxXJkKph9zjOF5OaADWHd9jAZFzVusoBSgsG3eweWbCHkTcocJLWlTB/wFAKH96G9YD+u+j6BWLz5gk3jfgfe/yiWrudrhosmgj8aFWEdWKCIAE+NYE30rAfGjHyvvJU94WIZ/ufaw13ee4opRfTd/dE8gD6MoccQ87ckVozrUpTsZct1qrF8dfrO9V32lj9UnA4x7meMNU4LyVbjvP1tAkaAYw7ISmZ2tjpC1lBSVzFjRkOttFRjU2UYKPsghbpqS1iL5HGNCa60Xzet50P+P5+7Fn0sUeQ7CH9Ipis+9iSEPXIGUTy+9HrSUJ62BZgjRb/rbpHBJo5cQiOv/JY1O8j8IL/lIrTOlzgjwAAA=');">
-            <img src="assets/photos/galeria/galeria-04.webp" srcset="assets/photos/galeria/galeria-04-sm.webp 720w, assets/photos/galeria/galeria-04.webp 1280w" sizes="(min-width: 700px) 560px, 100vw" width="1280" height="2000" alt="Daniel y Narumi sonriéndose en una cena romántica en la playa" loading="lazy" decoding="async" draggable="false">
-          </figure>
-          <figure class="gallery-slide" role="group" aria-roledescription="slide" aria-label="Foto 5 de 9" style="--bg: url('data:image/webp;base64,UklGRgoBAABXRUJQVlA4IP4AAADQBQCdASogADAAPtFYpEwoJSOiKqwBABoJZADPHoBOPA7aK+GsuZP+O3zYt/Lkx/mmg4v1ksegAP779mAH3vU2PCQbcvmal67eHAvslQZ8BpuP0XLFcnAgzp+gb2Qz08AavM5iwZCDNbYCcAFTeavTckwi6B5aqiZSNogrluyG2VWWs5HWRUyGaWpiGKAFqbzq+Q1wvVXPvOYV60J+EtR45NyQWsE+mZV2i923mrkdcLObeqHdZwWb6Nx9VPQreUbQ4gNKJO8ikyojhYqkLHaQrJHp76OVWxFkyaL9sllGNSNK8J1zXZFr2uCo1unMppx5dj3MhqA18DQGJP0AAA==');">
-            <img src="assets/photos/galeria/galeria-05.webp" srcset="assets/photos/galeria/galeria-05-sm.webp 720w, assets/photos/galeria/galeria-05.webp 1345w" sizes="(min-width: 700px) 560px, 100vw" width="1345" height="2000" alt="Daniel y Narumi caminando de la mano por la orilla del mar" loading="lazy" decoding="async" draggable="false">
-          </figure>
-          <figure class="gallery-slide" role="group" aria-roledescription="slide" aria-label="Foto 6 de 9" style="--bg: url('data:image/webp;base64,UklGRjwBAABXRUJQVlA4IDABAAAQBwCdASogACgAPtFepk4oJSOiKqgBABoJaQARVx1YbS6uhNkgpuoYbxT/WoUVqs2kRxGNIHooVnGfX6+SWk/QAAD+/DHNhwi8zCbfYZbT11AThhYTH9hUB4+GwjfkC2XewEQGOqOA3Njtg79BaB2fSupAuLxPqG6Q53UVCH6XnWFwfZEHt8bQ1HNCMgv1fMxreoL8r6oyIFr+ewgwyURTr5cRpqOFWVHFPd63TM4DN6rXr5zeUPyU3FpOIOio+fvHZZr4Dk5eRsWnTruzT9xuN1a8AiAaUIr84r6TxrY6W2Dx7s/1noZBP0qV3j91Rfg4GnF0dS06ZHxQL97pGp2TXThGYxZTC/JjRZ7xe8E8cbaNVfZvTtospZPnpVK1n7yTNq2ZliPE9YKHkXK4AAAA');">
-            <img src="assets/photos/galeria/galeria-06.webp" srcset="assets/photos/galeria/galeria-06-sm.webp 720w, assets/photos/galeria/galeria-06.webp 1016w" sizes="(min-width: 700px) 560px, 100vw" width="1016" height="1280" alt="Daniel y Narumi en blanco y negro, con la caja del anillo" loading="lazy" decoding="async" draggable="false">
-          </figure>
-          <figure class="gallery-slide" role="group" aria-roledescription="slide" aria-label="Foto 7 de 9" style="--bg: url('data:image/webp;base64,UklGRtYAAABXRUJQVlA4IMoAAADwBQCdASogADAAPtFOpUuoJCOhsBqqqQAaCUAXYA6t0woTKUijZ6t8VwH5g4gmFnbj9arKIaF5AAD++8svg9ww5VZbYigbGeN1tyL3FDMjbcSIirpFLWWk+Lz6BQ7Rd+p1N9VtzddnDCNjSFzHnR35+M2UVBRHS+SnZwizyN/XWQxDa5Gv40FwjrjlSWFMdJ9SAxLsQlnzEDCaYHzo1DVF9kGkYvzbQRDnhqxLpvw7Ifvogw+wKxAJAU3ovkvniw85raBFUqgDN1AA');">
-            <img src="assets/photos/galeria/galeria-07.webp" srcset="assets/photos/galeria/galeria-07-sm.webp 720w, assets/photos/galeria/galeria-07.webp 854w" sizes="(min-width: 700px) 560px, 100vw" width="854" height="1280" alt="Daniel cargando a Narumi sobre la playa al atardecer" loading="lazy" decoding="async" draggable="false">
-          </figure>
-          <figure class="gallery-slide" role="group" aria-roledescription="slide" aria-label="Foto 8 de 9" style="--bg: url('data:image/webp;base64,UklGRnYBAABXRUJQVlA4IGoBAACQBgCdASogADAAPtFYpUwoJSOwMBVaqgAaCUAVx6fNSnmgeSv0dyOiMLWnb7iXGVgIoHsM6txgm3uZ8e6gAP74D1FcavWkiZOJwipwCikRf/5CzjPT1cXSA+9XK6GJ1wiP0G9554KmPvZpJDm3LhYXc4YNl+loSm+rQ1zkpt9BeQ1ISNnpkD5QKIiL+CuUblNjuM2siqovSOjZ7hL3eHIL4zY7jh/tNidNRfttNduQGlRzS50eyYWJIN7Q4UQt3bK13zgv8PVhvJBJjXj7F58xLCfl7OI+1UPXzuklNUOi5FrTTu05y33UO9RN7zwRoopMmcDomMWPmfwRJq1VK6ObdAp0yJa+H4EqXNDUXhAENIsR21567rAiSur7lvFN5S85R1Zs+/FG9DG6J6qioEXoWEfw8rgIbFOmrpbo92vIUKtwRFNobctficT2dqssullO2hhS+Bd8sBiPOE8WEJi/2lSIo6tAXwAAAA==');">
-            <img src="assets/photos/galeria/galeria-08.webp" srcset="assets/photos/galeria/galeria-08-sm.webp 720w, assets/photos/galeria/galeria-08.webp 854w" sizes="(min-width: 700px) 560px, 100vw" width="854" height="1280" alt="Daniel y Narumi en una cena a la luz de las velas junto al mar" loading="lazy" decoding="async" draggable="false">
-          </figure>
-          <figure class="gallery-slide" role="group" aria-roledescription="slide" aria-label="Foto 9 de 9" style="--bg: url('data:image/webp;base64,UklGRswBAABXRUJQVlA4IMABAABwCACdASogADAAPrVCm0unI6KhurzIAOAWiWwAnRH/7NQN3ngyqpAar4fjvopA9E+dCqY3PyE1Iwa2hN2MPZX76CHBUiwxwa7PvVQAAP7+zSh9Cm15RuYnHOMsoOsd8eu5i0Q7tMn9YqvgDkyBXudeKFbmEnzZXgs7JfcYiKeWWjAaDBo6rFmc4F05M3+hRO5a7VnnPHpgKzvh+jRuU7JCVPfN6Y6hgEFSYprWaKW6/07Tx+xx0c3ncvdrwlrcwBlkVvrZvJe//u+1VZxJl7ttbVb4ZR6uE5ualJwQS/UGzCz32m8ZOs39Oq48lAM4DdFEP2JnEFs4Q7aOThuJpo28EL0s/oPjadDyBC8UAeRb3E5mL5daf0PFPylrvunx+dsb0B672iFUlTzDpspnRWtIojlAoQZ5jovUUVASc46DtvdGL/dedUaJ7E89qPhCxVFkVJjHVUi+RmIh8U6Lg23Dpay9o4slrWp4pl+YYNv1DUM5KN6h/gCrSpmZRUzek3gp02UjWc8ds1Y204ZfmIpE+tEpbFjRCcB73Id9wU/yF3aikXtZiEJYKh9JJDEItGLmlSF92EosuoBmYQcb/YAA');">
-            <img src="assets/photos/galeria/galeria-09.webp" srcset="assets/photos/galeria/galeria-09-sm.webp 720w, assets/photos/galeria/galeria-09.webp 1334w" sizes="(min-width: 700px) 560px, 100vw" width="1334" height="2000" alt="Daniel y Narumi besándose en una cueva marina con el sol al fondo" loading="lazy" decoding="async" draggable="false">
-          </figure>
-        </div>
+  <div class="gallery reveal" id="gallery" role="region" aria-roledescription="carousel" aria-label="Galería de fotos de Daniel y Narumi" tabindex="0">
+    <div class="g-stage">
+      <div class="g-frame" id="gFrame">
+        <figure class="g-slide" data-w="1680" data-h="2576" role="group" aria-roledescription="slide" aria-label="Foto 1 de 17"><img src="assets/photos/hero.jpg" width="1680" height="2576" alt="Daniel muestra el anillo de compromiso junto a Narumi, en la playa" decoding="async" draggable="false"></figure>
+        <figure class="g-slide" data-w="1334" data-h="2000" role="group" aria-roledescription="slide" aria-label="Foto 2 de 17"><img data-src="assets/photos/galeria/galeria-02.webp" data-srcset="assets/photos/galeria/galeria-02-sm.webp 720w, assets/photos/galeria/galeria-02.webp 1334w" sizes="(min-width: 700px) 620px, 100vw" width="1334" height="2000" alt="Narumi y Daniel contemplando el anillo de compromiso" decoding="async" draggable="false"></figure>
+        <figure class="g-slide" data-w="874" data-h="1280" role="group" aria-roledescription="slide" aria-label="Foto 3 de 17"><img data-src="assets/photos/galeria/galeria-03.webp" data-srcset="assets/photos/galeria/galeria-03-sm.webp 720w, assets/photos/galeria/galeria-03.webp 874w" sizes="(min-width: 700px) 620px, 100vw" width="874" height="1280" alt="Daniel y Narumi abrazados en la orilla, con el reflejo del atardecer" decoding="async" draggable="false"></figure>
+        <figure class="g-slide" data-w="1280" data-h="2000" role="group" aria-roledescription="slide" aria-label="Foto 4 de 17"><img data-src="assets/photos/galeria/galeria-04.webp" data-srcset="assets/photos/galeria/galeria-04-sm.webp 720w, assets/photos/galeria/galeria-04.webp 1280w" sizes="(min-width: 700px) 620px, 100vw" width="1280" height="2000" alt="Daniel y Narumi sonriéndose en una cena romántica en la playa" decoding="async" draggable="false"></figure>
+        <figure class="g-slide" data-w="1345" data-h="2000" role="group" aria-roledescription="slide" aria-label="Foto 5 de 17"><img data-src="assets/photos/galeria/galeria-05.webp" data-srcset="assets/photos/galeria/galeria-05-sm.webp 720w, assets/photos/galeria/galeria-05.webp 1345w" sizes="(min-width: 700px) 620px, 100vw" width="1345" height="2000" alt="Daniel y Narumi caminando de la mano por la orilla del mar" decoding="async" draggable="false"></figure>
+        <figure class="g-slide" data-w="1016" data-h="1280" role="group" aria-roledescription="slide" aria-label="Foto 6 de 17"><img data-src="assets/photos/galeria/galeria-06.webp" data-srcset="assets/photos/galeria/galeria-06-sm.webp 720w, assets/photos/galeria/galeria-06.webp 1016w" sizes="(min-width: 700px) 620px, 100vw" width="1016" height="1280" alt="Daniel y Narumi en blanco y negro, con la caja del anillo" decoding="async" draggable="false"></figure>
+        <figure class="g-slide" data-w="854" data-h="1280" role="group" aria-roledescription="slide" aria-label="Foto 7 de 17"><img data-src="assets/photos/galeria/galeria-07.webp" data-srcset="assets/photos/galeria/galeria-07-sm.webp 720w, assets/photos/galeria/galeria-07.webp 854w" sizes="(min-width: 700px) 620px, 100vw" width="854" height="1280" alt="Daniel cargando a Narumi sobre la playa al atardecer" decoding="async" draggable="false"></figure>
+        <figure class="g-slide" data-w="854" data-h="1280" role="group" aria-roledescription="slide" aria-label="Foto 8 de 17"><img data-src="assets/photos/galeria/galeria-08.webp" data-srcset="assets/photos/galeria/galeria-08-sm.webp 720w, assets/photos/galeria/galeria-08.webp 854w" sizes="(min-width: 700px) 620px, 100vw" width="854" height="1280" alt="Daniel y Narumi en una cena a la luz de las velas junto al mar" decoding="async" draggable="false"></figure>
+        <figure class="g-slide" data-w="1334" data-h="2000" role="group" aria-roledescription="slide" aria-label="Foto 9 de 17"><img data-src="assets/photos/galeria/galeria-09.webp" data-srcset="assets/photos/galeria/galeria-09-sm.webp 720w, assets/photos/galeria/galeria-09.webp 1334w" sizes="(min-width: 700px) 620px, 100vw" width="1334" height="2000" alt="Daniel y Narumi besándose en una cueva marina con el sol al fondo" decoding="async" draggable="false"></figure>
+        <figure class="g-slide" data-w="854" data-h="1280" role="group" aria-roledescription="slide" aria-label="Foto 10 de 17"><img data-src="assets/photos/galeria/galeria-10.webp" data-srcset="assets/photos/galeria/galeria-10-sm.webp 720w, assets/photos/galeria/galeria-10.webp 854w" sizes="(min-width: 700px) 620px, 100vw" width="854" height="1280" alt="Silueta de Daniel y Narumi a punto de besarse frente al atardecer" decoding="async" draggable="false"></figure>
+        <figure class="g-slide" data-w="878" data-h="1280" role="group" aria-roledescription="slide" aria-label="Foto 11 de 17"><img data-src="assets/photos/galeria/galeria-11.webp" data-srcset="assets/photos/galeria/galeria-11-sm.webp 720w, assets/photos/galeria/galeria-11.webp 878w" sizes="(min-width: 700px) 620px, 100vw" width="878" height="1280" alt="Daniel y Narumi abrazados y sonriéndose en la playa" decoding="async" draggable="false"></figure>
+        <figure class="g-slide" data-w="854" data-h="1280" role="group" aria-roledescription="slide" aria-label="Foto 12 de 17"><img data-src="assets/photos/galeria/galeria-12.webp" data-srcset="assets/photos/galeria/galeria-12-sm.webp 720w, assets/photos/galeria/galeria-12.webp 854w" sizes="(min-width: 700px) 620px, 100vw" width="854" height="1280" alt="Daniel y Narumi abrazados en una cueva marina, con el sol al fondo" decoding="async" draggable="false"></figure>
+        <figure class="g-slide" data-w="854" data-h="1280" role="group" aria-roledescription="slide" aria-label="Foto 13 de 17"><img data-src="assets/photos/galeria/galeria-13.webp" data-srcset="assets/photos/galeria/galeria-13-sm.webp 720w, assets/photos/galeria/galeria-13.webp 854w" sizes="(min-width: 700px) 620px, 100vw" width="854" height="1280" alt="Daniel y Narumi frente a frente a contraluz del atardecer" decoding="async" draggable="false"></figure>
+        <figure class="g-slide" data-w="854" data-h="1280" role="group" aria-roledescription="slide" aria-label="Foto 14 de 17"><img data-src="assets/photos/galeria/galeria-14.webp" data-srcset="assets/photos/galeria/galeria-14-sm.webp 720w, assets/photos/galeria/galeria-14.webp 854w" sizes="(min-width: 700px) 620px, 100vw" width="854" height="1280" alt="Daniel y Narumi besándose en la orilla al atardecer" decoding="async" draggable="false"></figure>
+        <figure class="g-slide" data-w="854" data-h="1280" role="group" aria-roledescription="slide" aria-label="Foto 15 de 17"><img data-src="assets/photos/galeria/galeria-15.webp" data-srcset="assets/photos/galeria/galeria-15-sm.webp 720w, assets/photos/galeria/galeria-15.webp 854w" sizes="(min-width: 700px) 620px, 100vw" width="854" height="1280" alt="Silueta de Daniel y Narumi al anochecer junto al mar" decoding="async" draggable="false"></figure>
+        <figure class="g-slide" data-w="858" data-h="1280" role="group" aria-roledescription="slide" aria-label="Foto 16 de 17"><img data-src="assets/photos/galeria/galeria-16.webp" data-srcset="assets/photos/galeria/galeria-16-sm.webp 720w, assets/photos/galeria/galeria-16.webp 858w" sizes="(min-width: 700px) 620px, 100vw" width="858" height="1280" alt="Daniel y Narumi abrazados en el agua al atardecer" decoding="async" draggable="false"></figure>
+        <figure class="g-slide" data-w="854" data-h="1280" role="group" aria-roledescription="slide" aria-label="Foto 17 de 17"><img data-src="assets/photos/galeria/galeria-17.webp" data-srcset="assets/photos/galeria/galeria-17-sm.webp 720w, assets/photos/galeria/galeria-17.webp 854w" sizes="(min-width: 700px) 620px, 100vw" width="854" height="1280" alt="Daniel hace girar a Narumi en la orilla del mar" decoding="async" draggable="false"></figure>
+        <button class="g-expand" id="gExpand" type="button" aria-label="Ver la foto en pantalla completa"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 4h6v6M10 20H4v-6M20 4l-7 7M4 20l7-7"/></svg></button>
+        <button class="g-nav g-prev" id="gPrev" type="button" aria-label="Foto anterior" disabled><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
+        <button class="g-nav g-next" id="gNext" type="button" aria-label="Foto siguiente"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
       </div>
-      <button class="gallery-expand" id="galleryExpand" type="button" aria-label="Ver la foto en pantalla completa">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 4h6v6M10 20H4v-6M20 4l-7 7M4 20l7-7"/></svg>
-      </button>
-      <button class="gallery-nav gallery-prev" id="galleryPrev" type="button" aria-label="Foto anterior" disabled>&#8249;</button>
-      <button class="gallery-nav gallery-next" id="galleryNext" type="button" aria-label="Foto siguiente">&#8250;</button>
     </div>
-    <div class="gallery-status">
-      <div class="gallery-dots" id="galleryDots"></div>
-      <p class="gallery-counter" id="galleryCounter" aria-live="polite">1 / 9</p>
+    <p class="g-meta" id="gCounter" aria-live="polite">1 / 17</p>
+    <div class="g-thumbs" id="gThumbs">
+      <button class="g-thumb" type="button" aria-label="Ver foto 1"><img src="assets/photos/galeria/propuesta-th.webp" alt="" loading="lazy" decoding="async"></button>
+      <button class="g-thumb" type="button" aria-label="Ver foto 2"><img src="assets/photos/galeria/galeria-02-th.webp" alt="" loading="lazy" decoding="async"></button>
+      <button class="g-thumb" type="button" aria-label="Ver foto 3"><img src="assets/photos/galeria/galeria-03-th.webp" alt="" loading="lazy" decoding="async"></button>
+      <button class="g-thumb" type="button" aria-label="Ver foto 4"><img src="assets/photos/galeria/galeria-04-th.webp" alt="" loading="lazy" decoding="async"></button>
+      <button class="g-thumb" type="button" aria-label="Ver foto 5"><img src="assets/photos/galeria/galeria-05-th.webp" alt="" loading="lazy" decoding="async"></button>
+      <button class="g-thumb" type="button" aria-label="Ver foto 6"><img src="assets/photos/galeria/galeria-06-th.webp" alt="" loading="lazy" decoding="async"></button>
+      <button class="g-thumb" type="button" aria-label="Ver foto 7"><img src="assets/photos/galeria/galeria-07-th.webp" alt="" loading="lazy" decoding="async"></button>
+      <button class="g-thumb" type="button" aria-label="Ver foto 8"><img src="assets/photos/galeria/galeria-08-th.webp" alt="" loading="lazy" decoding="async"></button>
+      <button class="g-thumb" type="button" aria-label="Ver foto 9"><img src="assets/photos/galeria/galeria-09-th.webp" alt="" loading="lazy" decoding="async"></button>
+      <button class="g-thumb" type="button" aria-label="Ver foto 10"><img src="assets/photos/galeria/galeria-10-th.webp" alt="" loading="lazy" decoding="async"></button>
+      <button class="g-thumb" type="button" aria-label="Ver foto 11"><img src="assets/photos/galeria/galeria-11-th.webp" alt="" loading="lazy" decoding="async"></button>
+      <button class="g-thumb" type="button" aria-label="Ver foto 12"><img src="assets/photos/galeria/galeria-12-th.webp" alt="" loading="lazy" decoding="async"></button>
+      <button class="g-thumb" type="button" aria-label="Ver foto 13"><img src="assets/photos/galeria/galeria-13-th.webp" alt="" loading="lazy" decoding="async"></button>
+      <button class="g-thumb" type="button" aria-label="Ver foto 14"><img src="assets/photos/galeria/galeria-14-th.webp" alt="" loading="lazy" decoding="async"></button>
+      <button class="g-thumb" type="button" aria-label="Ver foto 15"><img src="assets/photos/galeria/galeria-15-th.webp" alt="" loading="lazy" decoding="async"></button>
+      <button class="g-thumb" type="button" aria-label="Ver foto 16"><img src="assets/photos/galeria/galeria-16-th.webp" alt="" loading="lazy" decoding="async"></button>
+      <button class="g-thumb" type="button" aria-label="Ver foto 17"><img src="assets/photos/galeria/galeria-17-th.webp" alt="" loading="lazy" decoding="async"></button>
     </div>
   </div>
   <p class="gallery-instruction reveal">Toca la foto para ampliarla</p>
@@ -1952,11 +2761,6 @@
 
   </div>
 
-  <div style="text-align: center; margin-top: 48px;" class="reveal">
-    <p style="font-family: var(--serif); font-style: italic; font-size: 1rem; color: var(--gold-dark); max-width: 480px; margin: 0 auto; line-height: 1.8;">
-      Al finalizar el discurso, nos uniremos en el Castillo de Yanamarca para dar inicio a la celebración.
-    </p>
-  </div>
 </section>
 
 <!-- ZOOM -->
@@ -2155,7 +2959,7 @@
     </svg>
     <h3 class="musica-card-title">Música</h3>
     <p class="musica-card-sub">¿Cuál es la canción que no puede faltar en la fiesta?</p>
-    <button class="btn-primary" onclick="openModal('modal-musica')">
+    <button class="btn-primary" onclick="abrirCanciones()">
       Sugerir canción
     </button>
   </div>
@@ -2177,7 +2981,20 @@
     <div class="gold-ornament-line" style="background: rgba(184,151,90,0.4);"></div>
   </div>
 
+  <div class="rsvp-honor reveal" id="rsvpHonor" hidden></div>
   <div class="rsvp-grid reveal">
+    <div class="rsvp-card is-primary" id="rsvpCard">
+      <p class="rsvp-card-label">En línea</p>
+      <svg class="svg-icon" width="40" height="40" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <rect x="6" y="14" width="48" height="32" rx="3" stroke="#b8975a" stroke-width="2" fill="none"/>
+        <path d="M6 17 L30 33 L54 17" stroke="#b8975a" stroke-width="2" fill="none"/>
+        <path d="M30 42 S22 37 22 32.5a4 4 0 0 1 8 -0.8a4 4 0 0 1 8 0.8C38 37 30 42 30 42z" fill="#b8975a" stroke="none" transform="translate(0 -4) scale(1)"/>
+      </svg>
+      <p class="rsvp-card-name">Confirma aquí mismo</p>
+      <p class="rsvp-card-info" id="rsvpCardInfo">Solo te tomará un momento</p>
+      <p class="rsvp-done" id="rsvpDone">Ya recibimos tu respuesta. ¡Gracias!</p>
+      <button class="btn-rsvp" id="rsvpOpenBtn" type="button" onclick="openRsvp()">Confirmar asistencia</button>
+    </div>
     <div class="rsvp-card">
       <p class="rsvp-card-label">WhatsApp</p>
       <svg class="svg-icon" width="40" height="40" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -2189,20 +3006,6 @@
       <a href="https://wa.me/51934888078?text=Hola,%20quiero%20confirmar%20mi%20asistencia%20a%20la%20boda" target="_blank" class="btn-rsvp">
         Confirmar por WhatsApp
       </a>
-    </div>
-    <div class="rsvp-card">
-      <p class="rsvp-card-label">Correo electrónico</p>
-      <svg class="svg-icon" width="40" height="40" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <rect x="6" y="14" width="48" height="32" rx="3" stroke="#b8975a" stroke-width="2" fill="none"/>
-        <path d="M6 17 L30 33 L54 17" stroke="#b8975a" stroke-width="2" fill="none"/>
-        <line x1="6" y1="46" x2="22" y2="32" stroke="#b8975a" stroke-width="1.5"/>
-        <line x1="54" y1="46" x2="38" y2="32" stroke="#b8975a" stroke-width="1.5"/>
-      </svg>
-      <p class="rsvp-card-name">Correo de la Boda</p>
-      <p class="rsvp-card-info">bodadanielynarumi@gmail.com</p>
-      <button class="btn-rsvp" onclick="openModal('modal-email-rsvp')">
-        Confirmar por Email
-      </button>
     </div>
   </div>
   <p class="rsvp-deadline reveal">Por favor confirma antes del 1 de marzo de 2027</p>
@@ -2251,7 +3054,7 @@
       <path d="M40 22 Q48 22 52 16 Q56 10 48 8 Q40 8 40 22" stroke="#b8975a" stroke-width="2" fill="none"/>
     </svg>
     <h3 style="font-family: var(--serif); font-size: clamp(1.8rem, 4vw, 2.4rem); font-weight: 700; color: var(--navy); text-align: center; margin-bottom: 8px;">Mesa de Regalos</h3>
-    <p style="font-family: var(--serif); font-style: italic; font-size: 1rem; color: var(--gold-dark); text-align: center; margin-bottom: 36px;">Tu presencia es nuestro mayor regalo. Si deseas contribuir:</p>
+    <p style="font-family: var(--serif); font-style: italic; font-size: 1rem; color: var(--gold-dark); text-align: center; margin-bottom: 36px;">Tu presencia es nuestro mayor regalo. Si deseas obsequiar un presente:</p>
     <div style="text-align: center;">
       <button class="regalos-toggle-btn" onclick="toggleRegalos()">Ver opciones de regalo</button>
     </div>
@@ -2276,58 +3079,102 @@
 </section>
 
 <!-- NO NIÑOS -->
+<section id="deseos" class="navy-corners">
+  <div class="corner-tl"></div>
+  <div class="corner-tr"></div>
+  <div class="corner-bl"></div>
+  <div class="corner-br"></div>
+  <span class="section-label reveal">Libro de buenos deseos</span>
+  <h2 class="section-title reveal">Déjanos tus buenos deseos</h2>
+  <p class="section-subtitle reveal">Tus palabras serán un recuerdo que guardaremos para siempre.</p>
+  <div class="gold-ornament reveal" style="margin-bottom: 64px;">
+    <div class="gold-ornament-line" style="background: rgba(184,151,90,0.4);"></div>
+    <div class="gold-ornament-diamond" style="background: rgba(184,151,90,0.4);"></div>
+    <div class="gold-ornament-line" style="background: rgba(184,151,90,0.4);"></div>
+  </div>
+  <div class="deseos-form reveal">
+    <form id="deseosForm" novalidate>
+      <input class="deseos-input" id="deseoNombre" type="text" maxlength="80" placeholder="Tu nombre y apellido" autocomplete="name">
+      <textarea class="deseos-input" id="deseoMsg" maxlength="600" rows="4" placeholder="Escribe aquí tus buenos deseos para Daniel y Narumi…"></textarea>
+      <p class="deseos-count" id="deseoCount">0 / 600</p>
+      <input class="hp-field" id="deseoHp" name="website" type="text" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <button type="submit" class="btn-primary" id="deseoSubmit"><span class="btn-spinner"></span><span class="btn-label">Enviar mis buenos deseos</span></button>
+      <p class="form-error" id="deseoError" role="alert"></p>
+    </form>
+    <div class="thanks" id="deseoThanks" aria-live="polite">
+      <div class="thanks-seal"><svg aria-hidden="true"><use href="#sealArt"/></svg></div>
+      <p class="thanks-title" id="deseoThanksTitle">¡Gracias!</p>
+      <p class="thanks-text">Tu mensaje ya llegó a Daniel y Narumi.</p>
+      <div class="thanks-actions">
+        <button class="link-btn" type="button" style="color: var(--gold-light);" onclick="resetDeseo()">Escribir otro mensaje</button>
+      </div>
+    </div>
+  </div>
+  <div class="deseos-wall" id="deseosWall" aria-label="Mensajes de nuestros invitados"></div>
+</section>
+
 <div class="no-ninos">
   <p>Este evento está reservado para adultos. Agradecemos su comprensión.</p>
 </div>
 
 <!-- FOOTER -->
 <footer>
-  <img class="footer-photo" src="assets/photos/final.webp" srcset="assets/photos/final-sm.webp 900w, assets/photos/final.webp 1420w" sizes="100vw" width="1420" height="2080" alt="Daniel y Narumi abrazados en el agua frente a la luz del atardecer" loading="lazy" decoding="async">
-  <p class="footer-names reveal">Daniel &amp; Narumi</p>
-  <p class="footer-date reveal"><span>11 · Abril · MMXXVII</span><span class="footer-place">Cajamarca, Perú</span></p>
-  <div class="footer-rule reveal"></div>
-  <p class="footer-copy reveal">Con amor, para quienes hacen parte de este camino.</p>
+  <img class="footer-photo" src="assets/photos/galeria/galeria-01.webp" srcset="assets/photos/galeria/galeria-01-sm.webp 720w, assets/photos/galeria/galeria-01.webp 853w" sizes="(min-width: 900px) 60vw, 100vw" width="853" height="1280" alt="Daniel y Narumi abrazados en una cueva junto al mar, con el sol del atardecer al fondo" loading="lazy" decoding="async">
+  <div class="footer-text">
+    <p class="footer-names reveal">Daniel &amp; Narumi</p>
+    <p class="footer-date reveal"><span>11 · Abril · MMXXVII</span><span class="footer-place">Cajamarca, Perú</span></p>
+    <div class="footer-rule reveal"></div>
+    <p class="footer-copy reveal">Con amor, para quienes hacen parte de este camino.</p>
+  </div>
 </footer>
 <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Galería ampliada" aria-hidden="true">
   <div class="lb-viewport" id="lbViewport"><div class="lb-track" id="lbTrack"></div></div>
-  <button class="lb-btn lb-close" id="lbClose" type="button" aria-label="Cerrar">&times;</button>
-  <button class="lb-btn lb-prev" id="lbPrev" type="button" aria-label="Foto anterior">&#8249;</button>
-  <button class="lb-btn lb-next" id="lbNext" type="button" aria-label="Foto siguiente">&#8250;</button>
-  <p class="lb-counter" id="lbCounter" aria-live="polite">1 / 9</p>
+  <p class="lb-counter" id="lbCounter" aria-live="polite">1 / 17</p>
+  <button class="lb-btn lb-zoom-btn" id="lbZoom" type="button" aria-label="Acercar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5L20 20M8 10.5h5M10.5 8v5"/></svg></button>
+  <button class="lb-btn lb-close" id="lbClose" type="button" aria-label="Cerrar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+  <button class="lb-btn lb-prev" id="lbPrev" type="button" aria-label="Foto anterior"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
+  <button class="lb-btn lb-next" id="lbNext" type="button" aria-label="Foto siguiente"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
+  <p class="lb-hint" id="lbHint">Pellizca o toca dos veces para acercar</p>
+  <div class="lb-thumbs" id="lbThumbs"></div>
 </div>
 
 <!-- MODAL EMAIL RSVP -->
-<div class="modal-overlay" id="modal-email-rsvp" onclick="closeModalOutside(event, 'modal-email-rsvp')">
+<div class="modal-overlay" id="modal-rsvp" onclick="closeModalOutside(event, 'modal-rsvp')" role="dialog" aria-modal="true" aria-labelledby="rsvpTitle">
   <div class="modal-box">
-    <button class="modal-close" onclick="closeModal('modal-email-rsvp')">×</button>
-    <svg style="display: block; margin: 0 auto 20px;" width="40" height="40" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <rect x="6" y="14" width="48" height="32" rx="3" stroke="#b8975a" stroke-width="2" fill="none"/>
-      <path d="M6 17 L30 33 L54 17" stroke="#b8975a" stroke-width="2" fill="none"/>
-    </svg>
-    <h3 class="modal-title">Confirmar Asistencia</h3>
-    <p class="modal-subtitle">¿Nos acompañarás en este día tan especial?</p>
-
-    <div id="rsvp-form">
-      <div class="modal-field">
-        <input class="modal-input" id="rsvp-nombre" type="text" placeholder="Tu nombre completo" autocomplete="off">
+    <button class="modal-close" type="button" onclick="closeModal('modal-rsvp')" aria-label="Cerrar">×</button>
+    <form id="rsvpForm" novalidate>
+      <h3 class="modal-title" id="rsvpTitle">Confirmar asistencia</h3>
+      <p class="modal-subtitle" id="rsvpSubtitle">¿Nos acompañarás en este día tan especial?</p>
+      <p class="rsvp-greeting" id="rsvpGreeting" hidden></p>
+      <p class="rsvp-seats" id="rsvpSeats" hidden></p>
+      <div class="rsvp-choice" role="group" aria-label="Tu respuesta">
+        <button type="button" id="rsvpYes" data-v="si" aria-pressed="true">Asistiré</button>
+        <button type="button" id="rsvpNo" data-v="no" aria-pressed="false">No podré asistir</button>
       </div>
-      <div style="margin-top: 32px; text-align: center;">
-        <button class="btn-primary" onclick="enviarRSVP()" style="width: 100%; justify-content: center;">
-          Confirmar asistencia
-        </button>
+      <div id="rsvpPeopleWrap">
+        <p class="rsvp-step-label" id="rsvpPeopleLabel">¿Quién asistirá?</p>
+        <div class="rsvp-people" id="rsvpPeople"></div>
       </div>
-    </div>
-
-    <div class="modal-success" id="rsvp-success">
-      <span class="modal-success-icon">
-        <svg width="32" height="29" viewBox="0 0 14 13" fill="currentColor" xmlns="http://www.w3.org/2000/svg" style="display:inline-block"><path d="M7 12S1 7.5 1 4a3 3 0 0 1 6 0 3 3 0 0 1 6 0c0 3.5-6 8-6 8z"/></svg>
-      </span>
-      <p class="modal-success-text">¡Gracias! Tu confirmación fue enviada.<br>Nos vemos el 11 de abril.</p>
+      <p class="rsvp-step-label">Un mensaje para los novios <span style="text-transform:none;letter-spacing:0;font-weight:400">(opcional)</span></p>
+      <textarea class="modal-input" id="rsvpMsg" maxlength="600" rows="3" placeholder="Escribe unas palabras…"></textarea>
+      <input class="hp-field" id="rsvpHp" name="website" type="text" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <p class="form-error" id="rsvpError" role="alert"></p>
+      <button type="submit" class="btn-primary" id="rsvpSubmit" style="width: 100%; justify-content: center; margin-top: 10px;">
+        <span class="btn-spinner"></span><span class="btn-label">Enviar confirmación</span>
+      </button>
+    </form>
+    <div class="thanks" id="rsvpThanks" aria-live="polite">
+      <div class="thanks-seal"><svg aria-hidden="true"><use href="#sealArt"/></svg></div>
+      <p class="thanks-title" id="rsvpThanksTitle">¡Gracias!</p>
+      <p class="thanks-text" id="rsvpThanksText"></p>
+      <div class="thanks-actions">
+        <button class="btn-primary" type="button" onclick="closeModal('modal-rsvp')">Volver a la invitación</button>
+        <button class="link-btn" type="button" onclick="openRsvp(true)">Cambiar mi respuesta</button>
+      </div>
     </div>
   </div>
 </div>
 
-<!-- MODAL MÚSICA -->
 <div class="modal-overlay" id="modal-musica" onclick="closeModalOutside(event, 'modal-musica')">
   <div class="modal-box">
     <button class="modal-close" onclick="closeModal('modal-musica')">×</button>
@@ -2358,10 +3205,12 @@
       </div>
       <div class="modal-field">
         <input class="modal-input" id="m-link" type="text" placeholder="Link de YouTube, Spotify u otro (opcional)" autocomplete="off">
+        <input class="hp-field" id="m-hp" name="website" type="text" tabindex="-1" autocomplete="off" aria-hidden="true">
       </div>
       <div style="margin-top: 32px; text-align: center;">
-        <button class="btn-primary" onclick="enviarCancion()" style="width: 100%; justify-content: center;">
-          <svg width="16" height="16" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg" style="display:inline-block;vertical-align:middle;margin-right:8px"><circle cx="24" cy="60" r="10" fill="currentColor"/><circle cx="56" cy="52" r="10" fill="currentColor"/><line x1="34" y1="60" x2="34" y2="20" stroke="currentColor" stroke-width="3"/><line x1="66" y1="52" x2="66" y2="12" stroke="currentColor" stroke-width="3"/><line x1="34" y1="20" x2="66" y2="12" stroke="currentColor" stroke-width="3"/></svg>Enviar sugerencia
+        <p class="form-error" id="mError" role="alert"></p>
+        <button class="btn-primary" id="mSubmit" type="button" onclick="enviarCancion()" style="width: 100%; justify-content: center;">
+          <span class="btn-spinner"></span><span class="btn-label">Enviar sugerencia</span>
         </button>
       </div>
     </div>
@@ -2371,26 +3220,129 @@
         <svg width="32" height="29" viewBox="0 0 14 13" fill="currentColor" xmlns="http://www.w3.org/2000/svg" style="display:inline-block"><path d="M7 12S1 7.5 1 4a3 3 0 0 1 6 0 3 3 0 0 1 6 0c0 3.5-6 8-6 8z"/></svg>
       </span>
       <p class="modal-success-text">¡Gracias! Tu canción fue enviada.<br>La tendremos muy en cuenta.</p>
+      <button class="link-btn" type="button" style="margin-top: 18px;" onclick="otraCancion()">Sugerir otra canción</button>
     </div>
   </div>
 </div>
 
 <script>
-// ── WELCOME SCREEN + MÚSICA ──
+// ── BIENVENIDA: SELLO, CARTA Y MÚSICA ──
 const audio = document.getElementById('bg-audio');
 const musicBtn = document.getElementById('music-btn');
+let siteOpened = false;
+let finishOpening = null;
+
+function startMusic() {
+  audio.volume = 0.55;
+  audio.play().then(() => musicBtn.classList.add('playing')).catch(() => {});
+}
+
+function revealSite() {
+  const ws = document.getElementById('welcome-screen');
+  ws.classList.add('hide');
+  document.body.style.overflow = '';
+  window.scrollTo(0, 0);
+}
 
 function enterSite() {
-  // Ocultar pantalla de bienvenida
-  document.getElementById('welcome-screen').classList.add('hide');
-  document.body.style.overflow = '';
-  // Ir al inicio de la página
-  window.scrollTo(0, 0);
-  // Arrancar música garantizado por interacción del usuario
-  audio.volume = 0.55;
-  audio.play().then(() => {
-    musicBtn.classList.add('playing');
-  }).catch(() => {});
+  if (siteOpened) return;
+  siteOpened = true;
+  startMusic();                                   // el toque del usuario habilita el audio
+
+  const ws = document.getElementById('welcome-screen');
+  const scene = document.getElementById('letterScene');
+  const env = document.getElementById('envelope');
+  const flap = document.getElementById('envFlap');
+  const letter = document.getElementById('envLetter');
+  const inner = document.getElementById('envLetterInner');
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  if (reduce || !scene || !letter.animate) { revealSite(); return; }
+
+  // Polvo dorado
+  const dust = document.getElementById('letterDust');
+  if (!dust.childElementCount) {
+    for (let i = 0; i < 22; i++) {
+      const s = document.createElement('i');
+      s.style.left = (Math.random() * 100).toFixed(1) + '%';
+      s.style.top = (Math.random() * 100).toFixed(1) + '%';
+      s.style.setProperty('--d', (2.4 + Math.random() * 2.6).toFixed(2) + 's');
+      s.style.setProperty('--delay', (Math.random() * 2.5).toFixed(2) + 's');
+      dust.appendChild(s);
+    }
+  }
+
+  const anims = [];
+  const timers = [];
+  const run = (el, kf, opts) => { const a = el.animate(kf, Object.assign({ fill: 'forwards' }, opts)); anims.push(a); return a; };
+  const at = (ms, fn) => timers.push(setTimeout(fn, ms));
+  const ease = 'cubic-bezier(0.45, 0, 0.2, 1)';
+
+  let done = false;
+  function finish() {
+    if (done) return;
+    done = true;
+    timers.forEach(clearTimeout);
+    anims.forEach(a => { try { a.cancel(); } catch (e) {} });
+    revealSite();
+    scene.classList.remove('is-on');
+    scene.style.opacity = '';
+    scene.removeEventListener('click', finish);
+    finishOpening = null;
+  }
+  finishOpening = finish;
+
+  // 1. El sello se parte y la bienvenida se desvanece
+  ws.classList.add('is-opening');
+
+  // 2. Aparece el sobre cerrado
+  at(380, () => {
+    scene.classList.add('is-on');
+    scene.addEventListener('click', finish);      // tocar de nuevo salta la animación
+    run(scene, [{ opacity: 0 }, { opacity: 1 }], { duration: 520, easing: 'ease-out' });
+    run(env, [{ transform: 'translateY(28px) scale(0.92)', opacity: 0 }, { transform: 'none', opacity: 1 }],
+        { duration: 680, easing: 'cubic-bezier(0.2, 0.8, 0.2, 1)' });
+  });
+
+  // 3. Se abre la solapa
+  at(1000, () => {
+    run(flap, [{ transform: 'perspective(1400px) rotateX(0deg)' }, { transform: 'perspective(1400px) rotateX(-180deg)' }],
+        { duration: 820, easing: ease });
+    at(410, () => { flap.style.zIndex = '1'; });  // pasada la mitad, la solapa queda detrás de la carta
+  });
+
+  // 4. La carta sale del sobre
+  at(1700, () => {
+    run(letter, [{ transform: 'translateY(0)' }, { transform: 'translateY(-56%)' }],
+        { duration: 760, easing: 'cubic-bezier(0.25, 0.8, 0.25, 1)' });
+  });
+
+  // 4b. El sobre se disuelve y deja la carta sola
+  at(2380, () => {
+    document.querySelectorAll('#envelope .env-back, #envelope .env-pocket, #envelope .env-flap-face')
+      .forEach(el => run(el, [{ opacity: 1 }, { opacity: 0 }], { duration: 260, easing: 'ease-out' }));
+  });
+
+  // 5. La carta se agranda y se desvanece, revelando la portada del sitio
+  at(2560, () => {
+    revealSite();                                  // el sitio queda listo detrás de la escena
+    document.getElementById('welcome-screen').style.transition = 'none';
+    const r = letter.getBoundingClientRect();
+    const vw = window.innerWidth, vh = window.innerHeight;
+    const s = Math.max(vw / r.width, vh / r.height) * 1.08;
+    const dx = vw / 2 - (r.left + r.width / 2);
+    const dy = vh / 2 - (r.top + r.height / 2);
+    const base = 'translateY(-56%)';
+    run(inner, [{ opacity: 1 }, { opacity: 0 }], { duration: 280, easing: 'ease-out' });
+    document.querySelectorAll('#letterBg, #letterDust')
+      .forEach(el => run(el, [{ opacity: 1 }, { opacity: 0 }], { duration: 640, easing: 'ease-in-out' }));
+    run(letter, [
+      { transform: base, opacity: 1, offset: 0 },
+      { opacity: 0.9, offset: 0.45 },
+      { transform: `translate(${dx}px, ${dy}px) ${base} scale(${s})`, opacity: 0, offset: 1 }
+    ], { duration: 900, easing: ease });
+  });
+  at(3520, finish);
 }
 
 // Bloquear scroll mientras está la pantalla de bienvenida
@@ -2430,338 +3382,463 @@ updateCountdown();
 setInterval(updateCountdown, 1000);
 
 // ── GALERÍA ──
-// Carrusel de una sola foto, sin reproducción automática, con visor ampliado al tocar la foto.
-// Para mostrar más de una foto a la vez, edita --visible y --step en la regla ".gallery" del CSS.
+// Carrusel sin reproducción automática: el marco adopta la proporción exacta de cada foto,
+// con miniaturas y un visor ampliado con zoom (pellizcar, doble toque, rueda del ratón).
 (function () {
-  const root = document.getElementById('galleryCarousel');
+  const root = document.getElementById('gallery');
   if (!root) return;
-  const viewport = document.getElementById('galleryViewport');
-  const track = document.getElementById('galleryTrack');
-  const slides = Array.from(track.children);
-  const prevBtn = document.getElementById('galleryPrev');
-  const nextBtn = document.getElementById('galleryNext');
-  const expandBtn = document.getElementById('galleryExpand');
-  const dotsEl = document.getElementById('galleryDots');
-  const counter = document.getElementById('galleryCounter');
+  const frame = document.getElementById('gFrame');
+  const slides = Array.from(frame.querySelectorAll('.g-slide'));
+  const prevBtn = document.getElementById('gPrev');
+  const nextBtn = document.getElementById('gNext');
+  const expandBtn = document.getElementById('gExpand');
+  const counter = document.getElementById('gCounter');
+  const thumbsEl = document.getElementById('gThumbs');
+  const thumbs = Array.from(thumbsEl.querySelectorAll('.g-thumb'));
   const total = slides.length;
-
-  let visible = 1, step = 1, stops = [0], stopIdx = 0, dragging = false;
-
-  function readConfig() {
-    const cs = getComputedStyle(root);
-    visible = Math.max(1, Math.min(total, parseInt(cs.getPropertyValue('--visible'), 10) || 1));
-    step = Math.max(1, parseInt(cs.getPropertyValue('--step'), 10) || 1);
-  }
-
-  // Posiciones de parada: de "step" en "step" y siempre una última parada que muestra el final
-  function buildStops() {
-    const maxStart = Math.max(0, total - visible);
-    stops = [];
-    for (let i = 0; i < maxStart; i += step) stops.push(i);
-    stops.push(maxStart);
-  }
-
-  function buildDots() {
-    dotsEl.innerHTML = '';
-    stops.forEach((start, i) => {
-      const b = document.createElement('button');
-      b.type = 'button';
-      b.className = 'gallery-dot';
-      const last = Math.min(total, start + visible);
-      b.setAttribute('aria-label', visible > 1 ? `Ver fotos ${start + 1} a ${last}` : `Ver foto ${start + 1}`);
-      b.addEventListener('click', () => goTo(i));
-      dotsEl.appendChild(b);
-    });
-  }
-
-  function offsetFor(start) { return slides[start].offsetLeft; }
-
-  // Carga con antelación las fotos vecinas para que no aparezcan vacías
-  function warm(start) {
-    const from = Math.max(0, start - visible * 2), to = Math.min(total, start + visible * 3);
-    for (let i = from; i < to; i++) {
-      const img = slides[i].querySelector('img');
-      if (img && img.loading === 'lazy') img.loading = 'eager';
-    }
-  }
-
-  function render(animate) {
-    const start = stops[stopIdx];
-    if (animate === false) track.style.transition = 'none';
-    track.style.transform = `translate3d(${-offsetFor(start)}px,0,0)`;
-    if (animate === false) { void track.offsetWidth; track.style.transition = ''; }
-    slides.forEach((s, i) => {
-      const active = i >= start && i < start + visible;
-      s.classList.toggle('is-active', active);
-      s.setAttribute('aria-hidden', active ? 'false' : 'true');
-    });
-    Array.from(dotsEl.children).forEach((d, i) => {
-      if (i === stopIdx) d.setAttribute('aria-current', 'true'); else d.removeAttribute('aria-current');
-    });
-    const last = Math.min(total, start + visible);
-    counter.textContent = visible > 1 ? `${start + 1} – ${last} / ${total}` : `${start + 1} / ${total}`;
-    prevBtn.disabled = stopIdx === 0;
-    nextBtn.disabled = stopIdx === stops.length - 1;
-    warm(start);
-  }
-
-  function goTo(i) {
-    stopIdx = Math.max(0, Math.min(stops.length - 1, i));
-    render(true);
-  }
-  // Lleva el carrusel a la parada que contiene la foto "idx" (se usa al cerrar el visor)
-  function goToPhoto(idx) {
-    let s = 0;
-    stops.forEach((start, i) => { if (start <= idx) s = i; });
-    stopIdx = s;
-    render(false);
-  }
-
-  prevBtn.addEventListener('click', () => goTo(stopIdx - 1));
-  nextBtn.addEventListener('click', () => goTo(stopIdx + 1));
-
-  root.addEventListener('keydown', (e) => {
-    if (e.key === 'ArrowLeft') { e.preventDefault(); goTo(stopIdx - 1); }
-    else if (e.key === 'ArrowRight') { e.preventDefault(); goTo(stopIdx + 1); }
-    else if (e.key === 'Enter' && e.target === root) { e.preventDefault(); openLightbox(stops[stopIdx]); }
-  });
-
-  // ── Deslizamiento táctil y con el ratón ──
-  let startX = 0, startY = 0, startT = 0, baseOffset = 0, pid = null, pressed = false, suppressClick = false;
-
-  viewport.addEventListener('pointerdown', (e) => {
-    if (e.pointerType === 'mouse' && e.button !== 0) return;
-    pressed = true; dragging = false; suppressClick = false; pid = e.pointerId;
-    startX = e.clientX; startY = e.clientY; startT = e.timeStamp;
-    baseOffset = offsetFor(stops[stopIdx]);
-  });
-
-  viewport.addEventListener('pointermove', (e) => {
-    if (!pressed || e.pointerId !== pid) return;
-    const dx = e.clientX - startX, dy = e.clientY - startY;
-    if (!dragging) {
-      if (Math.abs(dx) < 8 || Math.abs(dx) < Math.abs(dy)) return;
-      dragging = true; suppressClick = true;
-      viewport.classList.add('is-dragging');
-      track.style.transition = 'none';
-      try { viewport.setPointerCapture(pid); } catch (_) {}
-    }
-    const maxOffset = offsetFor(stops[stops.length - 1]);
-    let pos = baseOffset - dx;
-    if (pos < 0) pos = pos * 0.35;                                        // resistencia en el inicio
-    else if (pos > maxOffset) pos = maxOffset + (pos - maxOffset) * 0.35; // y en el final
-    track.style.transform = `translate3d(${-pos}px,0,0)`;
-  });
-
-  function endDrag(e, cancelled) {
-    if (!pressed || (e && e.pointerId !== pid)) return;
-    pressed = false;
-    if (!dragging) return;
-    dragging = false;
-    viewport.classList.remove('is-dragging');
-    track.style.transition = '';
-    const dx = e.clientX - startX, dt = Math.max(1, e.timeStamp - startT);
-    const tileW = slides[0].getBoundingClientRect().width;
-    const fast = Math.abs(dx) > 30 && dt < 320;
-    const far = Math.abs(dx) > Math.max(40, tileW * 0.18);
-    if (!cancelled && (fast || far)) goTo(stopIdx + (dx < 0 ? 1 : -1));
-    else render(true);
-  }
-  viewport.addEventListener('pointerup', (e) => endDrag(e, false));
-  viewport.addEventListener('pointercancel', (e) => endDrag(e, true));
-
-  // Un toque (sin arrastrar) sobre la foto abre el visor ampliado
-  viewport.addEventListener('click', (e) => {
-    if (suppressClick) { suppressClick = false; return; }
-    const slide = e.target.closest('.gallery-slide');
-    if (slide) openLightbox(slides.indexOf(slide));
-  });
-  expandBtn.addEventListener('click', () => openLightbox(stops[stopIdx]));
-
-  // ── Aparición suave de cada foto al terminar de cargar ──
-  slides.forEach((s) => {
+  const items = slides.map((s) => {
     const img = s.querySelector('img');
-    if (!img) return;
-    const show = () => img.classList.add('is-loaded');
-    if (img.complete && img.naturalWidth > 0) show();
-    else { img.addEventListener('load', show, { once: true }); img.addEventListener('error', show, { once: true }); }
+    return {
+      w: +s.dataset.w, h: +s.dataset.h,
+      src: img.dataset.src || img.getAttribute('src'),
+      srcset: img.dataset.srcset || img.getAttribute('srcset') || '',
+      full: s.dataset.full,
+      alt: img.alt
+    };
+  });
+  let idx = 0;
+
+  /* ── Carga ── */
+  function loadSlide(i) {
+    if (i < 0 || i >= total) return;
+    const img = slides[i].querySelector('img');
+    if (img.dataset.src) {
+      if (img.dataset.srcset) img.srcset = img.dataset.srcset;
+      img.src = img.dataset.src;
+      delete img.dataset.src;
+      delete img.dataset.srcset;
+    }
+    if (!img.classList.contains('is-loaded')) {
+      const show = () => img.classList.add('is-loaded');
+      if (img.complete && img.naturalWidth) show();
+      else { img.addEventListener('load', show, { once: true }); img.addEventListener('error', show, { once: true }); }
+    }
+  }
+  function warm(i) { for (let k = i - 1; k <= i + 2; k++) loadSlide(k); }
+
+  /* ── Tamaño del marco según la proporción de la foto ── */
+  function maxHeight() {
+    const vh = window.innerHeight;
+    return window.innerWidth < 700 ? Math.min(vh * 0.74, 640) : Math.min(vh * 0.78, 780);
+  }
+  function sizeFrame(i, animate) {
+    const it = items[i], r = it.w / it.h;
+    const avail = root.clientWidth;
+    const w = Math.min(avail, maxHeight() * r);
+    if (animate === false) frame.style.transition = 'none';
+    frame.style.width = Math.round(w) + 'px';
+    frame.style.height = Math.round(w / r) + 'px';
+    if (animate === false) { void frame.offsetWidth; frame.style.transition = ''; }
+  }
+
+  function updateUI() {
+    counter.textContent = `${idx + 1} / ${total}`;
+    prevBtn.disabled = idx === 0;
+    nextBtn.disabled = idx === total - 1;
+    slides.forEach((s, i) => s.setAttribute('aria-hidden', i === idx ? 'false' : 'true'));
+    thumbs.forEach((t, i) => { if (i === idx) t.setAttribute('aria-current', 'true'); else t.removeAttribute('aria-current'); });
+    centerThumb(thumbsEl, thumbs[idx]);
+  }
+  function centerThumb(strip, t) {
+    if (!t) return;
+    const left = t.offsetLeft - (strip.clientWidth - t.offsetWidth) / 2;
+    strip.scrollTo({ left: Math.max(0, left), behavior: 'smooth' });
+  }
+
+  function go(i, animate) {
+    if (i < 0 || i >= total) return;
+    if (i === idx && animate !== false) return;
+    const dir = i > idx ? 1 : -1;
+    const old = slides[idx], next = slides[i];
+    warm(i);
+    if (old !== next) {
+      old.classList.remove('is-active');
+      old.style.opacity = '';
+      old.style.transform = animate === false ? '' : `translateX(${-dir * 36}px)`;
+      next.style.transition = 'none';
+      next.style.opacity = '';
+      next.style.transform = animate === false ? '' : `translateX(${dir * 36}px)`;
+      void next.offsetWidth;
+      next.style.transition = '';
+      next.style.transform = '';
+      next.classList.add('is-active');
+      setTimeout(() => { if (!old.classList.contains('is-active')) old.style.transform = ''; }, 650);
+    }
+    idx = i;
+    sizeFrame(i, animate);
+    updateUI();
+  }
+
+  prevBtn.addEventListener('click', (e) => { e.stopPropagation(); go(idx - 1); });
+  nextBtn.addEventListener('click', (e) => { e.stopPropagation(); go(idx + 1); });
+  expandBtn.addEventListener('click', (e) => { e.stopPropagation(); openLb(idx); });
+  thumbs.forEach((t, i) => t.addEventListener('click', () => go(i)));
+  root.addEventListener('keydown', (e) => {
+    if (e.target.closest('.g-thumbs')) return;
+    if (e.key === 'ArrowLeft') { e.preventDefault(); go(idx - 1); }
+    else if (e.key === 'ArrowRight') { e.preventDefault(); go(idx + 1); }
+    else if (e.key === 'Enter' && e.target === root) { e.preventDefault(); openLb(idx); }
   });
 
-  // ══════════ VISOR AMPLIADO ══════════
+  /* ── Deslizar en el carrusel ── */
+  let d = null, suppressClick = false;
+  frame.addEventListener('pointerdown', (e) => {
+    if (e.pointerType === 'mouse' && e.button !== 0) return;
+    if (e.target.closest('button')) return;
+    d = { id: e.pointerId, x: e.clientX, y: e.clientY, t: e.timeStamp, drag: false };
+    suppressClick = false;
+  });
+  frame.addEventListener('pointermove', (e) => {
+    if (!d || e.pointerId !== d.id) return;
+    const dx = e.clientX - d.x, dy = e.clientY - d.y;
+    if (!d.drag) {
+      if (Math.abs(dx) < 8 || Math.abs(dx) < Math.abs(dy)) return;
+      d.drag = true; suppressClick = true;
+      frame.classList.add('is-dragging');
+      try { frame.setPointerCapture(d.id); } catch (_) {}
+    }
+    const edge = (dx > 0 && idx === 0) || (dx < 0 && idx === total - 1);
+    const move = edge ? dx * 0.25 : dx * 0.7;
+    const cur = slides[idx];
+    cur.style.transform = `translateX(${move}px)`;
+    cur.style.opacity = String(1 - Math.min(0.5, Math.abs(move) / frame.clientWidth));
+  });
+  function endDrag(e, cancelled) {
+    if (!d || e.pointerId !== d.id) return;
+    const was = d; d = null;
+    if (!was.drag) return;
+    frame.classList.remove('is-dragging');
+    const dx = e.clientX - was.x, dt = Math.max(1, e.timeStamp - was.t);
+    const passed = Math.abs(dx) > Math.max(44, frame.clientWidth * 0.16) || (Math.abs(dx) > 28 && dt < 300);
+    const target = idx + (dx < 0 ? 1 : -1);
+    const cur = slides[idx];
+    if (!cancelled && passed && target >= 0 && target < total) go(target);
+    else { cur.style.transform = ''; cur.style.opacity = ''; }
+  }
+  frame.addEventListener('pointerup', (e) => endDrag(e, false));
+  frame.addEventListener('pointercancel', (e) => endDrag(e, true));
+  frame.addEventListener('click', (e) => {
+    if (e.target.closest('button')) return;
+    if (suppressClick) { suppressClick = false; return; }
+    openLb(idx);
+  });
+
+  /* ══════════ VISOR AMPLIADO ══════════ */
   const lb = document.getElementById('lightbox');
-  const lbViewport = document.getElementById('lbViewport');
+  const lbVp = document.getElementById('lbViewport');
   const lbTrack = document.getElementById('lbTrack');
-  const lbCloseBtn = document.getElementById('lbClose');
-  const lbPrevBtn = document.getElementById('lbPrev');
-  const lbNextBtn = document.getElementById('lbNext');
   const lbCounter = document.getElementById('lbCounter');
-  let lbIdx = 0, lbOpen = false, lastFocus = null;
+  const lbClose = document.getElementById('lbClose');
+  const lbPrev = document.getElementById('lbPrev');
+  const lbNext = document.getElementById('lbNext');
+  const lbZoomBtn = document.getElementById('lbZoom');
+  const lbHint = document.getElementById('lbHint');
+  const lbThumbsEl = document.getElementById('lbThumbs');
+  let lbBuilt = false, lbOpen = false, lbIdx = 0, pushed = false, lastFocus = null, hintTimer = null;
+  const lbSlides = [], lbZooms = [], lbImgs = [], lbThumbs = [];
+  const Z = { s: 1, x: 0, y: 0 };
+  const MAXZ = 4;
 
-  const lbImgs = slides.map((s) => {
-    const src = s.querySelector('img');
-    const wrap = document.createElement('div');
-    wrap.className = 'lb-slide';
-    const im = document.createElement('img');
-    im.alt = src.alt;
-    im.draggable = false;
-    im.dataset.src = src.getAttribute('src');   // versión grande de la foto
-    wrap.appendChild(im);
-    lbTrack.appendChild(wrap);
-    return im;
-  });
-
+  function buildLb() {
+    if (lbBuilt) return;
+    lbBuilt = true;
+    items.forEach((it, i) => {
+      const sl = document.createElement('div');
+      sl.className = 'lb-slide';
+      sl.setAttribute('aria-hidden', 'true');
+      const zm = document.createElement('div');
+      zm.className = 'lb-zoom';
+      const im = document.createElement('img');
+      im.alt = it.alt;
+      im.draggable = false;
+      im.decoding = 'async';
+      zm.appendChild(im); sl.appendChild(zm); lbTrack.appendChild(sl);
+      lbSlides.push(sl); lbZooms.push(zm); lbImgs.push(im);
+      const t = thumbs[i].cloneNode(true);
+      t.removeAttribute('aria-current');
+      t.addEventListener('click', () => lbGo(i));
+      lbThumbsEl.appendChild(t); lbThumbs.push(t);
+    });
+  }
   function lbLoad(i) {
-    for (let k = Math.max(0, i - 1); k <= Math.min(total - 1, i + 2); k++) {
+    for (let k = Math.max(0, i - 1); k <= Math.min(total - 1, i + 1); k++) {
       const im = lbImgs[k];
       if (im.getAttribute('src')) continue;
       const show = () => im.classList.add('is-loaded');
       im.addEventListener('load', show, { once: true });
       im.addEventListener('error', show, { once: true });
-      im.src = im.dataset.src;
+      im.src = items[k].full || items[k].src;
     }
   }
+  function vpSize() { return { w: lbVp.clientWidth, h: lbVp.clientHeight }; }
+  function layoutZoom(i) {
+    const it = items[i], v = vpSize();
+    const pad = window.innerWidth < 700 ? 0 : 24;
+    const sc = Math.min((v.w - pad * 2) / it.w, (v.h - pad * 2) / it.h);
+    const w = Math.round(it.w * sc), h = Math.round(it.h * sc);
+    const zm = lbZooms[i];
+    zm.style.width = w + 'px'; zm.style.height = h + 'px';
+    zm.style.marginLeft = (-w / 2) + 'px'; zm.style.marginTop = (-h / 2) + 'px';
+    zm.dataset.bw = w; zm.dataset.bh = h;
+  }
+  function layoutAll() { for (let i = 0; i < total; i++) layoutZoom(i); }
+  function trackTo(animate, extra) {
+    lbTrack.classList.toggle('is-animating', !!animate);
+    lbTrack.style.transform = `translate3d(${-lbIdx * vpSize().w + (extra || 0)}px,0,0)`;
+  }
+  function bounds(s) {
+    const zm = lbZooms[lbIdx], v = vpSize();
+    return { x: Math.max(0, (s * zm.dataset.bw - v.w) / 2), y: Math.max(0, (s * zm.dataset.bh - v.h) / 2) };
+  }
+  function clampZ() {
+    const b = bounds(Z.s);
+    Z.x = Math.max(-b.x, Math.min(b.x, Z.x));
+    Z.y = Math.max(-b.y, Math.min(b.y, Z.y));
+  }
+  function applyZ(animate) {
+    const zm = lbZooms[lbIdx];
+    zm.classList.toggle('is-animating', !!animate);
+    zm.style.transform = `translate3d(${Z.x}px,${Z.y}px,0) scale(${Z.s})`;
+    lb.classList.toggle('is-zoomed', Z.s > 1.01);
+    lbZoomBtn.setAttribute('aria-label', Z.s > 1.01 ? 'Alejar' : 'Acercar');
+    lbZoomBtn.classList.toggle('is-on', Z.s > 1.01);
+  }
+  // Ajusta el zoom manteniendo fijo el punto (cx, cy) de la pantalla, relativo al centro del visor
+  function zoomAt(s, cx, cy, animate) {
+    s = Math.max(1, Math.min(MAXZ, s));
+    const qx = (cx - Z.x) / Z.s, qy = (cy - Z.y) / Z.s;
+    Z.s = s; Z.x = cx - s * qx; Z.y = cy - s * qy;
+    if (s === 1) { Z.x = 0; Z.y = 0; }
+    clampZ(); applyZ(animate);
+    hideHint();
+  }
+  function resetZ(animate) {
+    Z.s = 1; Z.x = 0; Z.y = 0;
+    if (lbZooms[lbIdx]) applyZ(animate);
+  }
+  function rel(e) {
+    const r = lbVp.getBoundingClientRect();
+    return { x: e.clientX - r.left - r.width / 2, y: e.clientY - r.top - r.height / 2 };
+  }
+  function hideHint() { lbHint.classList.add('is-hidden'); }
 
-  function lbRender(animate) {
-    if (animate === false) lbTrack.style.transition = 'none';
-    lbTrack.style.transform = `translate3d(${-lbIdx * 100}%,0,0)`;
-    if (animate === false) { void lbTrack.offsetWidth; lbTrack.style.transition = ''; }
-    lbImgs.forEach((im, i) => im.parentNode.setAttribute('aria-hidden', i === lbIdx ? 'false' : 'true'));
+  function lbUpdateUI() {
     lbCounter.textContent = `${lbIdx + 1} / ${total}`;
-    lbPrevBtn.disabled = lbIdx === 0;
-    lbNextBtn.disabled = lbIdx === total - 1;
-    lbLoad(lbIdx);
+    lbPrev.disabled = lbIdx === 0;
+    lbNext.disabled = lbIdx === total - 1;
+    lbSlides.forEach((s, i) => s.setAttribute('aria-hidden', i === lbIdx ? 'false' : 'true'));
+    lbThumbs.forEach((t, i) => { if (i === lbIdx) t.setAttribute('aria-current', 'true'); else t.removeAttribute('aria-current'); });
+    centerThumb(lbThumbsEl, lbThumbs[lbIdx]);
   }
-  function lbGo(i) {
-    lbIdx = Math.max(0, Math.min(total - 1, i));
-    lbRender(true);
+  function lbGo(i, animate) {
+    i = Math.max(0, Math.min(total - 1, i));
+    if (lbZooms[lbIdx]) { lbZooms[lbIdx].classList.add('is-animating'); lbZooms[lbIdx].style.transform = ''; }
+    lbIdx = i;
+    Z.s = 1; Z.x = 0; Z.y = 0;
+    lb.classList.remove('is-zoomed');
+    lbZoomBtn.classList.remove('is-on');
+    lbLoad(i);
+    trackTo(animate !== false);
+    lbUpdateUI();
   }
 
-  function openLightbox(i) {
+  function openLb(i) {
     if (lbOpen) return;
-    lbIdx = Math.max(0, Math.min(total - 1, i || 0));
-    lastFocus = document.activeElement;
+    buildLb();
     lbOpen = true;
+    lastFocus = document.activeElement;
     lb.classList.add('is-open');
     lb.setAttribute('aria-hidden', 'false');
     document.body.style.overflow = 'hidden';
-    lbRender(false);
-    lbCloseBtn.focus({ preventScroll: true });
+    layoutAll();
+    lbGo(i, false);
+    lbHint.classList.remove('is-hidden');
+    clearTimeout(hintTimer);
+    hintTimer = setTimeout(hideHint, 3800);
+    try { history.pushState({ dnGallery: true }, ''); pushed = true; } catch (_) { pushed = false; }
+    lbClose.focus({ preventScroll: true });
   }
-  function closeLightbox() {
+  function closeLb(fromHistory) {
     if (!lbOpen) return;
     lbOpen = false;
-    lb.classList.remove('is-open');
+    lb.classList.remove('is-open', 'is-zoomed');
     lb.setAttribute('aria-hidden', 'true');
     document.body.style.overflow = '';
-    goToPhoto(lbIdx);                       // el carrusel queda en la foto que se estaba viendo
-    if (lastFocus && lastFocus.focus) lastFocus.focus({ preventScroll: true });
-    setTimeout(() => {                      // restablece cualquier desplazamiento del gesto de cierre
-      lbImgs.forEach((im) => { im.parentNode.style.transform = ''; im.parentNode.style.opacity = ''; });
+    go(lbIdx, false);                       // el carrusel queda en la foto que se estaba viendo
+    setTimeout(() => {
+      lbSlides.forEach((s) => { s.style.transform = ''; s.style.opacity = ''; });
       lb.style.background = '';
-    }, 400);
+      resetZ(false);
+    }, 360);
+    if (lastFocus && lastFocus.focus) lastFocus.focus({ preventScroll: true });
+    if (!fromHistory && pushed) { pushed = false; history.back(); }
   }
+  // El botón "atrás" del teléfono o del navegador cierra el visor en vez de salir del sitio
+  window.addEventListener('popstate', () => { if (lbOpen) { pushed = false; closeLb(true); } });
 
-  lbCloseBtn.addEventListener('click', closeLightbox);
-  lbPrevBtn.addEventListener('click', () => lbGo(lbIdx - 1));
-  lbNextBtn.addEventListener('click', () => lbGo(lbIdx + 1));
-
+  lbClose.addEventListener('click', () => closeLb());
+  lbPrev.addEventListener('click', () => lbGo(lbIdx - 1));
+  lbNext.addEventListener('click', () => lbGo(lbIdx + 1));
+  lbZoomBtn.addEventListener('click', () => {
+    if (Z.s > 1.01) resetZ(true); else zoomAt(2.5, 0, 0, true);
+  });
   document.addEventListener('keydown', (e) => {
     if (!lbOpen) return;
-    if (e.key === 'Escape') { e.preventDefault(); closeLightbox(); }
-    else if (e.key === 'ArrowLeft') { e.preventDefault(); lbGo(lbIdx - 1); }
-    else if (e.key === 'ArrowRight') { e.preventDefault(); lbGo(lbIdx + 1); }
-    else if (e.key === 'Tab') {              // el foco se queda dentro del visor
-      const f = [lbCloseBtn, lbPrevBtn, lbNextBtn].filter((b) => !b.disabled);
-      const i = f.indexOf(document.activeElement);
+    if (e.key === 'Escape') { e.preventDefault(); closeLb(); }
+    else if (e.key === 'ArrowLeft' && Z.s <= 1.01) { e.preventDefault(); lbGo(lbIdx - 1); }
+    else if (e.key === 'ArrowRight' && Z.s <= 1.01) { e.preventDefault(); lbGo(lbIdx + 1); }
+    else if (e.key === '+' || e.key === '=') { e.preventDefault(); zoomAt(Z.s * 1.5, 0, 0, true); }
+    else if (e.key === '-') { e.preventDefault(); zoomAt(Z.s / 1.5, 0, 0, true); }
+    else if (e.key === 'Tab') {
+      const f = Array.from(lb.querySelectorAll('button')).filter((b) => !b.disabled && b.offsetParent !== null);
+      const k = f.indexOf(document.activeElement);
       e.preventDefault();
-      f[(i + (e.shiftKey ? -1 : 1) + f.length) % f.length].focus();
+      f[(k + (e.shiftKey ? -1 : 1) + f.length) % f.length].focus();
     }
   });
 
-  // Gestos del visor: izquierda/derecha cambia de foto; hacia abajo cierra; un toque fuera de la foto cierra
-  let lx = 0, ly = 0, lt = 0, lpid = null, lDown = false, lAxis = null, lBase = 0;
+  // Rueda del ratón o gesto de trackpad: zoom hacia el cursor
+  lbVp.addEventListener('wheel', (e) => {
+    if (!lbOpen) return;
+    e.preventDefault();
+    const p = rel(e);
+    zoomAt(Z.s * Math.exp(-e.deltaY * 0.0022), p.x, p.y, false);
+  }, { passive: false });
 
-  lbViewport.addEventListener('pointerdown', (e) => {
+  /* Gestos táctiles y de ratón en el visor */
+  const P = new Map();
+  let g = null, lastTap = null, tapTimer = null;
+  function onImage(p) {
+    const zm = lbZooms[lbIdx];
+    return Math.abs(p.x - Z.x) <= (zm.dataset.bw * Z.s) / 2 && Math.abs(p.y - Z.y) <= (zm.dataset.bh * Z.s) / 2;
+  }
+  lbVp.addEventListener('pointerdown', (e) => {
     if (e.pointerType === 'mouse' && e.button !== 0) return;
-    lDown = true; lAxis = null; lpid = e.pointerId;
-    lx = e.clientX; ly = e.clientY; lt = e.timeStamp;
-    lBase = -lbIdx * lbViewport.clientWidth;
+    try { lbVp.setPointerCapture(e.pointerId); } catch (_) {}
+    P.set(e.pointerId, rel(e));
+    if (P.size === 1) {
+      const p = rel(e);
+      g = { mode: null, sx: p.x, sy: p.y, t: e.timeStamp, x0: Z.x, y0: Z.y, moved: false };
+    } else if (P.size === 2) {
+      const [a, b] = Array.from(P.values());
+      const mid = { x: (a.x + b.x) / 2, y: (a.y + b.y) / 2 };
+      if (g && g.mode === 'swipe') trackTo(true);
+      if (g && g.mode === 'dismiss') { lbSlides[lbIdx].style.transform = ''; lbSlides[lbIdx].style.opacity = ''; lb.style.background = ''; }
+      g = { mode: 'pinch', d0: Math.hypot(a.x - b.x, a.y - b.y) || 1, s0: Z.s,
+            qx: (mid.x - Z.x) / Z.s, qy: (mid.y - Z.y) / Z.s, moved: true };
+      lbZooms[lbIdx].classList.remove('is-animating');
+      hideHint();
+    }
   });
-
-  lbViewport.addEventListener('pointermove', (e) => {
-    if (!lDown || e.pointerId !== lpid) return;
-    const dx = e.clientX - lx, dy = e.clientY - ly;
-    if (!lAxis) {
+  lbVp.addEventListener('pointermove', (e) => {
+    if (!P.has(e.pointerId) || !g) return;
+    P.set(e.pointerId, rel(e));
+    if (g.mode === 'pinch') {
+      if (P.size < 2) return;
+      const [a, b] = Array.from(P.values());
+      const mid = { x: (a.x + b.x) / 2, y: (a.y + b.y) / 2 };
+      let s = g.s0 * Math.hypot(a.x - b.x, a.y - b.y) / g.d0;
+      s = s < 1 ? 1 - (1 - s) * 0.4 : Math.min(MAXZ * 1.15, s);   // resistencia suave en los límites
+      Z.s = s; Z.x = mid.x - s * g.qx; Z.y = mid.y - s * g.qy;
+      applyZ(false);
+      return;
+    }
+    if (g.mode === 'ended') return;
+    const p = P.get(e.pointerId);
+    const dx = p.x - g.sx, dy = p.y - g.sy;
+    if (!g.mode) {
       if (Math.hypot(dx, dy) < 8) return;
-      lAxis = Math.abs(dx) >= Math.abs(dy) ? 'x' : 'y';
-      lbTrack.style.transition = 'none';
-      lbImgs[lbIdx].parentNode.style.transition = 'none';
-      try { lbViewport.setPointerCapture(lpid); } catch (_) {}
+      g.moved = true;
+      if (Z.s > 1.01) g.mode = 'pan';
+      else if (Math.abs(dx) >= Math.abs(dy)) { g.mode = 'swipe'; lbTrack.classList.remove('is-animating'); }
+      else { g.mode = 'dismiss'; lbSlides[lbIdx].style.transition = 'none'; }
     }
-    if (lAxis === 'x') {
-      const vw = lbViewport.clientWidth, min = -(total - 1) * vw;
-      let pos = lBase + dx;
-      if (pos > 0) pos *= 0.35;
-      else if (pos < min) pos = min + (pos - min) * 0.35;
-      lbTrack.style.transform = `translate3d(${pos}px,0,0)`;
-    } else {
-      const wrap = lbImgs[lbIdx].parentNode;
-      wrap.style.transform = `translate3d(0,${dy}px,0)`;
-      wrap.style.opacity = String(Math.max(0.3, 1 - Math.abs(dy) / 500));
-      lb.style.background = `rgba(6,11,20,${Math.max(0.35, 1 - Math.abs(dy) / 450)})`;
+    if (g.mode === 'pan') {
+      Z.x = g.x0 + dx; Z.y = g.y0 + dy;
+      const b = bounds(Z.s);
+      const soft = (v, m) => (v > m ? m + (v - m) * 0.3 : v < -m ? -m + (v + m) * 0.3 : v);
+      Z.x = soft(Z.x, b.x); Z.y = soft(Z.y, b.y);
+      applyZ(false);
+    } else if (g.mode === 'swipe') {
+      const edge = (dx > 0 && lbIdx === 0) || (dx < 0 && lbIdx === total - 1);
+      trackTo(false, edge ? dx * 0.3 : dx);
+    } else if (g.mode === 'dismiss') {
+      const sl = lbSlides[lbIdx];
+      sl.style.transform = `translate3d(0,${dy}px,0) scale(${1 - Math.min(0.12, Math.abs(dy) / 2400)})`;
+      sl.style.opacity = String(Math.max(0.35, 1 - Math.abs(dy) / 520));
+      lb.style.background = `rgba(6,11,20,${Math.max(0.3, 1 - Math.abs(dy) / 420)})`;
     }
   });
-
-  function lbEnd(e, cancelled) {
-    if (!lDown || e.pointerId !== lpid) return;
-    lDown = false;
-    const dx = e.clientX - lx, dy = e.clientY - ly, dt = Math.max(1, e.timeStamp - lt);
-    const wrap = lbImgs[lbIdx].parentNode;
-    lbTrack.style.transition = '';
-    wrap.style.transition = '';
-    if (lAxis === 'x') {
-      const vw = lbViewport.clientWidth;
-      const move = !cancelled && (Math.abs(dx) > vw * 0.16 || (Math.abs(dx) > 30 && dt < 320));
-      lbGo(lbIdx + (move ? (dx < 0 ? 1 : -1) : 0));
-    } else if (lAxis === 'y') {
-      const close = !cancelled && (Math.abs(dy) > 110 || (Math.abs(dy) > 50 && dt < 320));
-      if (close) closeLightbox();
-      else { wrap.style.transform = ''; wrap.style.opacity = ''; lb.style.background = ''; }
-    } else if (!cancelled) {
-      // Toque: si cae fuera de la foto (en el fondo oscuro), se cierra el visor
-      const im = lbImgs[lbIdx], r = im.getBoundingClientRect();
-      const ar = im.naturalWidth && im.naturalHeight ? im.naturalWidth / im.naturalHeight : r.width / r.height;
-      let w = r.width, h = r.height;
-      if (w / h > ar) w = h * ar; else h = w / ar;
-      const inside = Math.abs(e.clientX - (r.left + r.width / 2)) <= w / 2 &&
-                     Math.abs(e.clientY - (r.top + r.height / 2)) <= h / 2;
-      if (!inside) closeLightbox();
+  function lbUp(e, cancelled) {
+    if (!P.has(e.pointerId)) return;
+    const p = P.get(e.pointerId);
+    P.delete(e.pointerId);
+    if (!g) return;
+    if (g.mode === 'pinch') {
+      if (P.size === 0) {
+        if (Z.s < 1.02) resetZ(true);
+        else { Z.s = Math.min(MAXZ, Z.s); clampZ(); applyZ(true); }
+        g = null;
+      } else g.mode = 'ended';
+      return;
     }
-    lAxis = null;
+    if (g.mode === 'ended') { if (P.size === 0) g = null; return; }
+    const dx = p.x - g.sx, dy = p.y - g.sy, dt = Math.max(1, e.timeStamp - g.t);
+    const mode = g.mode; g = null;
+    if (mode === 'pan') { clampZ(); applyZ(true); return; }
+    if (mode === 'swipe') {
+      const v = vpSize();
+      const passed = !cancelled && (Math.abs(dx) > v.w * 0.16 || (Math.abs(dx) > 30 && dt < 300));
+      lbGo(lbIdx + (passed ? (dx < 0 ? 1 : -1) : 0));
+      return;
+    }
+    if (mode === 'dismiss') {
+      const sl = lbSlides[lbIdx];
+      sl.style.transition = '';
+      if (!cancelled && (Math.abs(dy) > 110 || (Math.abs(dy) > 50 && dt < 300))) closeLb();
+      else { sl.style.transform = ''; sl.style.opacity = ''; lb.style.background = ''; }
+      return;
+    }
+    if (cancelled) return;
+    // Toque: doble toque = zoom; un toque fuera de la foto = cerrar
+    const now = e.timeStamp;
+    if (lastTap && now - lastTap.t < 320 && Math.hypot(p.x - lastTap.x, p.y - lastTap.y) < 36) {
+      clearTimeout(tapTimer); lastTap = null;
+      if (Z.s > 1.01) resetZ(true); else zoomAt(2.5, p.x, p.y, true);
+      return;
+    }
+    lastTap = { t: now, x: p.x, y: p.y };
+    const outside = !onImage(p) && Z.s <= 1.01;
+    clearTimeout(tapTimer);
+    if (outside) tapTimer = setTimeout(() => { lastTap = null; closeLb(); }, 330);
   }
-  lbViewport.addEventListener('pointerup', (e) => lbEnd(e, false));
-  lbViewport.addEventListener('pointercancel', (e) => lbEnd(e, true));
+  lbVp.addEventListener('pointerup', (e) => lbUp(e, false));
+  lbVp.addEventListener('pointercancel', (e) => lbUp(e, true));
+  lb.addEventListener('gesturestart', (e) => e.preventDefault());   // Safari: evita el zoom de toda la página
 
-  // ── Inicio y adaptación al tamaño de pantalla ──
-  function setup(keepStart) {
-    const currentStart = stops[stopIdx] || 0;
-    readConfig();
-    buildStops();
-    stopIdx = 0;
-    if (keepStart) stops.forEach((s, i) => { if (s <= currentStart) stopIdx = i; });
-    buildDots();
-    render(false);
-    if (lbOpen) lbRender(false);
-  }
-  root.classList.add('is-ready');
-  setup(false);
-
+  /* ── Inicio y cambios de tamaño ── */
+  slides[0].classList.add('is-active');
+  warm(0);
+  sizeFrame(0, false);
+  updateUI();
   let rz;
   window.addEventListener('resize', () => {
     clearTimeout(rz);
-    rz = setTimeout(() => setup(true), 120);
+    rz = setTimeout(() => {
+      sizeFrame(idx, false);
+      if (lbOpen) { layoutAll(); trackTo(false); resetZ(false); }
+    }, 120);
   });
-  window.addEventListener('load', () => render(false));
 })();
 
 // ── MODALS ──
@@ -2777,36 +3854,37 @@ function closeModalOutside(e, id) {
   if (e.target === document.getElementById(id)) closeModal(id);
 }
 
-// ── SUGERIR CANCIÓN ──
-function enviarCancion() {
-  const nombre = document.getElementById('m-nombre').value.trim();
+// ── SUGERIR CANCIÓN (se guarda en la hoja de Google, pestaña "Canciones") ──
+async function enviarCancion() {
+  const btn = document.getElementById('mSubmit');
+  const err = document.getElementById('mError');
+  if (btn.disabled) return;
+  const nombre = document.getElementById('m-nombre').value.replace(/\s+/g, ' ').trim();
   const cancion = document.getElementById('m-cancion').value.trim();
   const artista = document.getElementById('m-artista').value.trim();
-  const link = document.getElementById('m-link').value.trim();
-  if (!nombre || !cancion) {
-    alert('Por favor completa tu nombre y el nombre de la canción.');
-    return;
-  }
-  const asunto = encodeURIComponent('🎵 Sugerencia de canción — Boda Daniel & Narumi');
-  let cuerpo = `¡Hola!\n\n🎉 Buenas noticias: ${nombre} quiere ponerle ritmo a tu gran día 💃🕺\nHa sugerido la canción "${cancion}"`;
-  if (artista) cuerpo += ` de ${artista}`;
-  if (link) cuerpo += ` (${link})`;
-  cuerpo += ` para que suene en tu boda.\n\n¿La agregamos a la playlist? 😉\n\n¡Se viene una fiesta increíble!`;
-  window.location.href = `mailto:bodadanielynarumi@gmail.com?subject=${asunto}&body=${encodeURIComponent(cuerpo)}`;
+  const enlace = document.getElementById('m-link').value.trim();
+  if (!nombre) { err.textContent = 'Escribe tu nombre.'; return; }
+  if (!cancion) { err.textContent = 'Escribe el nombre de la canción.'; return; }
+  err.textContent = '';
+  setSending(btn, true, 'Enviando…');
+  const res = await dnSend({ tipo: 'cancion', nombre, cancion, artista, enlace, website: document.getElementById('m-hp').value });
+  setSending(btn, false, 'Enviar sugerencia');
+  if (!res.ok) { err.textContent = res.error || 'No se pudo enviar. Inténtalo de nuevo.'; return; }
   document.getElementById('musica-form').style.display = 'none';
   document.getElementById('musica-success').style.display = 'block';
-  setTimeout(() => {
-    closeModal('modal-musica');
-    setTimeout(() => {
-      document.getElementById('musica-form').style.display = 'block';
-      document.getElementById('musica-success').style.display = 'none';
-      document.getElementById('m-nombre').value = '';
-      document.getElementById('m-cancion').value = '';
-      document.getElementById('m-artista').value = '';
-      document.getElementById('m-link').value = '';
-    }, 400);
-  }, 3000);
 }
+function abrirCanciones() {
+  if (document.getElementById('musica-success').style.display === 'block') otraCancion();
+  openModal('modal-musica');
+}
+function otraCancion() {
+  ['m-cancion', 'm-artista', 'm-link'].forEach((id) => { document.getElementById(id).value = ''; });
+  document.getElementById('mError').textContent = '';
+  document.getElementById('musica-success').style.display = 'none';
+  document.getElementById('musica-form').style.display = 'block';
+  document.getElementById('m-cancion').focus();
+}
+document.getElementById('musica-form').addEventListener('input', () => { document.getElementById('mError').textContent = ''; });
 
 // ── REGALOS TOGGLE ──
 function toggleRegalos() {
@@ -2817,26 +3895,302 @@ function toggleRegalos() {
 }
 
 // ── EMAIL RSVP ──
-function enviarRSVP() {
-  const nombre = document.getElementById('rsvp-nombre').value.trim();
-  if (!nombre) {
-    alert('Por favor escribe tu nombre.');
-    return;
-  }
-  const asunto = encodeURIComponent('Confirmación de asistencia — Boda Daniel & Narumi');
-  const cuerpo = encodeURIComponent(`Estimados,\n\nNos complace informarles que ${nombre} ha confirmado su asistencia a su boda.\n\nReciban nuestras más sinceras felicitaciones por este importante y feliz acontecimiento. ¡Ya falta poco!`);
-  window.location.href = `mailto:bodadanielynarumi@gmail.com?subject=${asunto}&body=${cuerpo}`;
-  document.getElementById('rsvp-form').style.display = 'none';
-  document.getElementById('rsvp-success').style.display = 'block';
-  setTimeout(() => {
-    closeModal('modal-email-rsvp');
-    setTimeout(() => {
-      document.getElementById('rsvp-form').style.display = 'block';
-      document.getElementById('rsvp-success').style.display = 'none';
-      document.getElementById('rsvp-nombre').value = '';
-    }, 400);
-  }, 3000);
+// ── CONFIRMACIÓN DE ASISTENCIA Y BUENOS DESEOS (conectados a la hoja de Google) ──
+const DN_API = 'https://script.google.com/macros/s/AKfycbwiXYR0M3ER3G3cpuP4oiNgcKiLGQ9vuUiiWe03SEj2BXxOkeiOHX-O62TqTBhEg1RI/exec';
+
+// Enlace personalizado: ?i=<datos en base64url> con { k: código, i: "Familia Pérez", n: ["Juan Pérez", ...] }
+const DN_INVITE = (function () {
+  try {
+    const q = new URLSearchParams(location.search).get('i');
+    if (!q) return null;
+    let b = q.replace(/-/g, '+').replace(/_/g, '/');
+    while (b.length % 4) b += '=';
+    const bytes = Uint8Array.from(atob(b), (c) => c.charCodeAt(0));
+    const d = JSON.parse(new TextDecoder().decode(bytes));
+    const names = [], roles = [];
+    (Array.isArray(d.n) ? d.n : []).slice(0, 30).forEach((x, i) => {
+      let n = String(x).replace(/\s+/g, ' ').trim();
+      let r = Array.isArray(d.r) ? String(d.r[i] || '') : '';
+      const m = n.match(/^(.*?)\s*[-–—]\s*(dama de honor|dama|paje)$/i);
+      if (m) { n = m[1].trim(); r = /paje/i.test(m[2]) ? 'paje' : 'dama'; }
+      if (n) { names.push(n); roles.push(r === 'dama' || r === 'paje' ? r : ''); }
+    });
+    if (!names.length) return null;
+    return { code: String(d.k || q).slice(0, 180), name: String(d.i || names.join(', ')).trim().slice(0, 120), names, roles };
+  } catch (e) { return null; }
+})();
+
+function dnStore(key, val) {
+  try { if (val === undefined) return JSON.parse(localStorage.getItem(key) || 'null'); localStorage.setItem(key, JSON.stringify(val)); }
+  catch (e) { return null; }
 }
+
+async function dnSend(data) {
+  const ctrl = 'AbortController' in window ? new AbortController() : null;
+  const timer = ctrl ? setTimeout(() => ctrl.abort(), 25000) : null;
+  try {
+    const r = await fetch(DN_API, { method: 'POST', body: new URLSearchParams(data), signal: ctrl ? ctrl.signal : undefined });
+    const j = await r.json().catch(() => ({ ok: r.ok }));
+    return { ok: !!j.ok, error: j.error };
+  } catch (e) {
+    if (e && e.name === 'AbortError') return { ok: false, error: 'La conexión tardó demasiado. Inténtalo de nuevo.' };
+    if (navigator.onLine === false) return { ok: false, error: 'No hay conexión a internet. Inténtalo de nuevo.' };
+    // Si el navegador no deja leer la contestación, se reintenta en modo simple: si llega, Google la guarda
+    try {
+      await fetch(DN_API, { method: 'POST', mode: 'no-cors', body: new URLSearchParams(data) });
+      return { ok: true };
+    } catch (e2) {
+      return { ok: false, error: 'No se pudo enviar. Revisa tu conexión e inténtalo de nuevo.' };
+    }
+  } finally { if (timer) clearTimeout(timer); }
+}
+
+function setSending(btn, on, label) {
+  btn.disabled = on;
+  btn.classList.toggle('is-sending', on);
+  btn.querySelector('.btn-label').textContent = label;
+}
+
+/* ── Confirmación ── */
+let rsvpChoice = 'si';
+const CHECK = '<svg viewBox="0 0 16 16" fill="none" stroke="#d4b483" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 8.5l3 3 6-7"/></svg>';
+
+function rsvpPlural() { return DN_INVITE && DN_INVITE.names.length > 1; }
+
+function rsvpNameRow(value, removable) {
+  const row = document.createElement('div');
+  row.className = 'rsvp-name-row';
+  const inp = document.createElement('input');
+  inp.className = 'modal-input rsvp-name';
+  inp.type = 'text';
+  inp.maxLength = 80;
+  inp.placeholder = 'Nombre y apellido';
+  inp.autocomplete = removable ? 'off' : 'name';
+  inp.value = value || '';
+  row.appendChild(inp);
+  if (removable) {
+    const x = document.createElement('button');
+    x.type = 'button'; x.className = 'rsvp-remove'; x.setAttribute('aria-label', 'Quitar'); x.textContent = '×';
+    x.addEventListener('click', () => { row.remove(); });
+    row.appendChild(x);
+  }
+  return row;
+}
+
+function rsvpBuildPeople() {
+  const box = document.getElementById('rsvpPeople');
+  box.innerHTML = '';
+  if (DN_INVITE) {
+    DN_INVITE.names.forEach((n, i) => {
+      const lab = document.createElement('label');
+      lab.className = 'rsvp-person';
+      lab.innerHTML = '<input type="checkbox" checked><span class="rsvp-box">' + CHECK + '</span><span class="rsvp-person-name"></span>';
+      lab.querySelector('.rsvp-person-name').textContent = n;
+      lab.querySelector('input').value = n;
+      const rol = DN_INVITE.roles[i];
+      if (rol) {
+        const tag = document.createElement('span');
+        tag.className = 'rsvp-role';
+        tag.textContent = rol === 'dama' ? 'Dama de honor' : 'Paje';
+        lab.appendChild(tag);
+      }
+      box.appendChild(lab);
+    });
+  } else {
+    box.appendChild(rsvpNameRow('', false));
+    const add = document.createElement('button');
+    add.type = 'button'; add.className = 'rsvp-add'; add.textContent = '+ Añadir otra persona';
+    add.addEventListener('click', () => {
+      if (box.querySelectorAll('.rsvp-name').length >= 10) return;
+      const row = rsvpNameRow('', true);
+      box.insertBefore(row, add);
+      row.querySelector('input').focus();
+    });
+    box.appendChild(add);
+  }
+}
+
+function rsvpSetChoice(v) {
+  rsvpChoice = v;
+  document.getElementById('rsvpYes').setAttribute('aria-pressed', v === 'si');
+  document.getElementById('rsvpNo').setAttribute('aria-pressed', v === 'no');
+  const wrap = document.getElementById('rsvpPeopleWrap');
+  const label = document.getElementById('rsvpPeopleLabel');
+  if (DN_INVITE) {
+    wrap.hidden = v === 'no';                       // si nadie asiste, no hace falta marcar nombres
+    label.textContent = '¿Quién asistirá?';
+  } else {
+    wrap.hidden = false;
+    label.textContent = v === 'si' ? '¿Quién asistirá?' : '¿Quién no podrá asistir?';
+  }
+  document.getElementById('rsvpError').textContent = '';
+}
+
+function openRsvp(again) {
+  document.getElementById('rsvpForm').style.display = '';
+  document.getElementById('rsvpThanks').classList.remove('is-on');
+  document.getElementById('rsvpError').textContent = '';
+  if (!again) document.getElementById('rsvpMsg').value = '';
+  rsvpBuildPeople();
+  rsvpSetChoice('si');
+  if (!document.getElementById('modal-rsvp').classList.contains('open')) openModal('modal-rsvp');
+}
+
+function rsvpPrepare() {
+  const plural = rsvpPlural();
+  document.getElementById('rsvpYes').textContent = plural ? 'Asistiremos' : 'Asistiré';
+  document.getElementById('rsvpNo').textContent = plural ? 'No podremos asistir' : 'No podré asistir';
+  if (DN_INVITE) {
+    const g = document.getElementById('rsvpGreeting');
+    g.textContent = DN_INVITE.name; g.hidden = false;
+    const s = document.getElementById('rsvpSeats');
+    const n = DN_INVITE.names.length;
+    s.textContent = n === 1 ? 'Hemos reservado 1 lugar para ti' : `Hemos reservado ${n} lugares para ustedes`;
+    s.hidden = false;
+    document.getElementById('rsvpSubtitle').textContent = plural ? '¿Nos acompañarán en este día tan especial?' : '¿Nos acompañarás en este día tan especial?';
+  }
+  const done = dnStore('dnRsvp');
+  if (done && (!DN_INVITE || done.code === DN_INVITE.code)) {
+    document.getElementById('rsvpCard').classList.add('is-confirmed');
+    document.getElementById('rsvpOpenBtn').textContent = 'Cambiar mi respuesta';
+  }
+}
+
+document.getElementById('rsvpYes').addEventListener('click', () => rsvpSetChoice('si'));
+document.getElementById('rsvpForm').addEventListener('input', () => { document.getElementById('rsvpError').textContent = ''; });
+document.getElementById('deseosForm').addEventListener('input', () => { document.getElementById('deseoError').textContent = ''; });
+document.getElementById('rsvpNo').addEventListener('click', () => rsvpSetChoice('no'));
+
+document.getElementById('rsvpForm').addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const err = document.getElementById('rsvpError');
+  const btn = document.getElementById('rsvpSubmit');
+  if (btn.disabled) return;
+  let asisten = [], noAsisten = [];
+  if (DN_INVITE) {
+    const checks = Array.from(document.querySelectorAll('#rsvpPeople input[type=checkbox]'));
+    if (rsvpChoice === 'si') {
+      asisten = checks.filter((c) => c.checked).map((c) => c.value);
+      noAsisten = checks.filter((c) => !c.checked).map((c) => c.value);
+      if (!asisten.length) { err.textContent = 'Marca al menos a una persona, o elige “No podremos asistir”.'; return; }
+    } else noAsisten = DN_INVITE.names.slice();
+  } else {
+    const names = Array.from(document.querySelectorAll('#rsvpPeople .rsvp-name')).map((i) => i.value.replace(/\s+/g, ' ').trim()).filter(Boolean);
+    if (!names.length) { err.textContent = 'Escribe tu nombre y apellido.'; return; }
+    const incomplete = names.find((n) => n.split(' ').length < 2);
+    if (incomplete) { err.textContent = `Escribe el nombre y apellido de “${incomplete}”.`; return; }
+    if (rsvpChoice === 'si') asisten = names; else noAsisten = names;
+  }
+  err.textContent = '';
+  setSending(btn, true, 'Enviando…');
+  const res = await dnSend({
+    tipo: 'rsvp',
+    invitacion: DN_INVITE ? DN_INVITE.name : '',
+    codigo: DN_INVITE ? DN_INVITE.code : '',
+    pases: DN_INVITE ? DN_INVITE.names.length : '',
+    asisten: JSON.stringify(asisten),
+    noAsisten: JSON.stringify(noAsisten),
+    mensaje: document.getElementById('rsvpMsg').value.trim(),
+    website: document.getElementById('rsvpHp').value
+  });
+  setSending(btn, false, 'Enviar confirmación');
+  if (!res.ok) { err.textContent = res.error || 'No se pudo enviar. Inténtalo de nuevo o confirma por WhatsApp.'; return; }
+  const first = (asisten[0] || noAsisten[0] || '').split(' ')[0];
+  document.getElementById('rsvpThanksTitle').textContent = first ? `¡Gracias, ${first}!` : '¡Gracias!';
+  document.getElementById('rsvpThanksText').textContent = asisten.length
+    ? (asisten.length > 1 ? `Recibimos la confirmación de ${asisten.length} personas. ¡Los esperamos con mucha ilusión el 11 de abril!` : 'Recibimos tu confirmación. ¡Te esperamos con mucha ilusión el 11 de abril!')
+    : 'Lamentamos que no puedan acompañarnos. Gracias por avisarnos; los tendremos presentes en nuestro corazón.';
+  document.getElementById('rsvpForm').style.display = 'none';
+  document.getElementById('rsvpThanks').classList.add('is-on');
+  dnStore('dnRsvp', { code: DN_INVITE ? DN_INVITE.code : '', choice: rsvpChoice, at: Date.now() });
+  document.getElementById('rsvpCard').classList.add('is-confirmed');
+  document.getElementById('rsvpOpenBtn').textContent = 'Cambiar mi respuesta';
+});
+
+/* ── Libro de buenos deseos ── */
+const deseoMsg = document.getElementById('deseoMsg');
+deseoMsg.addEventListener('input', () => { document.getElementById('deseoCount').textContent = `${deseoMsg.value.length} / 600`; });
+if (DN_INVITE) document.getElementById('deseoNombre').value = DN_INVITE.name;
+
+function resetDeseo() {
+  deseoMsg.value = '';
+  document.getElementById('deseoCount').textContent = '0 / 600';
+  document.getElementById('deseosForm').style.display = '';
+  document.getElementById('deseoThanks').classList.remove('is-on');
+  deseoMsg.focus();
+}
+
+document.getElementById('deseosForm').addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const err = document.getElementById('deseoError');
+  const btn = document.getElementById('deseoSubmit');
+  if (btn.disabled) return;
+  const nombre = document.getElementById('deseoNombre').value.replace(/\s+/g, ' ').trim();
+  const mensaje = deseoMsg.value.trim();
+  if (!nombre) { err.textContent = 'Escribe tu nombre.'; return; }
+  if (mensaje.length < 3) { err.textContent = 'Escribe tu mensaje.'; return; }
+  err.textContent = '';
+  setSending(btn, true, 'Enviando…');
+  const res = await dnSend({ tipo: 'deseo', nombre, mensaje, website: document.getElementById('deseoHp').value });
+  setSending(btn, false, 'Enviar mis buenos deseos');
+  if (!res.ok) { err.textContent = res.error || 'No se pudo enviar. Inténtalo de nuevo.'; return; }
+  document.getElementById('deseoThanksTitle').textContent = `¡Gracias, ${nombre.split(' ')[0]}!`;
+  document.getElementById('deseosForm').style.display = 'none';
+  document.getElementById('deseoThanks').classList.add('is-on');
+});
+
+// Mensajes aprobados por los novios (columna "Mostrar en el sitio" = Sí)
+(function () {
+  const wall = document.getElementById('deseosWall');
+  let loaded = false;
+  function load() {
+    if (loaded) return; loaded = true;
+    fetch(DN_API + '?accion=deseos').then((r) => r.json()).then((j) => {
+      (j && Array.isArray(j.deseos) ? j.deseos : []).slice().reverse().forEach((d) => {
+        const card = document.createElement('figure');
+        card.className = 'deseo-card';
+        const p = document.createElement('p'); p.textContent = d.mensaje;
+        const s = document.createElement('span'); s.textContent = d.nombre;
+        card.appendChild(p); card.appendChild(s); wall.appendChild(card);
+      });
+    }).catch(() => {});
+  }
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver((en) => { if (en.some((x) => x.isIntersecting)) { io.disconnect(); load(); } }, { rootMargin: '600px' });
+    io.observe(document.getElementById('deseos'));
+  } else load();
+})();
+
+rsvpPrepare();
+
+// ── INVITACIÓN PERSONALIZADA: nombre en la bienvenida, en la carta y en Confirmación ──
+(function () {
+  if (!DN_INVITE) return;
+  const plural = DN_INVITE.names.length > 1;
+  const g = document.getElementById('welcomeGuest');
+  g.textContent = DN_INVITE.name;
+  g.hidden = false;
+  document.getElementById('welcome-screen').classList.add('has-guest');
+  document.getElementById('welcomeLabel').textContent = plural ? 'Los invitamos a celebrar' : 'Te invitamos a celebrar';
+  document.getElementById('envFor').textContent = 'Para ' + DN_INVITE.name;
+  const n = DN_INVITE.names.length;
+  document.getElementById('rsvpCardInfo').textContent = n === 1 ? 'Hemos reservado 1 lugar para ti' : `Hemos reservado ${n} lugares para ustedes`;
+  const especiales = [];
+  DN_INVITE.names.forEach((nombre, i) => {
+    const pila = nombre.split(' ')[0];
+    if (DN_INVITE.roles[i] === 'dama') especiales.push(`${pila}, nos llena de ilusión que nos acompañes como nuestra dama de honor.`);
+    if (DN_INVITE.roles[i] === 'paje') especiales.push(`${pila}, nos encantará que seas nuestro paje.`);
+  });
+  if (especiales.length) {
+    const h = document.getElementById('rsvpHonor');
+    const t = document.createElement('p'); t.className = 'rsvp-honor-label'; t.textContent = 'Una invitación muy especial';
+    h.appendChild(t);
+    especiales.forEach((txt) => { const p = document.createElement('p'); p.className = 'rsvp-honor-text'; p.textContent = txt; h.appendChild(p); });
+    h.hidden = false;
+  }
+  const mNombre = document.getElementById('m-nombre');
+  if (mNombre && !mNombre.value) mNombre.value = DN_INVITE.name;
+})();
 
 // ── NAV MOBILE ──
 function toggleMobileNav() {
@@ -2845,6 +4199,32 @@ function toggleMobileNav() {
 function closeMobileNav() {
   document.getElementById('nav-mobile').classList.remove('open');
 }
+
+// ── NUESTRA HISTORIA: la línea dorada se dibuja al bajar ──
+(function () {
+  const tl = document.getElementById('timeline');
+  const fill = document.getElementById('tlFill');
+  if (!tl || !fill) return;
+  const items = Array.from(tl.querySelectorAll('.tl-item'));
+  let ticking = false;
+  function update() {
+    ticking = false;
+    const r = tl.getBoundingClientRect();
+    const mark = window.innerHeight * 0.62;              // la línea avanza hasta este punto de la pantalla
+    const total = r.height - 20;
+    const len = Math.max(0, Math.min(total, mark - r.top - 10));
+    fill.style.height = len + 'px';
+    items.forEach((it) => {
+      const node = it.querySelector('.tl-node');
+      const y = it.offsetTop + node.offsetTop + node.offsetHeight / 2 - 10;   // posición de diseño, sin animaciones
+      it.classList.toggle('is-lit', len >= y);
+    });
+  }
+  function onScroll() { if (!ticking) { ticking = true; requestAnimationFrame(update); } }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', onScroll);
+  update();
+})();
 
 // ── FLORAL PATTERN ANIMATION ──
 const floralSections = document.querySelectorAll('.floral-section');
