@@ -1606,37 +1606,30 @@
     transition: background 0.2s;
   }
   .btn-rsvp:hover { background: var(--gold); }
-  .rsvp-deadline {
-    font-family: var(--serif);
-    font-style: italic;
-    font-size: 1.05rem;
-    color: rgba(255,255,255,0.72);
-    margin-top: 16px;
-  }
-  /* Aviso destacado de la fecha límite */
+  /* Recordatorio de la fecha límite (debajo de la confirmación) */
   .rsvp-deadline-box {
-    max-width: 440px;
-    margin: 0 auto 32px;
-    padding: 22px 22px 24px;
+    width: min(380px, 88%);
+    margin: 36px auto 0;
+    padding: 16px 18px 18px;
     border: 1.5px solid var(--gold-light);
-    background: linear-gradient(180deg, rgba(212,180,131,0.16), rgba(212,180,131,0.07));
-    box-shadow: 0 0 0 4px rgba(212,180,131,0.08), 0 14px 30px rgba(0,0,0,0.25);
+    background: linear-gradient(180deg, rgba(212,180,131,0.14), rgba(212,180,131,0.06));
+    box-shadow: 0 0 0 3px rgba(212,180,131,0.07), 0 10px 24px rgba(0,0,0,0.22);
     text-align: center;
   }
-  .rsvp-deadline-icon { width: 30px; height: 30px; color: var(--gold-light); display: block; margin: 0 auto 10px; }
+  .rsvp-deadline-icon { width: 24px; height: 24px; color: var(--gold-light); display: block; margin: 0 auto 8px; }
   .rsvp-deadline-label {
     font-family: var(--sans);
-    font-size: 0.66rem;
+    font-size: 0.62rem;
     font-weight: 600;
-    letter-spacing: 0.22em;
+    letter-spacing: 0.2em;
     text-transform: uppercase;
     color: var(--gold-light);
-    margin-bottom: 8px;
+    margin-bottom: 6px;
     line-height: 1.6;
   }
   .rsvp-deadline-date {
     font-family: var(--serif);
-    font-size: clamp(1.55rem, 6.4vw, 2rem);
+    font-size: clamp(1.3rem, 5.2vw, 1.6rem);
     font-weight: 700;
     line-height: 1.2;
     color: #ffffff;
@@ -3065,13 +3058,6 @@
     <div class="gold-ornament-line" style="background: rgba(184,151,90,0.4);"></div>
   </div>
 
-  <div class="rsvp-deadline-box reveal" role="note" aria-label="Fecha límite para confirmar">
-    <svg class="rsvp-deadline-icon" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true">
-      <rect x="4" y="7" width="24" height="21" rx="2"/><path d="M4 13h24M10 4v6M22 4v6"/><path d="M16 17v5M16 25.2v.1" stroke-width="2"/>
-    </svg>
-    <p class="rsvp-deadline-label">Importante · Fecha límite de confirmación</p>
-    <p class="rsvp-deadline-date">Antes del 1&nbsp;de&nbsp;enero de&nbsp;2027</p>
-  </div>
   <div class="rsvp-honor reveal" id="rsvpHonor" hidden></div>
   <div class="rsvp-grid rsvp-single reveal">
     <div class="rsvp-card is-primary" id="rsvpCard">
@@ -3087,7 +3073,13 @@
       <button class="btn-rsvp" id="rsvpOpenBtn" type="button" onclick="openRsvp()">Confirmar asistencia</button>
     </div>
   </div>
-  <p class="rsvp-deadline reveal">Recuerda: confirma antes del 1 de enero de 2027</p>
+  <div class="rsvp-deadline-box reveal" role="note" aria-label="Fecha límite para confirmar">
+    <svg class="rsvp-deadline-icon" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true">
+      <rect x="4" y="7" width="24" height="21" rx="2"/><path d="M4 13h24M10 4v6M22 4v6"/><path d="M16 17v5M16 25.2v.1" stroke-width="2"/>
+    </svg>
+    <p class="rsvp-deadline-label">Importante · Fecha límite de confirmación</p>
+    <p class="rsvp-deadline-date">Antes del 1&nbsp;de&nbsp;enero de&nbsp;2027</p>
+  </div>
 </section>
 
 <!-- FOTOS QR -->
